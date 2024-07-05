@@ -1,6 +1,10 @@
-namespace HospitalManagementTests
+using ApplicationDotnetAssignment1.Models;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+
+namespace HospitalMangementTests
 {
-    public class Tests
+    public class UserTests
     {
         [SetUp]
         public void Setup()
