@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalUserContext))]
-    [Migration("20240705110429_CompletedUserTable")]
-    partial class CompletedUserTable
+    [Migration("20240705122551_addedDoctor")]
+    partial class addedDoctor
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,17 @@ namespace ApplicationDotnetAssignment1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "20 definitely a real address, Sydney, NSW",
+                            Email = "David@SnailMail.com",
+                            Name = "David",
+                            Password = "Password",
+                            PhoneNumber = "+61046550226"
+                        });
                 });
 #pragma warning restore 612, 618
         }

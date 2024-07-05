@@ -6,9 +6,10 @@ using System.Reflection.Emit;
 
 namespace ApplicationDotnetAssignment1.Contexts
 {
-    public class UserContext : DbContext
+    public class HospitalUserContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

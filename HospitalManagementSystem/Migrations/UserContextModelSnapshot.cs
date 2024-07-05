@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApplicationDotnetAssignment1.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(HospitalUserContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -20,6 +20,22 @@ namespace ApplicationDotnetAssignment1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AssociatedUser")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Doctors");
+                });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.User", b =>
                 {
@@ -57,8 +73,8 @@ namespace ApplicationDotnetAssignment1.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "20 street ave, Sydney, NSW",
-                            Email = "David@mail.com",
+                            Address = "20 definitely a real address, Sydney, NSW",
+                            Email = "David@SnailMail.com",
                             Name = "David",
                             Password = "Password",
                             PhoneNumber = "+61046550226"

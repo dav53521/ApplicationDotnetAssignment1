@@ -11,11 +11,11 @@ namespace ApplicationDotnetAssignment1.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private UserContext Context { get; set; }
+        private HospitalUserContext CurrentUserContext { get; set; }
 
-        public UserRepository(UserContext currentUserContext) 
-        { 
-            Context = currentUserContext;
+        public UserRepository(HospitalUserContext currentUserContext) 
+        {
+            CurrentUserContext = currentUserContext;
         }
 
         public IEnumerable<User> GetUsers()

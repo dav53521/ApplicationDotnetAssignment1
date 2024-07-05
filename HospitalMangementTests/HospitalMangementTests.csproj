@@ -26,4 +26,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="Moq" />
+  </ItemGroup>
+
 </Project>
