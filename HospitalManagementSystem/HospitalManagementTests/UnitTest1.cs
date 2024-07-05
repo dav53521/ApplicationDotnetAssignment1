@@ -1,4 +1,4 @@
-namespace UserTests
+namespace HospitalManagementTests
 {
     public class Tests
     {
