@@ -10,6 +10,6 @@ namespace ApplicationDotnetAssignment1.Models
     public class Admin: IAdmin
     {
         public int Id { get; set; }
-        public virtual LoginDetails AssociatedUser { get; set; }
+        public virtual LoginDetails LoginDetails { get; set; }
     }
 }
