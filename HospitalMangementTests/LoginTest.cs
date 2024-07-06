@@ -4,7 +4,7 @@ using Moq;
 
 namespace HospitalMangementTests
 {
-    public class UserTests
+    public class LoginTest
     {
         [SetUp]
         public void Setup()

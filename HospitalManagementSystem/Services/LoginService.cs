@@ -1,4 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Repositories;
+using ApplicationDotnetAssignment1.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +10,44 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class LoginService
+    public class LoginService: ILoginService
     {
-        UserService UserService { get; }
+        LoginDetailsRepository Repository { get; }
 
-        public LoginService(UserService userService)
+        public LoginService(LoginDetailsRepository repository)
         {
-            this.UserService = userService;
+            this.Repository = repository;
         }
 
-        public bool CanLogin()
+        public void Login()
         {
-            int inputtedId = GetLoginIdFromUser();
-            string inputtedPassword = GetPasswordFromUser();
+            bool loginSuccessful = false;
 
-            return UserService.AreLoginDetailsCorrect(inputtedId, inputtedPassword);
+            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text in the center of the console
+            Console.WriteLine("Login");
+            Console.WriteLine("Please Enter Your Login Details Below:");
+
+            while (!loginSuccessful) 
+            {
+                int inputtedId = GetLoginIdFromUser();
+                string inputtedPassword = GetPasswordFromUser();
+
+                Func<LoginDetails, bool> findInputtedLoginDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
+                LoginDetails? foundLogin = Repository.GetLoginsByInputtedFilter(findInputtedLoginDelegate).FirstOrDefault();
+
+                Console.WriteLine();
+
+                if (foundLogin != null)
+                {
+                    loginSuccessful = true;
+                    Console.WriteLine("Login successful.");
+                    OpenCorrectUserMenu(foundLogin.Role);
+                }
+                else
+                {
+                    Console.WriteLine("Login could not be found please try again.\n");
+                }
+            }
         }
 
         int GetLoginIdFromUser()
@@ -65,6 +91,10 @@ namespace ApplicationDotnetAssignment1.Services
             }
 
             return password;
+        }
+
+        void OpenCorrectUserMenu(string userRole)
+        {
         }
     }
 }

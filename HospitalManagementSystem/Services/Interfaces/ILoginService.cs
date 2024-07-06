@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
-    public interface IUserInterface
+    public interface ILoginService
     {
-        public bool AreLoginDetailsCorrect(int inputtedId, string password);
     }
 }

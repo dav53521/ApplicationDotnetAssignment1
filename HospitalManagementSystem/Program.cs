@@ -9,12 +9,9 @@ class Program
     static void Main(string[] args)
     {
         HospitalUserContext currentContext = new HospitalUserContext();
-        UserRepository repository = new UserRepository(currentContext);
-        UserService userService = new UserService(repository);
-        LoginService loginService = new LoginService(userService);
+        LoginDetailsRepository repository = new LoginDetailsRepository(currentContext);
+        LoginService loginService = new LoginService(repository);
 
-        Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text 
-        Console.WriteLine("Login");
-        Console.WriteLine("Please Enter Your Login Details Below:");
+        loginService.Login();
     }
 }

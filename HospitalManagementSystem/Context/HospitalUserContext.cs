@@ -8,8 +8,10 @@ namespace ApplicationDotnetAssignment1.Contexts
 {
     public class HospitalUserContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<LoginDetails> Users { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Paitent> Paitents { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,15 +21,12 @@ namespace ApplicationDotnetAssignment1.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //This is being used to seed the data by using the passed in model builder to insert the passed in models into the DB during a migration so that the database starts off with data after a migration occurs
-            modelBuilder.Entity<User>().HasData(
-                new User
+            modelBuilder.Entity<LoginDetails>().HasData(
+                new LoginDetails
                 {
                     Id = 1,
-                    Name = "David",
-                    Email = "David@SnailMail.com",
-                    PhoneNumber = "+61046550226",
-                    Address = "20 definitely a real address, Sydney, NSW",
-                    Password = "test"
+                    Password = "test",
+                    Role = "Admin"
                 });
         }
     }
