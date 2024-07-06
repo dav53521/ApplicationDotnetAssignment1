@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationDotnetAssignment1.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public abstract class UserService<T>
+    public abstract class UserService<T>: IUserService
     {
-        T Repository { get; set; }
+        private protected T Repository { get; set; }
 
         public abstract void PrintMainMenu();
     }

@@ -32,8 +32,8 @@ namespace ApplicationDotnetAssignment1.Services
                 int inputtedId = GetLoginIdFromUser();
                 string inputtedPassword = GetPasswordFromUser();
 
-                Func<LoginDetails, bool> findInputtedLoginDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                LoginDetails? foundLogin = Repository.GetLoginsByInputtedFilter(findInputtedLoginDelegate).FirstOrDefault();
+                Func<LoginDetails, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
+                LoginDetails? foundLogin = Repository.GetLoginsByInputtedFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
 
                 Console.WriteLine();
 
