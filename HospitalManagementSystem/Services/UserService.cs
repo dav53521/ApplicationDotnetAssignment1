@@ -1,5 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Repositories;
 using ApplicationDotnetAssignment1.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,10 @@ namespace ApplicationDotnetAssignment1.Services
             currentRepository = userRepository;
         }
 
-        public bool IsInputtedUserDetailsCorrect(int userId, string password)
+        public bool AreLoginDetailsCorrect(int inputtedId, string password) //This method is mostly being used to enforce single responisbility principle as a method that logins the user shouldn't be checking if the user's details are correct as that's not its job
         {
-            var foundUsers = currentRepository.GetUsers().Where(user => user.Id == userId && user.Password == password);
-
-            return foundUsers.Any();
+            //This function is bassicly getting the users from the UOW and then filtering the returned results and then returning if any rows has been found as if one has been found then a user has been found
+            return currentRepository.GetAllUsers().Where(user => user.Id == inputtedId && user.Password == password).Any();
         }
     }
 }

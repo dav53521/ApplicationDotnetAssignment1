@@ -9,6 +9,6 @@ namespace ApplicationDotnetAssignment1.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        public IEnumerable<User> GetUsers();
+        public IEnumerable<User> GetAllUsers();
     }
 }

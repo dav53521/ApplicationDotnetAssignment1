@@ -27,7 +27,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Email = "David@SnailMail.com",
                     PhoneNumber = "+61046550226",
                     Address = "20 definitely a real address, Sydney, NSW",
-                    Password = "Password"
+                    Password = "test"
                 });
         }
     }

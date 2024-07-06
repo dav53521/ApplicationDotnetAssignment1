@@ -8,6 +8,6 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
     public interface IUserInterface
     {
-        public bool IsInputtedUserDetailsCorrect(int userId, string password);
+        public bool AreLoginDetailsCorrect(int inputtedId, string password);
     }
 }

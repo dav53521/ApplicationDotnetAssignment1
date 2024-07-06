@@ -4,6 +4,7 @@ using ApplicationDotnetAssignment1.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,9 +19,9 @@ namespace ApplicationDotnetAssignment1.Repositories
             CurrentUserContext = currentUserContext;
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return CurrentUserContext.Users;
         }
 
         public void AddNewUser()

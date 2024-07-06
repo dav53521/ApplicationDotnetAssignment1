@@ -1,25 +1,20 @@
-﻿namespace ApplicationDotnetAssignment1;
+﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.Repositories;
+using ApplicationDotnetAssignment1.Services;
+using Microsoft.IdentityModel.Tokens;
 
+namespace ApplicationDotnetAssignment1;
 class Program
 {
     static void Main(string[] args)
     {
+        HospitalUserContext currentContext = new HospitalUserContext();
+        UserRepository repository = new UserRepository(currentContext);
+        UserService userService = new UserService(repository);
+        LoginService loginService = new LoginService(userService);
+
         Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text 
         Console.WriteLine("Login");
         Console.WriteLine("Please Enter Your Login Details Below:");
-
-        Console.Write("ID: ");
-        string? inputtedID = Console.ReadLine();
-
-        Console.Write("Password:");
-
-        string password = ""; //Empty string so that if a user presses enter right away then an empty string will be given to the user identifier.
-        var keyPressed = Console.ReadKey(true);
-        
-        while(keyPressed.Key != ConsoleKey.Enter)
-        {
-            Console.Write("*");
-            keyPressed = Console.ReadKey(true);
-        }
     }
 }
