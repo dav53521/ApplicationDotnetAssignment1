@@ -95,6 +95,15 @@ namespace ApplicationDotnetAssignment1.Services
 
         void OpenCorrectUserMenu(string userRole)
         {
+            switch (userRole)
+            {
+                case "Admin":
+                    break;
+                case "Patient":
+                    break;
+                case "Doctor":
+                    break;
+            }
         }
     }
 }
