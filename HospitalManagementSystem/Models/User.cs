@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Models
 {
-    public class Users : IUsers
+    public class User : IUsers
     {
         public int Id { get; set; }
         public string Name { get; set; }

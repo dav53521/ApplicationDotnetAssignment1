@@ -29,11 +29,11 @@ namespace ApplicationDotnetAssignment1.Services
 
             while (!loginSuccessful) 
             {
-                int inputtedId = GetLoginIdFromUser();
+                int inputtedId = GetIdFromUser();
                 string inputtedPassword = GetPasswordFromUser();
 
-                Func<Users, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                Users? foundLogin = Repository.GetLoginsByInputtedFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
+                Func<User, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
+                User? foundLogin = Repository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
 
                 Console.WriteLine();
 
@@ -50,7 +50,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        int GetLoginIdFromUser()
+        int GetIdFromUser()
         {
             do
             {

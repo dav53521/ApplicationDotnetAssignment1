@@ -10,23 +10,23 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories
 {
-    public class UserRepository : ILoginDetailsRepository
+    public class UserRepository : IUserRepository
     {
-        private HospitalSystemContext CurrentUserContext { get; set; }
+        private HospitalSystemContext CurrentContext { get; set; }
 
-        public UserRepository(HospitalSystemContext currentUserContext) 
+        public UserRepository(HospitalSystemContext currentContext) 
         {
-            CurrentUserContext = currentUserContext;
+            CurrentContext = currentContext;
         }
 
-        public IEnumerable<Users> GetAllLogins()
+        public IEnumerable<User> GetAllUsers()
         {
-            return CurrentUserContext.Users;
+            return CurrentContext.Users;
         }
 
-        public IEnumerable<Users> GetLoginsByInputtedFilter(Func<Users, bool> filter)
+        public IEnumerable<User> GetUsersByCustomFilter(Func<User, bool> filter)
         {
-            return CurrentUserContext.Users.Where(filter);
+            return CurrentContext.Users.Where(filter);
         }
 
         public void AddNewUser()

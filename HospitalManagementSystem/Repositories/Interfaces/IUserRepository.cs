@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories.Interfaces
 {
-    public interface ILoginDetailsRepository
+    public interface IUserRepository
     {
-        public IEnumerable<Users> GetAllLogins();
-        public IEnumerable<Users> GetLoginsByInputtedFilter(Func<Users, bool> filter);
+        public IEnumerable<User> GetAllUsers();
+        public IEnumerable<User> GetUsersByCustomFilter(Func<User, bool> filter);
     }
 }
