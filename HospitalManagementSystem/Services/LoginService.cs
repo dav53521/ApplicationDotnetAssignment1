@@ -1,6 +1,7 @@
 ﻿using ApplicationDotnetAssignment1.Models;
-using ApplicationDotnetAssignment1.Repositories;
 using ApplicationDotnetAssignment1.Services.Interfaces;
+using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,9 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        UserRepository Repository { get; }
-
-        public LoginService(UserRepository repository)
-        {
-            this.Repository = repository;
-        }
-
         public void Login()
         {
+            var unitOfWork = new HospitalSystemUnitOfWork();
             bool loginSuccessful = false;
 
             Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text in the center of the console
@@ -33,7 +28,7 @@ namespace ApplicationDotnetAssignment1.Services
                 string inputtedPassword = GetPasswordFromUser();
 
                 Func<User, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                User? foundLogin = Repository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
+                User? foundLogin = unitOfWork.UserRepository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
 
                 Console.WriteLine();
 
@@ -45,7 +40,7 @@ namespace ApplicationDotnetAssignment1.Services
                 }
                 else
                 {
-                    Console.WriteLine("Login could not be found please try again.\n");
+                    Console.WriteLine("Login could not be found please try again.");
                 }
             }
         }
