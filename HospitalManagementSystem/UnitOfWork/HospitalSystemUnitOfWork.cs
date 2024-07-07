@@ -12,7 +12,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
     public class HospitalSystemUnitOfWork : IHospitalSystemUnitOfWork
     {
         HospitalSystemContext systemContext = new HospitalSystemContext();
-        UserRepository userRepository;
+        UserRepository? userRepository;
 
         public UserRepository UserRepository 
         { 

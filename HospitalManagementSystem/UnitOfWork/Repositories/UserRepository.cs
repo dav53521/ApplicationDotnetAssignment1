@@ -12,21 +12,21 @@ namespace ApplicationDotnetAssignment1.UnitOfWork.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private HospitalSystemContext CurrentContext { get; set; }
+        private HospitalSystemContext Context { get; set; }
 
-        public UserRepository(HospitalSystemContext currentContext)
+        public UserRepository(HospitalSystemContext Context)
         {
-            CurrentContext = currentContext;
+            this.Context = Context;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return CurrentContext.Users;
+            return Context.Users;
         }
 
         public IEnumerable<User> GetUsersByCustomFilter(Func<User, bool> filter)
         {
-            return CurrentContext.Users.Where(filter);
+            return Context.Users.Where(filter);
         }
 
         public void AddNewUser()
