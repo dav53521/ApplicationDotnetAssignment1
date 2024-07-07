@@ -3,6 +3,7 @@ using ApplicationDotnetAssignment1.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalSystemContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20240707021406_AddedRoleConstraint")]
+    partial class AddedRoleConstraint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,7 @@ namespace ApplicationDotnetAssignment1.Migrations
 
                     b.ToTable("Users", t =>
                         {
-                            t.HasCheckConstraint("UR_User_OnlyCanHaveApprovedRole", "Role IN ('Admin', 'Doctor', 'Patient')");
+                            t.HasCheckConstraint("CK_User_OnlyCanHaveApprovedRole", "Role IN ('Admin', 'Doctor', 'Patient')");
                         });
 
                     b.HasData(
@@ -80,16 +83,6 @@ namespace ApplicationDotnetAssignment1.Migrations
                             Password = "ben",
                             PhoneNumber = "0411111110",
                             Role = "Doctor"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "2 This is a real street, Sydney, NSW",
-                            Email = "Jack@owlmail.com",
-                            Name = "Jack",
-                            Password = "password",
-                            PhoneNumber = "0411111100",
-                            Role = "Patient"
                         });
                 });
 #pragma warning restore 612, 618
