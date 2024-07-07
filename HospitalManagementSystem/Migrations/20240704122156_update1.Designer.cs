@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApplicationDotnetAssignment1.Migrations
 {
-    [DbContext(typeof(HospitalUserContext))]
+    [DbContext(typeof(HospitalSystemContext))]
     [Migration("20240704122156_update1")]
     partial class update1
     {

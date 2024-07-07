@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories
 {
-    public class LoginDetailsRepository : ILoginDetailsRepository
+    public class UserRepository : ILoginDetailsRepository
     {
-        private HospitalUserContext CurrentUserContext { get; set; }
+        private HospitalSystemContext CurrentUserContext { get; set; }
 
-        public LoginDetailsRepository(HospitalUserContext currentUserContext) 
+        public UserRepository(HospitalSystemContext currentUserContext) 
         {
             CurrentUserContext = currentUserContext;
         }
 
-        public IEnumerable<LoginDetails> GetAllLogins()
+        public IEnumerable<Users> GetAllLogins()
         {
             return CurrentUserContext.Users;
         }
 
-        public IEnumerable<LoginDetails> GetLoginsByInputtedFilter(Func<LoginDetails, bool> filter)
+        public IEnumerable<Users> GetLoginsByInputtedFilter(Func<Users, bool> filter)
         {
             return CurrentUserContext.Users.Where(filter);
         }

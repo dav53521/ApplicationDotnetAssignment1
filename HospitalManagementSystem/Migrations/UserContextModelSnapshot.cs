@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApplicationDotnetAssignment1.Migrations
 {
-    [DbContext(typeof(HospitalUserContext))]
+    [DbContext(typeof(HospitalSystemContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -21,25 +21,7 @@ namespace ApplicationDotnetAssignment1.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("LoginDetailsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LoginDetailsId");
-
-                    b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
+            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,9 +33,6 @@ namespace ApplicationDotnetAssignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AssociatedUserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -62,26 +41,11 @@ namespace ApplicationDotnetAssignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("AssociatedUserId");
-
-                    b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.LoginDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Password")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -97,60 +61,13 @@ namespace ApplicationDotnetAssignment1.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "20 This is a real street, Sydney, NSW",
+                            Email = "David@snailmail.com",
+                            Name = "David",
                             Password = "test",
+                            PhoneNumber = "0411111111",
                             Role = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Paitent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Paitents");
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Admin", b =>
-                {
-                    b.HasOne("ApplicationDotnetAssignment1.Models.LoginDetails", "LoginDetails")
-                        .WithMany()
-                        .HasForeignKey("LoginDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LoginDetails");
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
-                {
-                    b.HasOne("ApplicationDotnetAssignment1.Models.LoginDetails", "AssociatedUser")
-                        .WithMany()
-                        .HasForeignKey("AssociatedUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AssociatedUser");
                 });
 #pragma warning restore 612, 618
         }

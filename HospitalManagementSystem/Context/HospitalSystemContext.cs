@@ -6,12 +6,9 @@ using System.Reflection.Emit;
 
 namespace ApplicationDotnetAssignment1.Contexts
 {
-    public class HospitalUserContext : DbContext
+    public class HospitalSystemContext : DbContext
     {
-        public DbSet<LoginDetails> Users { get; set; }
-        public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Paitent> Paitents { get; set; }
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,10 +18,14 @@ namespace ApplicationDotnetAssignment1.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //This is being used to seed the data by using the passed in model builder to insert the passed in models into the DB during a migration so that the database starts off with data after a migration occurs
-            modelBuilder.Entity<LoginDetails>().HasData(
-                new LoginDetails
+            modelBuilder.Entity<Users>().HasData(
+                new Users
                 {
                     Id = 1,
+                    Name = "David",
+                    Email = "David@snailmail.com",
+                    PhoneNumber = "0411111111",
+                    Address = "20 This is a real street, Sydney, NSW",
                     Password = "test",
                     Role = "Admin"
                 });

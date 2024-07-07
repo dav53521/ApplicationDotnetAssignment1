@@ -12,9 +12,9 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        LoginDetailsRepository Repository { get; }
+        UserRepository Repository { get; }
 
-        public LoginService(LoginDetailsRepository repository)
+        public LoginService(UserRepository repository)
         {
             this.Repository = repository;
         }
@@ -32,8 +32,8 @@ namespace ApplicationDotnetAssignment1.Services
                 int inputtedId = GetLoginIdFromUser();
                 string inputtedPassword = GetPasswordFromUser();
 
-                Func<LoginDetails, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                LoginDetails? foundLogin = Repository.GetLoginsByInputtedFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
+                Func<Users, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
+                Users? foundLogin = Repository.GetLoginsByInputtedFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
 
                 Console.WriteLine();
 

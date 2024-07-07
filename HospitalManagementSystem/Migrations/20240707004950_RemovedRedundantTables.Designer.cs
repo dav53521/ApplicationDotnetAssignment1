@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalSystemContext))]
-    [Migration("20240705123139_createdRelaionShipBetweenDoctorAndUsersActual")]
-    partial class createdRelaionShipBetweenDoctorAndUsersActual
+    [Migration("20240707004950_RemovedRedundantTables")]
+    partial class RemovedRedundantTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,25 +24,7 @@ namespace ApplicationDotnetAssignment1.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AssociatedUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AssociatedUserId");
-
-                    b.ToTable("Doctors");
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.User", b =>
+            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,6 +52,10 @@ namespace ApplicationDotnetAssignment1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -78,23 +64,13 @@ namespace ApplicationDotnetAssignment1.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "20 definitely a real address, Sydney, NSW",
-                            Email = "David@SnailMail.com",
+                            Address = "20 This is a real street, Sydney, NSW",
+                            Email = "David@snailmail.com",
                             Name = "David",
-                            Password = "Password",
-                            PhoneNumber = "+61046550226"
+                            Password = "test",
+                            PhoneNumber = "0411111111",
+                            Role = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
-                {
-                    b.HasOne("ApplicationDotnetAssignment1.Models.User", "AssociatedUser")
-                        .WithMany()
-                        .HasForeignKey("AssociatedUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AssociatedUser");
                 });
 #pragma warning restore 612, 618
         }

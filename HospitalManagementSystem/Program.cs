@@ -8,8 +8,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        HospitalUserContext currentContext = new HospitalUserContext();
-        LoginDetailsRepository repository = new LoginDetailsRepository(currentContext);
+        HospitalSystemContext currentContext = new HospitalSystemContext();
+        UserRepository repository = new UserRepository(currentContext);
         LoginService loginService = new LoginService(repository);
 
         loginService.Login();

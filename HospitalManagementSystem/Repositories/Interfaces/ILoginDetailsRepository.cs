@@ -9,7 +9,7 @@ namespace ApplicationDotnetAssignment1.Repositories.Interfaces
 {
     public interface ILoginDetailsRepository
     {
-        public IEnumerable<LoginDetails> GetAllLogins();
-        public IEnumerable<LoginDetails> GetLoginsByInputtedFilter(Func<LoginDetails, bool> filter);
+        public IEnumerable<Users> GetAllLogins();
+        public IEnumerable<Users> GetLoginsByInputtedFilter(Func<Users, bool> filter);
     }
 }

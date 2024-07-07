@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalSystemContext))]
-    [Migration("20240706111318_UpdatedSeedAndTables")]
-    partial class UpdatedSeedAndTables
+    [Migration("20240707004018_AddedMoreSeeds")]
+    partial class AddedMoreSeeds
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,14 +32,21 @@ namespace ApplicationDotnetAssignment1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AssociatedUserId")
+                    b.Property<int>("LoginDetailsID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssociatedUserId");
+                    b.HasIndex("LoginDetailsID");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LoginDetailsID = 1
+                        });
                 });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
@@ -136,13 +143,13 @@ namespace ApplicationDotnetAssignment1.Migrations
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Admin", b =>
                 {
-                    b.HasOne("ApplicationDotnetAssignment1.Models.LoginDetails", "AssociatedUser")
+                    b.HasOne("ApplicationDotnetAssignment1.Models.LoginDetails", "LoginDetails")
                         .WithMany()
-                        .HasForeignKey("AssociatedUserId")
+                        .HasForeignKey("LoginDetailsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AssociatedUser");
+                    b.Navigation("LoginDetails");
                 });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
