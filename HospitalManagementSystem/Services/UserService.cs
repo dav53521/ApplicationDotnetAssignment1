@@ -1,4 +1,6 @@
-﻿using ApplicationDotnetAssignment1.Services.Interfaces;
+﻿using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
+using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +9,46 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public abstract class UserService<T> : IUserService
+    public abstract class UserService : IUserService
     {
-        private protected T RepositoryToUse { get; set; }
+        private protected HospitalSystemUnitOfWork unitOfWork;
+        private protected User loggedInUser;
 
-        public UserService(T RepositoryToUse)
+        public UserService(HospitalSystemUnitOfWork unitOfWork, User loggedInUser)
         {
-            this.RepositoryToUse = RepositoryToUse;
+            this.unitOfWork = unitOfWork;
+            this.loggedInUser = loggedInUser;
         }
 
         public abstract void PrintMainMenu();
 
+        public void PrintUserList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PrintListOfUsers<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PrintDetails()
+        {
+            throw new NotImplementedException(); 
+        }
+
         public void Logout()
         {
+            unitOfWork.Save();
+            LoginService loginService = new LoginService();
+            Console.Clear();
+            loginService.Login();
         }
 
         public void Exit()
         {
+            unitOfWork.Save();
+            Environment.Exit(0);
         }
     }
 }

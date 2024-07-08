@@ -38,7 +38,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Email = "Ben@carrierpigeonmail.com",
                     PhoneNumber = "0411111110",
                     Address = "10 This is a real street, Sydney, NSW",
-                    Password = "ben",
+                    Password = "123",
                     Role = "Doctor"
                 },
                 new User

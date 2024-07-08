@@ -26,5 +26,10 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
                 return userRepository;
             } 
         }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

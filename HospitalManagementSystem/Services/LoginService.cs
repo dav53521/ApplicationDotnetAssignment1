@@ -1,7 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
-using ApplicationDotnetAssignment1.UnitOfWork.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -28,15 +27,16 @@ namespace ApplicationDotnetAssignment1.Services
                 string inputtedPassword = GetPasswordFromUser();
 
                 Func<User, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                User? foundLogin = unitOfWork.UserRepository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
+                User? foundUser = unitOfWork.UserRepository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
 
                 Console.WriteLine();
 
-                if (foundLogin != null)
+                if (foundUser != null)
                 {
                     loginSuccessful = true;
                     Console.WriteLine("Login successful.");
-                    OpenCorrectUserMenu(foundLogin.Role);
+                    Thread.Sleep(1000);
+                    OpenCorrectUserMenu(foundUser, unitOfWork);
                 }
                 else
                 {
@@ -88,15 +88,21 @@ namespace ApplicationDotnetAssignment1.Services
             return password;
         }
 
-        void OpenCorrectUserMenu(string userRole)
+        void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
-            switch (userRole)
+            switch (loggedInUser.Role)
             {
                 case "Admin":
+                    var adminService = new AdminService(unitOfWork, loggedInUser);
+                    adminService.PrintMainMenu();
                     break;
                 case "Patient":
+                    var paitentService = new PaitentService(unitOfWork, loggedInUser);
+                    paitentService.PrintMainMenu();
                     break;
                 case "Doctor":
+                    var doctorService = new DoctorService(unitOfWork, loggedInUser);
+                    doctorService.PrintMainMenu();
                     break;
             }
         }
