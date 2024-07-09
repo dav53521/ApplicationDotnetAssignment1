@@ -8,8 +8,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        var context = new HospitalSystemContext();
         LoginService loginService = new LoginService();
 
-        loginService.Login("", "");
+        loginService.Login(0, "", context);
     }
 }

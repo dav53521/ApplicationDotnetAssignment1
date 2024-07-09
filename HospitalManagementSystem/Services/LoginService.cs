@@ -89,6 +89,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         User? FindUserWithGivenCredientials(int id, string password, HospitalSystemContext context)
         {
+            return context.Users.Where(user => id == user.Id && password == user.Password).FirstOrDefault();
         }
 
         void OpenCorrectUserMenu(User loggedInUser)
