@@ -21,12 +21,14 @@ namespace ApplicationDotnetAssignment1.UnitOfWork.Repositories
 
         public IEnumerable<User> GetAllUsers()
         {
-            return Context.Users;
+            //return Context.Users;
+            return null;
         }
 
         public IEnumerable<User> GetUsersByCustomFilter(Func<User, bool> filter)
         {
-            return Context.Users.Where(filter);
+            //return Context.Users.Where(filter);
+            return null;
         }
 
         public void AddNewUser()

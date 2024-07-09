@@ -10,7 +10,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class DoctorService : UserService
     {
-        public DoctorService(HospitalSystemUnitOfWork unitOfWork, User loggedInUser) : base(unitOfWork, loggedInUser)
+        public DoctorService(HospitalSystemUnitOfWork unitOfWork) : base()
         {
         }
 
@@ -19,7 +19,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
             Console.WriteLine("Doctor Menu");
-            Console.WriteLine($"Welcome to the hospital service system {LoggedInUser.Name}\n");
+            Console.WriteLine($"Welcome to the hospital service system\n");
         }
     }
 }

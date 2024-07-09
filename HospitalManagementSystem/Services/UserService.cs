@@ -12,12 +12,10 @@ namespace ApplicationDotnetAssignment1.Services
     public abstract class UserService : IUserService
     {
         private protected HospitalSystemUnitOfWork unitOfWork;
-        private protected User LoggedInUser;
 
-        public UserService(HospitalSystemUnitOfWork unitOfWork, User loggedInUser)
+        public UserService()
         {
             this.unitOfWork = unitOfWork;
-            this.LoggedInUser = loggedInUser;
         }
 
         public abstract void PrintMainMenu();
@@ -42,7 +40,7 @@ namespace ApplicationDotnetAssignment1.Services
             unitOfWork.Save();
             LoginService loginService = new LoginService();
             Console.Clear();
-            loginService.Login();
+            //loginService.Login("", "");
         }
 
         public void Exit()

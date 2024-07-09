@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using Microsoft.IdentityModel.Tokens;
@@ -12,9 +13,8 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        public void Login(string userId, string password)
+        public void Login(int inputtedId, string inputtedPassword, HospitalSystemContext contextManager)
         {
-            var unitOfWork = new HospitalSystemUnitOfWork();
             bool loginSuccessful = false;
 
             Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text in the center of the console
@@ -23,11 +23,10 @@ namespace ApplicationDotnetAssignment1.Services
 
             while (!loginSuccessful) 
             {
-                int inputtedId = GetIdFromUser();
-                string inputtedPassword = GetPasswordFromUser();
+                inputtedId = GetIdFromUser();
+                inputtedPassword = GetPasswordFromUser();
 
-                Func<User, bool> findUserWithMatchingInfoDelegate = filter => filter.Id == inputtedId && filter.Password == inputtedPassword;
-                User? foundUser = unitOfWork.UserRepository.GetUsersByCustomFilter(findUserWithMatchingInfoDelegate).FirstOrDefault();
+                User? foundUser = FindUserWithGivenCredientials(inputtedId, inputtedPassword, contextManager);
 
                 Console.WriteLine();
 
@@ -36,7 +35,7 @@ namespace ApplicationDotnetAssignment1.Services
                     loginSuccessful = true;
                     Console.WriteLine("Login successful.");
                     Thread.Sleep(1000);
-                    OpenCorrectUserMenu(foundUser, unitOfWork);
+                    OpenCorrectUserMenu(foundUser);
                 }
                 else
                 {
@@ -88,20 +87,24 @@ namespace ApplicationDotnetAssignment1.Services
             return password;
         }
 
-        void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
+        User? FindUserWithGivenCredientials(int id, string password, HospitalSystemContext context)
+        {
+        }
+
+        void OpenCorrectUserMenu(User loggedInUser)
         {
             switch (loggedInUser.Role)
             {
                 case "Admin":
-                    var adminService = new AdminService(unitOfWork, loggedInUser);
+                    var adminService = new AdminService(null);
                     adminService.PrintMainMenu();
                     break;
                 case "Patient":
-                    var paitentService = new PaitentService(unitOfWork, loggedInUser);
+                    var paitentService = new PaitentService(null);
                     paitentService.PrintMainMenu();
                     break;
                 case "Doctor":
-                    var doctorService = new DoctorService(unitOfWork, loggedInUser);
+                    var doctorService = new DoctorService(null);
                     doctorService.PrintMainMenu();
                     break;
             }
