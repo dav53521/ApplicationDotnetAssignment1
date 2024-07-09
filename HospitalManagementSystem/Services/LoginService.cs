@@ -12,7 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        public void Login()
+        public void Login(string userId, string password)
         {
             var unitOfWork = new HospitalSystemUnitOfWork();
             bool loginSuccessful = false;

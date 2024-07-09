@@ -19,7 +19,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
             Console.WriteLine("Paitent Menu");
-            Console.WriteLine("Welcome to the hospital service system \n");
+            Console.WriteLine($"Welcome to the hospital service system {LoggedInUser.Name}\n");
         }
     }
 }

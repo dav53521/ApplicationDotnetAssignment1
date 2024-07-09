@@ -10,6 +10,6 @@ class Program
     {
         LoginService loginService = new LoginService();
 
-        loginService.Login();
+        loginService.Login("", "");
     }
 }

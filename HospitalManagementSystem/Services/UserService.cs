@@ -12,12 +12,12 @@ namespace ApplicationDotnetAssignment1.Services
     public abstract class UserService : IUserService
     {
         private protected HospitalSystemUnitOfWork unitOfWork;
-        private protected User loggedInUser;
+        private protected User LoggedInUser;
 
         public UserService(HospitalSystemUnitOfWork unitOfWork, User loggedInUser)
         {
             this.unitOfWork = unitOfWork;
-            this.loggedInUser = loggedInUser;
+            this.LoggedInUser = loggedInUser;
         }
 
         public abstract void PrintMainMenu();
