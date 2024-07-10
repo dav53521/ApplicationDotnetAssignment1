@@ -12,11 +12,8 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public abstract class UserService : IUserService
     {
-        private protected HospitalSystemUnitOfWork unitOfWork;
-
         public UserService()
         {
-            this.unitOfWork = unitOfWork;
         }
 
         public abstract void PrintMainMenu();
@@ -38,7 +35,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void Logout()
         {
-            unitOfWork.Save();
             LoginService loginService = new LoginService();
             Console.Clear();
             //loginService.Login("", "");
@@ -46,7 +42,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void Exit()
         {
-            unitOfWork.Save();
             Environment.Exit(0);
         }
 
