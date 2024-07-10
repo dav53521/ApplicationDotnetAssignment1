@@ -89,12 +89,12 @@ namespace ApplicationDotnetAssignment1.Services
 
         User? FindUserWithGivenCredientials(int id, string password, HospitalSystemContext context)
         {
-            //return UserService.GetUsers(context).Where(user => user.Id == id && user.Password == password).FirstOrDefault();
-            return new Doctor();
+            return UserService.GetUsers(context).Where(user => user.Id == id && user.Password == password).FirstOrDefault();
         }
 
         void OpenCorrectUserMenu(User loggedInUser)
         {
+            //https://stackoverflow.com/questions/4478464/c-sharp-switch-on-type
             switch (loggedInUser)
             {
                 case Admin loggedInAdmin:

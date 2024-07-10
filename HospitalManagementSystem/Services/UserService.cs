@@ -52,7 +52,10 @@ namespace ApplicationDotnetAssignment1.Services
 
         public static List<User> GetUsers(HospitalSystemContext context) 
         {
-            return null;
+            List<User> users = new List<User>();
+            https://stackoverflow.com/questions/4493858/elegant-way-to-combine-multiple-collections-of-elements
+            users.Concat(context.Doctors).Concat(context.Patients).Concat(context.Admins);
+            return users;
         }
     }
 }
