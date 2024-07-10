@@ -17,7 +17,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             bool loginSuccessful = false;
 
-            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop); //This line is being used to place the "Login Please" text in the center of the console
+            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
             Console.WriteLine("Login");
             Console.WriteLine("Please Enter Your Login Details Below:");
 
@@ -34,7 +34,7 @@ namespace ApplicationDotnetAssignment1.Services
                 {
                     loginSuccessful = true;
                     Console.WriteLine("Login successful.");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1000); //This is being used to show the message above so the user can see that they have logged in successfully before they are transported to the correct user menu
                     OpenCorrectUserMenu(foundUser);
                 }
                 else
@@ -89,22 +89,23 @@ namespace ApplicationDotnetAssignment1.Services
 
         User? FindUserWithGivenCredientials(int id, string password, HospitalSystemContext context)
         {
-            return context.Users.Where(user => id == user.Id && password == user.Password).FirstOrDefault();
+            //return UserService.GetUsers(context).Where(user => user.Id == id && user.Password == password).FirstOrDefault();
+            return new Doctor();
         }
 
         void OpenCorrectUserMenu(User loggedInUser)
         {
-            switch (loggedInUser.Role)
+            switch (loggedInUser)
             {
-                case "Admin":
-                    var adminService = new AdminService(null);
+                case Admin loggedInAdmin:
+                    var adminService = new AdminService(loggedInAdmin);
                     adminService.PrintMainMenu();
                     break;
-                case "Patient":
-                    var paitentService = new PaitentService(null);
+                case Patient loggedInPaitent:
+                    var paitentService = new PatientService(null);
                     paitentService.PrintMainMenu();
                     break;
-                case "Doctor":
+                case Doctor loggedInDoctor:
                     var doctorService = new DoctorService(null);
                     doctorService.PrintMainMenu();
                     break;

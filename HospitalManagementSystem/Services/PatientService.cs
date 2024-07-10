@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class PaitentService : UserService
+    public class PatientService : UserService
     {
-        public PaitentService(HospitalSystemUnitOfWork unitOfWork)
+        public PatientService(HospitalSystemUnitOfWork unitOfWork)
         {
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Models
 {
-    public class User
+    public abstract class User
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,6 +16,5 @@ namespace ApplicationDotnetAssignment1.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
     }
 }

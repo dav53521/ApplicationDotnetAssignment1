@@ -10,7 +10,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class AdminService : UserService
     {
-        public AdminService(HospitalSystemUnitOfWork unitOfWork)
+        public AdminService(Admin loggedInUser)
         {
         }
 

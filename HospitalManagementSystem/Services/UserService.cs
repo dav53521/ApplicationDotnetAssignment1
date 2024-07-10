@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
@@ -47,6 +48,11 @@ namespace ApplicationDotnetAssignment1.Services
         {
             unitOfWork.Save();
             Environment.Exit(0);
+        }
+
+        public static List<User> GetUsers(HospitalSystemContext context) 
+        {
+            return null;
         }
     }
 }
