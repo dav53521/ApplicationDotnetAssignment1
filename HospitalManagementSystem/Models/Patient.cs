@@ -8,6 +8,7 @@ namespace ApplicationDotnetAssignment1.Models
 {
     public class Patient : User
     {
+        public int AssignedDoctorId { get; set; }
         public Doctor? AssignedDoctor { get; set; }
     }
 }
