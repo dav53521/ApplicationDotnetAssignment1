@@ -10,7 +10,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class DoctorService : UserService
     {
-        public DoctorService(HospitalSystemUnitOfWork unitOfWork) : base()
+        public DoctorService(Doctor loggedInDoctor) : base()
         {
         }
 

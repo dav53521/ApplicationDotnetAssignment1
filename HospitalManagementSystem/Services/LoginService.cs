@@ -102,11 +102,11 @@ namespace ApplicationDotnetAssignment1.Services
                     adminService.PrintMainMenu();
                     break;
                 case Patient loggedInPaitent:
-                    var paitentService = new PatientService(null);
+                    var paitentService = new PatientService(loggedInPaitent);
                     paitentService.PrintMainMenu();
                     break;
                 case Doctor loggedInDoctor:
-                    var doctorService = new DoctorService(null);
+                    var doctorService = new DoctorService(loggedInDoctor);
                     doctorService.PrintMainMenu();
                     break;
             }
