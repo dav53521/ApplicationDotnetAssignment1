@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories
 {
-    //The reason why this class doesn't use the base Repository class that much is because the users are split across the Doctors, Patients and Admins tables which means that it's not possible to use the context to get all the users and instead the three tables need to be concated together
     public class UserRepository : Repository<User>
     {
         public UserRepository(HospitalSystemContext context) : base(context)
