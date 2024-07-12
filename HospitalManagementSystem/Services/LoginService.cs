@@ -28,7 +28,7 @@ namespace ApplicationDotnetAssignment1.Services
 
                 Console.WriteLine();
 
-                User foundUser = new Doctor();
+                User? foundUser = unitOfWork.UserRepository.FindUsers(user => user.Id == inputtedId && user.Password == inputtedPassword).FirstOrDefault();
 
                 if (foundUser != null)
                 {
@@ -49,6 +49,7 @@ namespace ApplicationDotnetAssignment1.Services
             do
             {
                 Console.Write("ID: ");
+                //This is being used to make sure that what the user inputs is a number
                 if (Int32.TryParse(Console.ReadLine()!, out int inputedUserId))
                 {
                     return inputedUserId;

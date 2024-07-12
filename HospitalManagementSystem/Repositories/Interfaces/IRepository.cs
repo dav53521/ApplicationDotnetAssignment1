@@ -9,7 +9,7 @@ namespace ApplicationDotnetAssignment1.Repositories.Interfaces
 {
     public interface IRepository<T>
     {
-        public IEnumerable<T> GetAll();
-        public IEnumerable<T> Find(Func<T, bool> predicate);
+        //public IEnumerable<T> GetAll();
+        //public IEnumerable<T> Find(Func<T, bool> predicate);
     }
 }

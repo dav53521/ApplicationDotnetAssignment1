@@ -19,13 +19,18 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public IEnumerable<User> GetAllUsers()
         {
-            //We are able to union the three tables together as we all have to do is upcast the tables into their parent type
+            //We are able to union the three tables together as we all have to do is upcast the tables into their parent type of user which can be done implicitly
             return new List<User>().Union(context.Admins).Union(context.Doctors).Union(context.Patients);
         }
 
-        public new User? GetById(int id)
+        public User? GetUserById(int id)
         {
             return GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<User> FindUsers(Func<User, bool> predicate)
+        {
+            return GetAllUsers().Where(predicate);
         }
     }
 }

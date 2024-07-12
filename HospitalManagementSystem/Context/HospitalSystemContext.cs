@@ -22,6 +22,39 @@ namespace ApplicationDotnetAssignment1.Contexts
         {
             modelBuilder.Entity<Doctor>().HasMany(d => d.Patients).WithOne(p => p.AssignedDoctor).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
             modelBuilder.Entity<Patient>().HasOne(p => p.AssignedDoctor).WithMany(d => d.Patients).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
+
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor
+                {
+                    Id = 11,
+                    Name = "David",
+                    Password = "test",
+                    PhoneNumber = "0411111111",
+                    Email = "Test@email.com",
+                    Address = "10 A real street ave"
+                }
+            );
+
+            modelBuilder.Entity<Patient>().HasData(
+                new Patient
+                {
+                    Id = 21,
+                    Name = "David",
+                    Password = "123",
+                    PhoneNumber = "0411111111",
+                    Email = "Test@email.com",
+                    Address = "10 A real street ave"
+                }
+            );
+
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin
+                {
+                    Id = 1,
+                    Name = "David",
+                    Password = "Password"
+                }
+            );
         }
     }
 }

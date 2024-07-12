@@ -35,17 +35,17 @@ namespace ApplicationDotnetAssignment1.Repositories
             return context.Set<T>().Find(id);
         }
 
-        public void Add()
+        public void Add(T entityToAdd)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove()
+        public void Remove(T entityToRemove)
         {
             throw new NotImplementedException();
         }
 
-        public void Update()
+        public void Update(T entityToUpdate)
         {
             throw new NotImplementedException();
         }
