@@ -35,7 +35,7 @@ namespace ApplicationDotnetAssignment1.Services
                     loginSuccessful = true;
                     Console.WriteLine("Login successful.");
                     Thread.Sleep(1000); //This is being used to show the message above so the user can see that they have logged in successfully before they are transported to the correct user menu
-                    OpenCorrectUserMenu(foundUser);
+                    OpenCorrectUserMenu(foundUser, unitOfWork);
                 }
                 else
                 {
@@ -88,21 +88,21 @@ namespace ApplicationDotnetAssignment1.Services
             return password;
         }
 
-        void OpenCorrectUserMenu(User loggedInUser)
+        void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
             //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
             switch (loggedInUser.GetType().Name)
             {
                 case "Admin":
-                    var adminService = new AdminService((Admin)loggedInUser);
+                    var adminService = new AdminService((Admin)loggedInUser, unitOfWork);
                     adminService.PrintMainMenu();
                     break;
                 case "Patient":
-                    var paitentService = new PatientService((Patient)loggedInUser);
+                    var paitentService = new PatientService((Patient)loggedInUser, unitOfWork);
                     paitentService.PrintMainMenu();
                     break;
                 case "Doctor":
-                    var doctorService = new DoctorService((Doctor)loggedInUser);
+                    var doctorService = new DoctorService((Doctor)loggedInUser, unitOfWork);
                     doctorService.PrintMainMenu();
                     break;
             }

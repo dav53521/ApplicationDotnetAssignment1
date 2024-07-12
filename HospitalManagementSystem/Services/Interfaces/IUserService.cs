@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
-    public interface IUserService
+    public interface IUserService<T>
     {
         public abstract void PrintMainMenu();
 

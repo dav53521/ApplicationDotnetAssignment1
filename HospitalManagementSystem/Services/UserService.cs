@@ -10,20 +10,31 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public abstract class UserService : IUserService
+    public abstract class UserService<T> : IUserService<T> where T : User
     {
-        public UserService()
+        protected T LoggedInUser { get; }
+        protected HospitalSystemUnitOfWork UnitOfWork { get; }
+
+        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
+            this.LoggedInUser = loggedInUser;
+            UnitOfWork = unitOfWork;
         }
 
-        public abstract void PrintMainMenu();
+        public virtual void PrintMainMenu()
+        {
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
+            Console.WriteLine($"{LoggedInUser.GetType().Name} Menu");
+            Console.WriteLine($"Welcome to the hospital service system {LoggedInUser.Name.ToString()}\n");
+        }
 
         public void PrintUserList()
         {
             throw new NotImplementedException();
         }
 
-        public void PrintListOfUsers<T>()
+        public void PrintListOfUsers()
         {
             throw new NotImplementedException();
         }
@@ -37,7 +48,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             LoginService loginService = new LoginService();
             Console.Clear();
-            //loginService.Login("", "");
+            loginService.Login(UnitOfWork);
         }
 
         public void Exit()

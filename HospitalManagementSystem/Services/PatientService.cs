@@ -8,18 +8,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class PatientService : UserService
+    public class PatientService : UserService<Patient>
     {
-        public PatientService(Patient loggedInUser)
+        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork) : base(loggedInUser, unitOfWork)
         {
         }
 
         public override void PrintMainMenu()
         {
-            Console.Clear();
-            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
-            Console.WriteLine("Paitent Menu");
-            Console.WriteLine($"Welcome to the hospital service system\n");
+            base.PrintMainMenu();
         }
     }
 }

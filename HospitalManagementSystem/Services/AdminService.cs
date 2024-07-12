@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class AdminService : UserService
+    public class AdminService : UserService<Admin>
     {
-        public AdminService(Admin loggedInUser)
+
+        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork) : base(loggedInUser, unitOfWork)
         {
         }
 
         public override void PrintMainMenu()
         {
-            Console.Clear();
-            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
-            Console.WriteLine("Admin Menu");
-            Console.WriteLine($"Welcome to the hospital service system\n");
+            base.PrintMainMenu();
         }
     }
 }
