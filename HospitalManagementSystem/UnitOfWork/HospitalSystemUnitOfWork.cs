@@ -1,6 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.Repositories;
 using ApplicationDotnetAssignment1.UnitOfWork.Interface;
-using ApplicationDotnetAssignment1.UnitOfWork.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +11,26 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 {
     public class HospitalSystemUnitOfWork : IHospitalSystemUnitOfWork
     {
-        HospitalSystemContext systemContext = new HospitalSystemContext();
-        UserRepository? userRepository;
+        HospitalSystemContext hospitalSystemContext;
 
-        public UserRepository UserRepository 
-        { 
-            get
+        public HospitalSystemUnitOfWork(HospitalSystemContext context)
+        {
+            hospitalSystemContext = context;
+        }
+
+        public UserRepository UserRepository
+        {
+            get 
             {
                 if (userRepository == null)
                 {
-                    userRepository = new UserRepository(systemContext);
+                    userRepository = new UserRepository(hospitalSystemContext);
                 }
 
                 return userRepository;
-            } 
+            }
         }
 
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
+        UserRepository? userRepository;
     }
 }

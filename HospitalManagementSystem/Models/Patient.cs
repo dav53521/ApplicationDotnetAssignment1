@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Models
 {
-    public class Patient : User
+    public class Patient : RegisterableUser
     {
         public int AssignedDoctorId { get; set; }
         public Doctor? AssignedDoctor { get; set; }

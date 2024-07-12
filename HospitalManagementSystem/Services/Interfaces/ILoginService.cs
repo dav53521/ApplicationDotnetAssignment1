@@ -1,4 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
     public interface ILoginService
     {
-        public void Login(int inputtedId, string password, HospitalSystemContext contextManager);
+        public void Login(HospitalSystemUnitOfWork unitOfWork);
     }
 }

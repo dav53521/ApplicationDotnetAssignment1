@@ -13,7 +13,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        public void Login(int inputtedId, string inputtedPassword, HospitalSystemContext contextManager)
+        public void Login(HospitalSystemUnitOfWork unitOfWork)
         {
             bool loginSuccessful = false;
 
@@ -23,12 +23,12 @@ namespace ApplicationDotnetAssignment1.Services
 
             while (!loginSuccessful) 
             {
-                inputtedId = GetIdFromUser();
-                inputtedPassword = GetPasswordFromUser();
-
-                User? foundUser = FindUserWithGivenCredientials(inputtedId, inputtedPassword, contextManager);
+                int inputtedId = GetIdFromUser();
+                string inputtedPassword = GetPasswordFromUser();
 
                 Console.WriteLine();
+
+                User foundUser = new Doctor();
 
                 if (foundUser != null)
                 {
@@ -87,26 +87,21 @@ namespace ApplicationDotnetAssignment1.Services
             return password;
         }
 
-        User? FindUserWithGivenCredientials(int id, string password, HospitalSystemContext context)
-        {
-            return UserService.GetUsers(context).Where(user => user.Id == id && user.Password == password).FirstOrDefault();
-        }
-
         void OpenCorrectUserMenu(User loggedInUser)
         {
-            //https://stackoverflow.com/questions/4478464/c-sharp-switch-on-type
-            switch (loggedInUser)
+            //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
+            switch (loggedInUser.GetType().Name)
             {
-                case Admin loggedInAdmin:
-                    var adminService = new AdminService(loggedInAdmin);
+                case "Admin":
+                    var adminService = new AdminService((Admin)loggedInUser);
                     adminService.PrintMainMenu();
                     break;
-                case Patient loggedInPaitent:
-                    var paitentService = new PatientService(loggedInPaitent);
+                case "Patient":
+                    var paitentService = new PatientService((Patient)loggedInUser);
                     paitentService.PrintMainMenu();
                     break;
-                case Doctor loggedInDoctor:
-                    var doctorService = new DoctorService(loggedInDoctor);
+                case "Doctor":
+                    var doctorService = new DoctorService((Doctor)loggedInUser);
                     doctorService.PrintMainMenu();
                     break;
             }
