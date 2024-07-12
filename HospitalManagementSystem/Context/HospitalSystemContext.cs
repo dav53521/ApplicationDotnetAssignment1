@@ -27,7 +27,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Doctor
                 {
                     Id = 11,
-                    Name = "David",
+                    Name = "John Deer",
                     Password = "test",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
@@ -39,7 +39,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Patient
                 {
                     Id = 21,
-                    Name = "David",
+                    Name = "Jill Deer",
                     Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
@@ -51,7 +51,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Admin
                 {
                     Id = 1,
-                    Name = "David",
+                    Name = "David Sorrell",
                     Password = "Password"
                 }
             );
