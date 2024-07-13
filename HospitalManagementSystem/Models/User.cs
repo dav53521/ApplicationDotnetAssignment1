@@ -13,6 +13,7 @@ namespace ApplicationDotnetAssignment1.Models
     {
         public int Id { get; set; }
         public string Password { get; set; }
+        [StringLength(30)]
         public string Name { get; set; }
     }
 }
