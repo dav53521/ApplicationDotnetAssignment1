@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class DoctorService : RegisterableUserService<Doctor>
+    public class DoctorService : UserService<Doctor>
     {
         public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork) : base(loggedInDoctor, unitOfWork)
         {
