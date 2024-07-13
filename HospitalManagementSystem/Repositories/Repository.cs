@@ -52,7 +52,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public void Save()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
     }
 }

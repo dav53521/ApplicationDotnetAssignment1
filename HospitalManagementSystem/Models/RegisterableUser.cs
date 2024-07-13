@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Models
 {
-    public abstract class RegisterableUser : User
+    public class RegisterableUser : User
     {
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

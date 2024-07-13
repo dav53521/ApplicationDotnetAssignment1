@@ -14,9 +14,9 @@ namespace ApplicationDotnetAssignment1.Services
         {
         }
 
-        public override void PrintMainMenu()
+        public override void OpenMainMenu()
         {
-            base.PrintMainMenu();
+            base.OpenMainMenu();
         }
     }
 }

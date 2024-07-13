@@ -8,7 +8,7 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
     public interface IUserService<T>
     {
-        public abstract void PrintMainMenu();
+        public abstract void OpenMainMenu();
 
         public void Logout();
 

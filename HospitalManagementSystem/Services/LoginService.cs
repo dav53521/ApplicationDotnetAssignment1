@@ -1,4 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Contexts;
+using ApplicationDotnetAssignment1.Helpers;
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
@@ -23,8 +24,8 @@ namespace ApplicationDotnetAssignment1.Services
 
             while (!loginSuccessful) 
             {
-                int inputtedId = GetIdFromUser();
-                string inputtedPassword = GetPasswordFromUser();
+                int inputtedId = ConsoleHelper.GetIntegerFromUser("Id: ", "An Id can only consists of numbers, please try again");
+                string inputtedPassword = ConsoleHelper.GetMaskedInput("Password: ");
 
                 Console.WriteLine();
 
@@ -44,50 +45,6 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        int GetIdFromUser()
-        {
-            do
-            {
-                Console.Write("ID: ");
-                //This is being used to make sure that what the user inputs is a number
-                if (Int32.TryParse(Console.ReadLine()!, out int inputedUserId))
-                {
-                    return inputedUserId;
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Please input only digits for the UserId.");
-                }
-            } while (true);
-        }
-
-        string GetPasswordFromUser()
-        {
-            Console.Write("Password:");
-
-            string password = ""; //Empty string so that if a user presses enter right away then an empty string will be given to the check.
-            var keyPressed = Console.ReadKey(true);
-
-            while (keyPressed.Key != ConsoleKey.Enter)
-            {
-                if (!password.IsNullOrEmpty() && keyPressed.Key == ConsoleKey.Backspace)
-                {
-                    password = password.Remove(password.Length - 1);
-                    Console.Write("\b \b");
-                }
-                else if (!Char.IsControl(keyPressed.KeyChar))
-                {
-                    password += keyPressed.KeyChar;
-                    Console.Write("*");
-                }
-
-                keyPressed = Console.ReadKey(true);
-            }
-
-            return password;
-        }
-
         void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
             //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
@@ -95,15 +52,15 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 case "Admin":
                     var adminService = new AdminService((Admin)loggedInUser, unitOfWork);
-                    adminService.PrintMainMenu();
+                    adminService.OpenMainMenu();
                     break;
                 case "Patient":
                     var paitentService = new PatientService((Patient)loggedInUser, unitOfWork);
-                    paitentService.PrintMainMenu();
+                    paitentService.OpenMainMenu();
                     break;
                 case "Doctor":
                     var doctorService = new DoctorService((Doctor)loggedInUser, unitOfWork);
-                    doctorService.PrintMainMenu();
+                    doctorService.OpenMainMenu();
                     break;
             }
         }
