@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ApplicationDotnetAssignment1.Models;
 
 namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
-    public interface IUserService<T>
+    public interface IUserService<T> where T : User
     {
         public abstract void OpenMainMenu();
-
-        public void Logout();
-
-        public void Exit();
     }
 }

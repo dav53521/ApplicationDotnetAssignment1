@@ -16,22 +16,45 @@ namespace ApplicationDotnetAssignment1.Services
         {
         }
 
-        public override void OpenMainMenu()
+        protected override void PrintMenuOptions()
         {
-            base.OpenMainMenu();
+            Console.WriteLine(@"1. List all doctors
+2. Check doctor details
+3. List all patients
+4. Check patient details
+5. Add doctor
+6. Add patient
+7. Logout
+8. Exit
+");
+        }
 
-            Console.WriteLine("1. List all doctors");
-            Console.WriteLine("2. Check doctor details");
-            Console.WriteLine("3. List all patients");
-            Console.WriteLine("4. Check patient details");
-            Console.WriteLine("5. Add doctor");
-            Console.WriteLine("6. Add patient");
-            Console.WriteLine("7. Logout");
-            Console.WriteLine("8. Exit");
-
+        protected override void GetUserOptionChoice()
+        {
+            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
-                int userInput = ConsoleHelper.GetIntegerFromUser("", "Please input a number");
+                switch (userChoice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        Logout();
+                        break;
+                    case 8:
+                        Exit();
+                        break;
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.Helpers;
+using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 
@@ -23,17 +24,26 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(menuTitle);
             Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
             Console.WriteLine("Please choose an option:");
+
+            PrintMenuOptions();
+            GetUserOptionChoice();
         }
 
-        public void Logout()
+        protected abstract void PrintMenuOptions();
+
+        protected abstract void GetUserOptionChoice();
+
+        protected void Logout()
         {
             LoginService loginService = new LoginService();
             Console.Clear();
             loginService.Login(UnitOfWork);
         }
 
-        public void Exit()
+        protected void Exit()
         {
+            Console.WriteLine("Goodbye");
+            Thread.Sleep(500);
             UnitOfWork.UserRepository.Save();
             Environment.Exit(0);
         }

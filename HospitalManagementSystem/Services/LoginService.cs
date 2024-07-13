@@ -16,13 +16,11 @@ namespace ApplicationDotnetAssignment1.Services
     {
         public void Login(HospitalSystemUnitOfWork unitOfWork)
         {
-            bool loginSuccessful = false;
-
-            Console.SetCursorPosition((Console.WindowWidth) / 2, Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
             Console.WriteLine("Login");
             Console.WriteLine("Please Enter Your Login Details Below:");
 
-            while (!loginSuccessful) 
+            while (true) 
             {
                 int inputtedId = ConsoleHelper.GetIntegerFromUser("Id: ", "An Id can only consists of numbers, please try again");
                 string inputtedPassword = ConsoleHelper.GetMaskedInput("Password: ");
@@ -33,9 +31,8 @@ namespace ApplicationDotnetAssignment1.Services
 
                 if (foundUser != null)
                 {
-                    loginSuccessful = true;
                     Console.WriteLine("Login successful.");
-                    Thread.Sleep(1000); //This is being used to show the message above so the user can see that they have logged in successfully before they are transported to the correct user menu
+                    Thread.Sleep(800); //This is being used to show the message above so the user can see that they have logged in successfully before they are transported to the correct user menu
                     OpenCorrectUserMenu(foundUser, unitOfWork);
                 }
                 else
