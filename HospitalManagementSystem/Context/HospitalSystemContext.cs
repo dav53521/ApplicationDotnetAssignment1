@@ -55,6 +55,16 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
                     Address = "11 A real street ave",
+                },
+                new Patient
+                {
+                    Id = 23,
+                    Name = "Person Person",
+                    Password = "1",
+                    PhoneNumber = "0411111111",
+                    Email = "Test@email.com",
+                    Address = "11 A real street ave",
+                    AssignedDoctorId = 11
                 }
             );
 
