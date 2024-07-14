@@ -13,6 +13,12 @@ namespace ApplicationDotnetAssignment1.Contexts
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
 
+        public HospitalSystemContext()
+        {
+            //Disabiling lazy loading so that it is no longer needed to use the "include" function when trying to do something like getting the patients assigned to a doctor as it means that it's possible to query all users without having to check if it's a certain user type which allows for more succinct queries
+            this.ChangeTracker.LazyLoadingEnabled = false;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DAVIDTHINKPAD; Database=HospitalManagementSystem; User Id=David; Password=test; TrustServerCertificate=True");
@@ -31,7 +37,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "test",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
-                    Address = "10 A real street ave"
+                    Address = "12 A real street ave"
                 }
             );
 
@@ -43,7 +49,17 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
-                    Address = "10 A real street ave"
+                    Address = "10 A real street ave",
+                    AssignedDoctorId = 11
+                },
+                new Patient
+                {
+                    Id = 22,
+                    Name = "Jane Deer",
+                    Password = "Jane",
+                    PhoneNumber = "0411111111",
+                    Email = "Test@email.com",
+                    Address = "11 A real street ave",
                 }
             );
 
