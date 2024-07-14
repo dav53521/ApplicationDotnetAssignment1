@@ -20,7 +20,8 @@ namespace ApplicationDotnetAssignment1.Repositories
         public IEnumerable<User> GetAllUsers()
         {
             //We are able to union the three tables together as we all have to do is upcast each table representation into parent class of user which allows for all admins, patients and doctors to be retrieved
-            return new List<User>().Union(context.Admins).Union(context.Doctors).Union(context.Patients);
+            //The include in the unioning of the doctors ensures that the assigned patients for each doctor is loaded alongside the getting of the doctors
+            return new List<User>().Union(context.Admins).Union(context.Doctors.Include(x => x.Patients)).Union(context.Patients);
         }
 
         public User? GetUserById(int id)

@@ -14,11 +14,6 @@ namespace ApplicationDotnetAssignment1.Contexts
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
 
-        public HospitalSystemContext()
-        {
-            this.ChangeTracker.LazyLoadingEnabled = false;
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DAVIDTHINKPAD; Database=HospitalManagementSystem; User Id=David; Password=test; TrustServerCertificate=True");
