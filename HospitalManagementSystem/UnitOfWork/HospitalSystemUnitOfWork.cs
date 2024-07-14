@@ -11,7 +11,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 {
     public class HospitalSystemUnitOfWork : IHospitalSystemUnitOfWork
     {
-        HospitalSystemContext hospitalSystemContext;
+        public HospitalSystemContext hospitalSystemContext;
 
         public HospitalSystemUnitOfWork(HospitalSystemContext context)
         {

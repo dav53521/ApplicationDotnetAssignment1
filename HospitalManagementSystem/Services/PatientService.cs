@@ -50,6 +50,10 @@ namespace ApplicationDotnetAssignment1.Services
                     case 7:
                         Exit();
                         break;
+                    default:
+                        Console.WriteLine("Please select one of the displayed options");
+                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+                        break;
                 }
             }
         }

@@ -4,6 +4,7 @@ using ApplicationDotnetAssignment1.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalSystemContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20240714074523_UpdatedPatientSeedDataAgainAgainAgain")]
+    partial class UpdatedPatientSeedDataAgainAgainAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,33 +53,6 @@ namespace ApplicationDotnetAssignment1.Migrations
                             Name = "David Sorrell",
                             Password = "Password"
                         });
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Appointment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Doctor", b =>
@@ -188,25 +164,6 @@ namespace ApplicationDotnetAssignment1.Migrations
                             Password = "Jane",
                             PhoneNumber = "0411111111"
                         });
-                });
-
-            modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Appointment", b =>
-                {
-                    b.HasOne("ApplicationDotnetAssignment1.Models.Doctor", "Doctor")
-                        .WithMany()
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ApplicationDotnetAssignment1.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doctor");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Patient", b =>

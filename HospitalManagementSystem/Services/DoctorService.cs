@@ -17,7 +17,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void PrintMenuOptions()
         {
-            ((RegisterableUser)LoggedInUser).PrintAsRow();
             Console.WriteLine(@"1. List Patient Details
 2. List my doctor details
 3. List all appointments
@@ -37,6 +36,7 @@ namespace ApplicationDotnetAssignment1.Services
                     case 1:
                         break;
                     case 2:
+                        PrintDoctorDetails();
                         break;
                     case 3:
                         break;
@@ -48,8 +48,33 @@ namespace ApplicationDotnetAssignment1.Services
                     case 6:
                         Exit();
                         break;
+                    default:
+                        Console.WriteLine("Please select one of the options above.");
+                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+                        break;
                 }
             }
+        }
+
+        void PrintDoctorDetails()
+        {
+            Console.Clear();
+            Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+            LoggedInUser.PrintAsRow();
+            Console.WriteLine();
+            ReturnToMainMenu();
+        }
+
+
+        void ReturnToMainMenu()
+        {
+            Console.WriteLine("Please press any key to return back to the main menu");
+            Console.ReadKey();
+            OpenMainMenu();
         }
     }
 }

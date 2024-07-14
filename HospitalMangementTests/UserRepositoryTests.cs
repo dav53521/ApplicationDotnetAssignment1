@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalMangementTests
 {
-    public class UserRegistryTests
+    public class UserRepositoryTests
     {
         [Test]
         public void UserRegistryCanGetAllUsers()

@@ -8,6 +8,6 @@ namespace ApplicationDotnetAssignment1.Models
 {
     public class Doctor : RegisterableUser
     {
-        public ICollection<Patient> Patients { get; } = new List<Patient>(); 
+        public List<Patient> Patients { get; } = new List<Patient>(); 
     }
 }

@@ -12,10 +12,10 @@ namespace ApplicationDotnetAssignment1.Contexts
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         public HospitalSystemContext()
         {
-            //Disabiling lazy loading so that it is no longer needed to use the "include" function when trying to do something like getting the patients assigned to a doctor as it means that it's possible to query all users without having to check if it's a certain user type which allows for more succinct queries
             this.ChangeTracker.LazyLoadingEnabled = false;
         }
 
