@@ -34,6 +34,7 @@ namespace ApplicationDotnetAssignment1.Services
                 switch(userChoice)
                 {
                     case 1:
+                        PrintPatientDetails();
                         break;
                     case 2:
                         PrintDoctorDetails();
@@ -54,6 +55,26 @@ namespace ApplicationDotnetAssignment1.Services
                         break;
                 }
             }
+        }
+
+        void PrintPatientDetails()
+        {
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+            Console.WriteLine("Assigned Patient Details");
+            Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            foreach (Patient assignedPatient in LoggedInUser.Patients)
+            {
+                assignedPatient.PrintAsRow();
+            }
+
+            Console.ReadKey();
+            OpenMainMenu();
         }
 
         void PrintDoctorDetails()
