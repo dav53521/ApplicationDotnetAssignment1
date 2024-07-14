@@ -35,20 +35,20 @@ namespace ApplicationDotnetAssignment1.Services
                 {
                     case 1:
                         PrintPatientDetails();
-                        break;
+                        return;
                     case 2:
                         PrintDoctorDetails();
-                        break;
+                        return;
                     case 3:
-                        break;
+                        return;
                     case 4:
-                        break;
+                        return;
                     case 5:
                         Logout();
-                        break;
+                        return;
                     case 6:
                         Exit();
-                        break;
+                        return;
                     default:
                         Console.WriteLine("Please select one of the options above.");
                         userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
@@ -63,6 +63,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
             Console.WriteLine("Assigned Patient Details");
             Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
+
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("-");
@@ -73,8 +74,10 @@ namespace ApplicationDotnetAssignment1.Services
                 assignedPatient.PrintAsRow();
             }
 
+            Console.WriteLine();
+            Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            OpenMainMenu();
+            return;
         }
 
         void PrintDoctorDetails()
@@ -86,16 +89,11 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.Write("-");
             }
             LoggedInUser.PrintAsRow();
+
             Console.WriteLine();
-            ReturnToMainMenu();
-        }
-
-
-        void ReturnToMainMenu()
-        {
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            OpenMainMenu();
+            return;
         }
     }
 }

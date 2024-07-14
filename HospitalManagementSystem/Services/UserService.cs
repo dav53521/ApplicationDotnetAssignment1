@@ -18,15 +18,18 @@ namespace ApplicationDotnetAssignment1.Services
 
         public virtual void OpenMainMenu()
         {
-            string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
-            Console.Clear();
-            Console.SetCursorPosition((Console.WindowWidth / 2) - menuTitle.Length, Console.CursorTop);
-            Console.WriteLine(menuTitle);
-            Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
-            Console.WriteLine("Please choose an option:");
+            while (true)
+            {
+                string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
+                Console.Clear();
+                Console.SetCursorPosition((Console.WindowWidth / 2) - menuTitle.Length, Console.CursorTop);
+                Console.WriteLine(menuTitle);
+                Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
+                Console.WriteLine("Please choose an option:");
 
-            PrintMenuOptions();
-            GetUserOptionChoice();
+                PrintMenuOptions();
+                GetUserOptionChoice();
+            }
         }
 
         protected abstract void PrintMenuOptions();
