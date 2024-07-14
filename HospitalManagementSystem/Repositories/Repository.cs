@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : User
+    public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly HospitalSystemContext context;
 

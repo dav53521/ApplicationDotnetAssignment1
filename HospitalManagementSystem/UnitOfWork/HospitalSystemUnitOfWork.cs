@@ -18,6 +18,51 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
             hospitalSystemContext = context;
         }
 
+        public AppointmentRepository AppointmentRepository
+        {
+            get
+            {
+                if(appointmentRepository == null)
+                {
+                    appointmentRepository = new AppointmentRepository(hospitalSystemContext);
+                }
+
+                return appointmentRepository;
+            }
+        }
+
+        AppointmentRepository? appointmentRepository;
+
+        public DoctorRepository DoctorRepository
+        {
+            get
+            {
+                if (doctorRepository == null)
+                {
+                    doctorRepository = new DoctorRepository(hospitalSystemContext);
+                }
+
+                return doctorRepository;
+            }
+        }
+
+        DoctorRepository? doctorRepository;
+
+        public PatientRepository PatientRepository
+        {
+            get
+            {
+                if (patientRepository == null)
+                {
+                    patientRepository = new PatientRepository(hospitalSystemContext);
+                }
+
+                return patientRepository;
+            }
+        }
+
+        PatientRepository? patientRepository;
+
         public UserRepository UserRepository
         {
             get 
