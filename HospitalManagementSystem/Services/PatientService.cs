@@ -17,13 +17,12 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void PrintMenuOptions()
         {
-            Console.WriteLine(@"1. List Doctor Details
-2. List patients
-3. List appointments
-4. Check particular patients
-5. List appointments with patients
-6. Exit to login
-7. Exit System
+            Console.WriteLine(@"1. List patient details
+2. List my doctor details
+3. List all appointments
+4. Book appointments
+5. Exit to Login
+6. Exit System
 ");
         }
 
@@ -35,27 +34,33 @@ namespace ApplicationDotnetAssignment1.Services
                 switch(userChoice)
                 {
                     case 1:
-                        break;
+                        return;
                     case 2:
-                        break;
+                        PrintPatientDoctorDetails();
+                        return;
                     case 3:
-                        break;
+                        return;
                     case 4:
-                        break;
+                        return;
                     case 5:
-                        break;
-                    case 6:
                         Logout();
-                        break;
-                    case 7:
+                        return;
+                    case 6:
                         Exit();
-                        break;
+                        return;
                     default:
-                        Console.WriteLine("Please select one of the displayed options");
-                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
+        }
+
+        void PrintPatientDoctorDetails()
+        {
+            Console.Clear();
+            LoggedInUser.AssignedDoctor.PrintAsRow();
+            Console.WriteLine("Press any key to return to the main menu");
+            Console.ReadKey();
         }
     }
 }
