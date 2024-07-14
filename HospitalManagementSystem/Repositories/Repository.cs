@@ -37,17 +37,17 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public void Add(T entityToAdd)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Add(entityToAdd);
         }
 
         public void Remove(T entityToRemove)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Remove(entityToRemove);
         }
 
         public void Update(T entityToUpdate)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Update(entityToUpdate);
         }
 
         public void Save()
