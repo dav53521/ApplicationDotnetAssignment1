@@ -9,7 +9,7 @@ namespace ApplicationDotnetAssignment1.Contexts
 {
     public class HospitalSystemContext : DbContext
     {
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Doctor> Admins { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
@@ -68,8 +68,8 @@ namespace ApplicationDotnetAssignment1.Contexts
                 }
             );
 
-            modelBuilder.Entity<Admin>().HasData(
-                new Admin
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor
                 {
                     Id = 1,
                     Name = "David Sorrell",

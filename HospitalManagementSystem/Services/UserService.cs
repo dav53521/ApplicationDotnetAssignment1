@@ -5,49 +5,30 @@ using ApplicationDotnetAssignment1.UnitOfWork;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public abstract class UserService<T> : IUserService<T> where T : User
+    public class UserService
     {
-        protected T LoggedInUser { get; }
-        protected HospitalSystemUnitOfWork UnitOfWork { get; }
-
-        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork)
+        public virtual void OpenMainMenu(User user)
         {
-            this.LoggedInUser = loggedInUser;
-            UnitOfWork = unitOfWork;
+            string menuTitle = $"{user.GetType().Name} Menu";
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth / 2) - menuTitle.Length, Console.CursorTop);
+            Console.WriteLine(menuTitle);
+            Console.WriteLine($"Welcome to the DOTNET Hospital Management System {user.Name.ToString()}\n");
+            Console.WriteLine("Please choose an option:");
         }
 
-        public virtual void OpenMainMenu()
-        {
-            while (true)
-            {
-                string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
-                Console.Clear();
-                Console.SetCursorPosition((Console.WindowWidth / 2) - menuTitle.Length, Console.CursorTop);
-                Console.WriteLine(menuTitle);
-                Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
-                Console.WriteLine("Please choose an option:");
-
-                PrintMenuOptions();
-                GetUserOptionChoice();
-            }
-        }
-
-        protected abstract void PrintMenuOptions();
-
-        protected abstract void GetUserOptionChoice();
-
-        protected void Logout()
+        public void Logout(HospitalSystemUnitOfWork unitOfWork)
         {
             LoginService loginService = new LoginService();
             Console.Clear();
-            loginService.Login(UnitOfWork);
+            loginService.Login(unitOfWork);
         }
 
-        protected void Exit()
+        public void Exit(HospitalSystemUnitOfWork unitOfWork)
         {
             Console.WriteLine("Goodbye");
             Thread.Sleep(500);
-            UnitOfWork.UserRepository.Save();
+            unitOfWork.UserRepository.Save();
             Environment.Exit(0);
         }
     }

@@ -9,14 +9,27 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class AdminService : UserService<Admin>
+    public class AdminService
     {
+        UserService _userService;
+        Admin _admin;
+        HospitalSystemUnitOfWork _unitOfWork;
 
-        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork) : base(loggedInUser, unitOfWork)
+        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, UserService userService)
         {
+            _userService = userService;
+            _admin = loggedInUser;
+            _unitOfWork = unitOfWork;
         }
 
-        protected override void PrintMenuOptions()
+        public void OpenMainMenu()
+        {
+            _userService.OpenMainMenu(_admin);
+            PrintMenuOptions();
+            GetUserOptionChoice();
+        }
+
+        void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List all doctors
 2. Check doctor details
@@ -29,7 +42,7 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
-        protected override void GetUserOptionChoice()
+        void GetUserOptionChoice()
         {
             int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
@@ -49,10 +62,10 @@ namespace ApplicationDotnetAssignment1.Services
                     case 6:
                         break;
                     case 7:
-                        Logout();
+                        _userService.Logout(_unitOfWork);
                         break;
                     case 8:
-                        Exit();
+                        _userService.Exit(_unitOfWork);
                         break;
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Helpers;
 using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,30 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class DoctorService : UserService<Doctor>
+    public class DoctorService
     {
-        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork) : base(loggedInDoctor, unitOfWork)
+        UserService _userService;
+        Doctor _doctor;
+        HospitalSystemUnitOfWork _unitOfWork;
+
+        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork, UserService userService)
         {
+            _doctor = loggedInDoctor;
+            _unitOfWork = unitOfWork;
+            _userService = userService;
         }
 
-        protected override void PrintMenuOptions()
+        public void OpenMainMenu()
+        {
+            while (true)
+            {
+                _userService.OpenMainMenu(_doctor);
+                PrintMenuOptions();
+                GetUserOptionChoice();
+            }
+        }
+
+        void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List Patient Details
 2. List my doctor details
@@ -23,31 +41,31 @@ namespace ApplicationDotnetAssignment1.Services
 4. Book appointments
 5. Exit to login
 6. Exit System
-");
+        ");
         }
 
-        protected override void GetUserOptionChoice()
+        void GetUserOptionChoice()
         {
             int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
-                switch(userChoice)
+                switch (userChoice)
                 {
                     case 1:
                         PrintPatientDetails();
                         return;
                     case 2:
-                        PrintDoctorDetails();
+                        //PrintDoctorDetails();
                         return;
                     case 3:
                         return;
                     case 4:
                         return;
                     case 5:
-                        Logout();
+                        _userService.Logout(_unitOfWork);
                         return;
                     case 6:
-                        Exit();
+                        _userService.Exit(_unitOfWork);
                         return;
                     default:
                         userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
@@ -68,7 +86,7 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.Write("-");
             }
 
-            foreach (Patient assignedPatient in LoggedInUser.Patients)
+            foreach (Patient assignedPatient in _doctor.Patients)
             {
                 assignedPatient.PrintAsRow();
             }
@@ -79,20 +97,20 @@ namespace ApplicationDotnetAssignment1.Services
             return;
         }
 
-        void PrintDoctorDetails()
-        {
-            Console.Clear();
-            Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
-            for (int i = 0; i < Console.WindowWidth; i++)
-            {
-                Console.Write("-");
-            }
-            LoggedInUser.PrintAsRow();
+        //void PrintDoctorDetails()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
+        //    for (int i = 0; i < Console.WindowWidth; i++)
+        //    {
+        //        Console.Write("-");
+        //    }
+        //    LoggedInUser.PrintAsRow();
 
-            Console.WriteLine();
-            Console.WriteLine("Please press any key to return back to the main menu");
-            Console.ReadKey();
-            return;
-        }
+        //    Console.WriteLine();
+        //    Console.WriteLine("Please press any key to return back to the main menu");
+        //    Console.ReadKey();
+        //    return;
+        //}
     }
 }

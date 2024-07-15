@@ -9,13 +9,26 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class PatientService : UserService<Patient>
+    public class PatientService
     {
-        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork) : base(loggedInUser, unitOfWork)
+        UserService _userService;
+        Patient _patient;
+        HospitalSystemUnitOfWork _hospitalSystemUnitOfWork;
+
+        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, UserService userService)
         {
+            _userService = new UserService();
+            _patient = loggedInUser;
+            _hospitalSystemUnitOfWork = unitOfWork;
         }
 
-        protected override void PrintMenuOptions()
+        public void OpenMainMenu()
+        {
+            _userService.OpenMainMenu(_patient);
+            PrintMenuOptions();
+        }
+
+        void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List patient details
 2. List my doctor details
@@ -26,12 +39,12 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
-        protected override void GetUserOptionChoice()
+        void GetUserOptionChoice()
         {
             int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
-                switch(userChoice)
+                switch (userChoice)
                 {
                     case 1:
                         return;
@@ -43,10 +56,10 @@ namespace ApplicationDotnetAssignment1.Services
                     case 4:
                         return;
                     case 5:
-                        Logout();
+                        _userService.Logout(_hospitalSystemUnitOfWork);
                         return;
                     case 6:
-                        Exit();
+                        _userService.Exit(_hospitalSystemUnitOfWork);
                         return;
                     default:
                         userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
@@ -58,7 +71,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintPatientDoctorDetails()
         {
             Console.Clear();
-            LoggedInUser.AssignedDoctor.PrintAsRow();
+            _patient.AssignedDoctor?.PrintAsRow();
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadKey();
         }

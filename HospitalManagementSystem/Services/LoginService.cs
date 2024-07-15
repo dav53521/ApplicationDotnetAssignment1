@@ -44,19 +44,20 @@ namespace ApplicationDotnetAssignment1.Services
 
         void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
+            UserService userService = new UserService();
             //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
             switch (loggedInUser.GetType().Name)
             {
                 case "Admin":
-                    var adminService = new AdminService((Admin)loggedInUser, unitOfWork);
+                    var adminService = new AdminService((Admin)loggedInUser, unitOfWork, userService);
                     adminService.OpenMainMenu();
                     break;
                 case "Patient":
-                    var paitentService = new PatientService((Patient)loggedInUser, unitOfWork);
+                    var paitentService = new PatientService((Patient)loggedInUser, unitOfWork, userService);
                     paitentService.OpenMainMenu();
                     break;
                 case "Doctor":
-                    var doctorService = new DoctorService((Doctor)loggedInUser, unitOfWork);
+                    var doctorService = new DoctorService((Doctor)loggedInUser, unitOfWork, userService);
                     doctorService.OpenMainMenu();
                     break;
             }
