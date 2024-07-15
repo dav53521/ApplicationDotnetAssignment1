@@ -15,6 +15,7 @@ namespace ApplicationDotnetAssignment1.Services
         UserService _userService;
         Doctor _doctor;
         HospitalSystemUnitOfWork _unitOfWork;
+        bool loggedIn = true;
 
         public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork, UserService userService)
         {
@@ -25,7 +26,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void OpenMainMenu()
         {
-            while (true)
+            while (loggedIn)
             {
                 _userService.OpenMainMenu(_doctor);
                 PrintMenuOptions();
@@ -62,7 +63,7 @@ namespace ApplicationDotnetAssignment1.Services
                     case 4:
                         return;
                     case 5:
-                        _userService.Logout(_unitOfWork);
+                        loggedIn = false;
                         return;
                     case 6:
                         _userService.Exit(_unitOfWork);

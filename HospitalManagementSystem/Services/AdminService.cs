@@ -14,6 +14,7 @@ namespace ApplicationDotnetAssignment1.Services
         UserService _userService;
         Admin _admin;
         HospitalSystemUnitOfWork _unitOfWork;
+        bool loggedIn = true;
 
         public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, UserService userService)
         {
@@ -24,7 +25,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void OpenMainMenu()
         {
-            while(true)
+            while(loggedIn)
             {
                 _userService.OpenMainMenu(_admin);
                 PrintMenuOptions();
@@ -53,25 +54,51 @@ namespace ApplicationDotnetAssignment1.Services
                 switch (userChoice)
                 {
                     case 1:
-                        break;
+                        printAllDoctors();
+                        return;
                     case 2:
-                        break;
+                        return;
                     case 3:
-                        break;
+                        printAllPatients();
+                        return;
                     case 4:
-                        break;
+                        return;
                     case 5:
                         break;
                     case 6:
                         break;
                     case 7:
-                        _userService.Logout(_unitOfWork);
-                        break;
+                        loggedIn = false;
+                        return;
                     case 8:
                         _userService.Exit(_unitOfWork);
-                        break;
+                        return;
                 }
             }
+        }
+
+        void printAllDoctors()
+        {
+            Console.Clear();
+            List<Doctor> allDoctors = _unitOfWork.DoctorRepository.GetAll();
+            foreach (Doctor doctor in allDoctors)
+            {
+                doctor.PrintAsRow();
+            }
+            Console.WriteLine("To go back to the main menu please press any key");
+            Console.ReadKey();
+        }
+
+        void printAllPatients()
+        {
+            Console.Clear();
+            List<Patient> allPatients = _unitOfWork.PatientRepository.GetAll();
+            foreach (Patient patient in allPatients)
+            {
+                patient.PrintAsRow();
+            }
+            Console.WriteLine("To go back to the main menu please press any key");
+            Console.ReadKey();
         }
     }
 }

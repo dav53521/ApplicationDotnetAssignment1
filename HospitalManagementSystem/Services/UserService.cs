@@ -17,12 +17,6 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine("Please choose an option:");
         }
 
-        public void Logout(HospitalSystemUnitOfWork unitOfWork)
-        {
-            LoginService loginService = new LoginService();
-            Console.Clear();
-            loginService.Login(unitOfWork);
-        }
 
         public void Exit(HospitalSystemUnitOfWork unitOfWork)
         {

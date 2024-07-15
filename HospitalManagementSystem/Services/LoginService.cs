@@ -16,12 +16,14 @@ namespace ApplicationDotnetAssignment1.Services
     {
         public void Login(HospitalSystemUnitOfWork unitOfWork)
         {
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
-            Console.WriteLine("Login");
-            Console.WriteLine("Please Enter Your Login Details Below:");
-
             while (true) 
             {
+                Console.Clear();
+
+                Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+                Console.WriteLine("Login");
+                Console.WriteLine("Please Enter Your Login Details Below:");
+
                 int inputtedId = ConsoleHelper.GetIntegerFromUser("Id: ", "An Id can only consists of numbers, please try again");
                 string inputtedPassword = ConsoleHelper.GetMaskedInput("Password: ");
 
