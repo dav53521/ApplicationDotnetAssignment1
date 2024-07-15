@@ -24,8 +24,12 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void OpenMainMenu()
         {
-            _userService.OpenMainMenu(_patient);
-            PrintMenuOptions();
+            while (true) 
+            {
+                _userService.OpenMainMenu(_patient);
+                PrintMenuOptions();
+                GetUserOptionChoice();
+            }
         }
 
         void PrintMenuOptions()
