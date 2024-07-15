@@ -69,11 +69,21 @@ namespace ApplicationDotnetAssignment1.Contexts
             );
 
             modelBuilder.Entity<Admin>().HasData(
-                new Doctor
+                new Admin
                 {
                     Id = 1,
                     Name = "David Sorrell",
                     Password = "Password"
+                }
+            );
+
+            modelBuilder.Entity<Appointment>().HasData(
+                new Appointment
+                {
+                    Id = 1,
+                    PatientId = 21,
+                    DoctorId = 11,
+                    Description = "Common Cold"
                 }
             );
         }

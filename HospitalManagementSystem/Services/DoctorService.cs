@@ -39,7 +39,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(@"1. List Patient Details
 2. List my doctor details
 3. List all appointments
-4. List all booked appointments
+4. List appointments
 5. Exit to login
 6. Exit System
         ");
@@ -59,6 +59,7 @@ namespace ApplicationDotnetAssignment1.Services
                         PrintDoctorDetails();
                         return;
                     case 3:
+                        ListAssignedAppointments();
                         return;
                     case 4:
                         return;
@@ -95,7 +96,6 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            return;
         }
 
         void PrintDoctorDetails()
@@ -111,7 +111,20 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            return;
+        }
+
+        void ListAssignedAppointments()
+        {
+            Console.Clear();
+            List<Appointment> assignedAppointments = _unitOfWork.AppointmentRepository.FindAppointments(a => a.DoctorId == _doctor.Id);
+
+            foreach(Appointment assignedAppointment in assignedAppointments)
+            {
+                Console.WriteLine(assignedAppointment.ToString());
+            }
+
+            Console.WriteLine("Please press any key to return back to the main menu");
+            Console.ReadKey();
         }
     }
 }
