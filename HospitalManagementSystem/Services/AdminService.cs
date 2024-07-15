@@ -25,7 +25,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void OpenMainMenu()
         {
-            while(loggedIn)
+            while (loggedIn)
             {
                 _userService.OpenMainMenu(_admin);
                 PrintMenuOptions();
