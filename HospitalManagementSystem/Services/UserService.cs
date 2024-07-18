@@ -9,6 +9,7 @@ namespace ApplicationDotnetAssignment1.Services
     {
         protected T LoggedInUser { get; }
         protected HospitalSystemUnitOfWork UnitOfWork { get; }
+        protected bool isLoggedIn = true;
 
         public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork)
         {
@@ -18,7 +19,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public virtual void OpenMainMenu()
         {
-            while (true)
+            while (isLoggedIn)
             {
                 string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
                 Console.Clear();
@@ -36,18 +37,11 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected abstract void GetUserOptionChoice();
 
-        protected void Logout()
-        {
-            LoginService loginService = new LoginService();
-            Console.Clear();
-            loginService.Login(UnitOfWork);
-        }
-
         protected void Exit()
         {
             Console.WriteLine("Goodbye");
-            Thread.Sleep(500);
             UnitOfWork.UserRepository.Save();
+            Thread.Sleep(500);
             Environment.Exit(0);
         }
     }

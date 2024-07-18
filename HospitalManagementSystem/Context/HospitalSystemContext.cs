@@ -76,6 +76,16 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "Password"
                 }
             );
+
+            modelBuilder.Entity<Appointment>().HasData(
+                new Appointment
+                {
+                    Id = 1,
+                    PatientId = 21,
+                    DoctorId = 11,
+                    Description = "Common Cold"
+                }
+            );
         }
     }
 }

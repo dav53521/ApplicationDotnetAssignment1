@@ -49,7 +49,7 @@ namespace ApplicationDotnetAssignment1.Services
                     case 6:
                         break;
                     case 7:
-                        Logout();
+                        isLoggedIn = false;
                         break;
                     case 8:
                         Exit();

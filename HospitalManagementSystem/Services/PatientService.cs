@@ -43,7 +43,7 @@ namespace ApplicationDotnetAssignment1.Services
                     case 4:
                         return;
                     case 5:
-                        Logout();
+                        isLoggedIn = false;
                         return;
                     case 6:
                         Exit();
