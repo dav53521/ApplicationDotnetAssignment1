@@ -45,7 +45,6 @@ namespace ApplicationDotnetAssignment1.Services
                         return;
                     case 5:
                         isLoggedIn = false;
-                        Console.Clear();
                         return;
                     case 6:
                         Exit();

@@ -37,20 +37,20 @@ namespace ApplicationDotnetAssignment1.Services
                 switch (userChoice)
                 {
                     case 1:
-                        break;
+                        return;
                     case 2:
-                        break;
+                        return;
                     case 3:
-                        break;
+                        return;
                     case 4:
-                        break;
+                        return;
                     case 5:
-                        break;
+                        return;
                     case 6:
-                        break;
+                        return;
                     case 7:
                         isLoggedIn = false;
-                        break;
+                        return;
                     case 8:
                         Exit();
                         break;

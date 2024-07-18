@@ -73,7 +73,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 1,
                     Name = "David Sorrell",
-                    Password = "Password"
+                    Password = "123"
                 }
             );
 

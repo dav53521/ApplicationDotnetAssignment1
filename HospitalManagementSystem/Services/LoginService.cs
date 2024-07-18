@@ -16,28 +16,34 @@ namespace ApplicationDotnetAssignment1.Services
     {
         public void Login(HospitalSystemUnitOfWork unitOfWork)
         {
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
-            Console.WriteLine("Login");
-            Console.WriteLine("Please Enter Your Login Details Below:");
-
             while (true) 
             {
-                int inputtedId = ConsoleHelper.GetIntegerFromUser("Id: ", "An Id can only consists of numbers, please try again");
-                string inputtedPassword = ConsoleHelper.GetMaskedInput("Password: ");
+                Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+                Console.WriteLine("Login");
+                Console.WriteLine("Please Enter Your Login Details Below:");
 
-                Console.WriteLine();
+                User foundUser = GetLoggedInUser(unitOfWork);
+                OpenCorrectUserMenu(foundUser, unitOfWork);
+            }
+        }
 
-                User? foundUser = unitOfWork.UserRepository.FindUsers(user => user.Id == inputtedId && user.Password == inputtedPassword).FirstOrDefault();
+        User GetLoggedInUser(HospitalSystemUnitOfWork unitOfWork)
+        {
+            while (true)
+            {
+                int userToFindId = ConsoleHelper.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
+                string userToFindPassword = ConsoleHelper.GetMaskedInput("Password:");
 
-                if (foundUser != null)
+                User? foundUser = unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
+
+                if(foundUser != null)
                 {
-                    Console.WriteLine("Login successful.");
-                    Thread.Sleep(800); //This is being used to show the message above so the user can see that they have logged in successfully before they are transported to the correct user menu
-                    OpenCorrectUserMenu(foundUser, unitOfWork);
+                    return foundUser;
                 }
                 else
                 {
-                    Console.WriteLine("Login could not be found please try again.");
+                    Console.WriteLine();
+                    Console.WriteLine("User could not be found please try again");
                 }
             }
         }
@@ -60,6 +66,8 @@ namespace ApplicationDotnetAssignment1.Services
                     doctorService.OpenMainMenu();
                     break;
             }
+
+            Console.Clear();
         }
     }
 }
