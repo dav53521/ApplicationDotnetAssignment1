@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationDotnetAssignment1.Helpers
+namespace ApplicationDotnetAssignment1.Services
 {
-    public static class ConsoleHelper
+    public static class ConsoleService
     {
         public static int GetIntegerFromUser(string userPrompt, string errorMessage)
         {
@@ -15,7 +15,7 @@ namespace ApplicationDotnetAssignment1.Helpers
             {
                 Console.Write(userPrompt);
                 //The line below is being used to make sure that what the user inputs is a number
-                if (Int32.TryParse(Console.ReadLine()!, out int inputedUserId))
+                if (int.TryParse(Console.ReadLine()!, out int inputedUserId))
                 {
                     return inputedUserId;
                 }
@@ -41,7 +41,7 @@ namespace ApplicationDotnetAssignment1.Helpers
                     maskedInput = maskedInput.Remove(maskedInput.Length - 1);
                     Console.Write("\b \b");
                 }
-                else if (!Char.IsControl(keyPressed.KeyChar))
+                else if (!char.IsControl(keyPressed.KeyChar))
                 {
                     maskedInput += keyPressed.KeyChar;
                     Console.Write("*");
