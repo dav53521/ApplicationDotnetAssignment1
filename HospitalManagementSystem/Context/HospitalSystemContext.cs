@@ -9,10 +9,10 @@ namespace ApplicationDotnetAssignment1.Contexts
 {
     public class HospitalSystemContext : DbContext
     {
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Patient> Patients { get; set; }
-        public DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
