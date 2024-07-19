@@ -75,7 +75,6 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            return;
         }
 
         void PrintDoctorDetails()
@@ -92,7 +91,6 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            return;
         }
 
         void PrintBookedAppointments()
@@ -112,7 +110,6 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
-            return;
         }
     }
 }
