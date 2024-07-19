@@ -53,7 +53,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 22,
                     Name = "Jane Deer",
-                    Password = "Jane",
+                    Password = "test",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
                     Address = "11 A real street ave",
@@ -62,7 +62,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 23,
                     Name = "Person Person",
-                    Password = "1",
+                    Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
                     Address = "11 A real street ave",
