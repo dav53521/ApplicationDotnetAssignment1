@@ -18,12 +18,13 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void PrintMenuOptions()
         {
-            Console.WriteLine(@"1. List Patient Details
-2. List my doctor details
-3. List all appointments
-4. Book appointments
-5. Exit to login
-6. Exit System
+            Console.WriteLine(@"1. List Doctor Details
+2. List patients
+3. List appointmnets
+4. Check particular patient
+5. List appointments with patient
+6. Logout
+7. Exit
 ");
         }
 
@@ -35,20 +36,22 @@ namespace ApplicationDotnetAssignment1.Services
                 switch(userChoice)
                 {
                     case 1:
-                        PrintPatientDetails();
-                        return;
-                    case 2:
                         PrintDoctorDetails();
                         return;
+                    case 2:
+                        PrintAssignedPatients();
+                        return;
                     case 3:
-                        PrintBookedAppointments();
+                        PrintAssignedAppointments();
                         return;
                     case 4:
                         return;
                     case 5:
-                        isLoggedIn = false;
                         return;
                     case 6:
+                        isLoggedIn = false;
+                        return;
+                    case 7:
                         Exit();
                         return;
                     default:
@@ -58,7 +61,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        void PrintPatientDetails()
+        void PrintAssignedPatients()
         {
             Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
@@ -93,7 +96,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.ReadKey();
         }
 
-        void PrintBookedAppointments()
+        void PrintAssignedAppointments()
         {
             Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
