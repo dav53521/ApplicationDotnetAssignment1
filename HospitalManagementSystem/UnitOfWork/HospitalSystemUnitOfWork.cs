@@ -77,5 +77,10 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
         }
 
         UserRepository? userRepository;
+
+        public void Save()
+        {
+            hospitalSystemContext.SaveChanges();
+        }
     }
 }
