@@ -58,7 +58,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintPatientDoctorDetails()
         {
             Console.Clear();
-            LoggedInUser.AssignedDoctor.PrintAsRow();
+            Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadKey();
         }

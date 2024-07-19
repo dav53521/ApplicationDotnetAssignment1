@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Helpers;
+﻿using ApplicationDotnetAssignment1.ExtensionMethods;
+using ApplicationDotnetAssignment1.Helpers;
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
@@ -40,6 +41,7 @@ namespace ApplicationDotnetAssignment1.Services
                         PrintDoctorDetails();
                         return;
                     case 3:
+                        PrintBookedAppointments();
                         return;
                     case 4:
                         return;
@@ -61,17 +63,14 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
             Console.WriteLine("Assigned Patient Details");
-            Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", "Name", "Email Address", "Phone", "Address");
+            Console.WriteLine("{0,-30} | {1,-30} | {2,-30} | {3,-10} | {4}", "Name", "Doctor", "Email Address", "Phone", "Address");
 
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("-");
             }
 
-            foreach (Patient assignedPatient in LoggedInUser.Patients)
-            {
-                assignedPatient.PrintAsRow();
-            }
+            LoggedInUser.Patients.PrintAllElements();
 
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
@@ -87,7 +86,28 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 Console.Write("-");
             }
-            LoggedInUser.PrintAsRow();
+
+            Console.WriteLine(LoggedInUser.ToString());
+
+            Console.WriteLine();
+            Console.WriteLine("Please press any key to return back to the main menu");
+            Console.ReadKey();
+            return;
+        }
+
+        void PrintBookedAppointments()
+        {
+            Console.Clear();
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+            Console.WriteLine("All Appointments");
+            Console.WriteLine("{0,-30} | {1,-30} | {2}", "Doctor", "Patient", "Description");
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+
+            LoggedInUser.AssignedAppointments.PrintAllElements();
 
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
