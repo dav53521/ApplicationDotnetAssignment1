@@ -36,7 +36,7 @@ namespace ApplicationDotnetAssignment1.Services
                     case 1:
                         return;
                     case 2:
-                        PrintPatientDoctorDetails();
+                        PrintAssignedDoctorDetails();
                         return;
                     case 3:
                         return;
@@ -55,7 +55,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        void PrintPatientDoctorDetails()
+        void PrintAssignedDoctorDetails()
         {
             Console.Clear();
             Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString() ?? "You do not have an assigned doctor");
