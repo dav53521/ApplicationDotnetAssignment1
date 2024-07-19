@@ -58,7 +58,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintPatientDoctorDetails()
         {
             Console.Clear();
-            Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
+            Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString() ?? "You do not have an assigned doctor");
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadKey();
         }
