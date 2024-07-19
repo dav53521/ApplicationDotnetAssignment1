@@ -17,8 +17,10 @@ namespace HospitalMangementTests
         {
             List<User> result = unitOfWork.UserRepository.GetAllUsers();
 
+            Assert.That(result.Count(), Is.EqualTo(6));
             Assert.That(result, Is.SupersetOf(doctorData));
             Assert.That(result, Is.SupersetOf(adminData));
+            Assert.That(result, Is.SupersetOf(patientData));
         }
 
 
@@ -30,6 +32,7 @@ namespace HospitalMangementTests
                 new Doctor
                 {
                     Id = 11,
+                    Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
                     Address = "21 test sydney nsw 2000",
@@ -37,6 +40,7 @@ namespace HospitalMangementTests
                 new Doctor
                 {
                     Id = 12,
+                    Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
                     Address = "21 test sydney nsw 2000",
@@ -45,7 +49,22 @@ namespace HospitalMangementTests
 
             patientData = new List<Patient>
             {
-                
+                new Patient
+                {
+                    Id = 21,
+                    Name = "Test test",
+                    Email = "test@test.com",
+                    Password = "123",
+                    Address = "21 test sydney nsw 2000",
+                },
+                new Patient
+                {
+                    Id = 22,
+                    Name = "Test test",
+                    Email = "test@test.com",
+                    Password = "123",
+                    Address = "21 test sydney nsw 2000",
+                }
             }.AsQueryable();
 
             adminData = new List<Admin>
