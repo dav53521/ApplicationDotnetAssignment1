@@ -1,5 +1,4 @@
 ﻿using ApplicationDotnetAssignment1.Contexts;
-using ApplicationDotnetAssignment1.Helpers;
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
@@ -31,8 +30,8 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while (true)
             {
-                int userToFindId = ConsoleHelper.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
-                string userToFindPassword = ConsoleHelper.GetMaskedInput("Password:");
+                int userToFindId = ConsoleService.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
+                string userToFindPassword = ConsoleService.GetMaskedInput("Password:");
 
                 User? foundUser = unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
 

@@ -1,5 +1,4 @@
 ﻿using ApplicationDotnetAssignment1.ExtensionMethods;
-using ApplicationDotnetAssignment1.Helpers;
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
@@ -30,7 +29,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleService.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch(userChoice)
@@ -55,7 +54,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         return;
                     default:
-                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleService.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
@@ -113,6 +112,11 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
+        }
+
+        void CheckParticularPatient()
+        {
+            ConsoleService.GetIntegerFromUser("Enter ID of patient to check", "Please only enter numbers");
         }
     }
 }
