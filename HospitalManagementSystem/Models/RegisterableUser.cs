@@ -17,14 +17,4 @@ namespace ApplicationDotnetAssignment1.Models
         [StringLength(50)]
         public string Address { get; set; }
     }
-
-    public static class RegisterableUserExtensions
-    {
-        public static void PrintAsRow(this RegisterableUser user)
-        {
-            //https://stackoverflow.com/questions/856845/how-to-best-way-to-draw-table-in-console-app-c
-            //https://learn.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting?redirectedfrom=MSDN
-            Console.WriteLine("{0,-30} | {1,-30} | {2,-10} | {3}", user.Name, user.Email, user.PhoneNumber, user.Address);
-        }
-    }
 }
