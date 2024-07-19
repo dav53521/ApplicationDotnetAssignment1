@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Repositories
 {
-    public class AppointmentRepository : Repository<Appointment>
+    public class AdminRepository : Repository<Appointment>
     {
-        public AppointmentRepository(HospitalSystemContext context) : base(context) 
+        public AdminRepository(HospitalSystemContext context) : base(context) 
         { 
         }
 

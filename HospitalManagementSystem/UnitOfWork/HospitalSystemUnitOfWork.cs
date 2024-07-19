@@ -18,20 +18,20 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
             hospitalSystemContext = context;
         }
 
-        public AppointmentRepository AppointmentRepository
+        public AdminRepository AppointmentRepository
         {
             get
             {
                 if(appointmentRepository == null)
                 {
-                    appointmentRepository = new AppointmentRepository(hospitalSystemContext);
+                    appointmentRepository = new AdminRepository(hospitalSystemContext);
                 }
 
                 return appointmentRepository;
             }
         }
 
-        AppointmentRepository? appointmentRepository;
+        AdminRepository? appointmentRepository;
 
         public DoctorRepository DoctorRepository
         {
