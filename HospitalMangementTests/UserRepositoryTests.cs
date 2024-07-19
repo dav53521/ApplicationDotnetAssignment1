@@ -13,7 +13,7 @@ namespace HospitalMangementTests
     public class UserRepositoryTests
     {
         [Test]
-        public void UserRegistryCanGetAllUsers()
+        public void UserRepositoryCanGetAllUsers()
         {
             List<User> result = unitOfWork.UserRepository.GetAllUsers();
 
