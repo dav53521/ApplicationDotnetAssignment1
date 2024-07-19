@@ -8,11 +8,11 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 {
     public static class ListExtension
     {
-        public static void printAll<T>(this List<T> list) 
+        public static void PrintAllElementsAsStrings<T>(this List<T> list) 
         {
             foreach (T item in list)
             {
-                item?.ToString();
+                item.ToString();
             }
         }
     }
