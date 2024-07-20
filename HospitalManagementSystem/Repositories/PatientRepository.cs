@@ -20,12 +20,12 @@ namespace ApplicationDotnetAssignment1.Repositories
             return base.GetById(id);
         }
 
-        public IEnumerable<Patient> GetAllPatients()
+        public List<Patient> GetAllPatients()
         {
             return base.GetAll();
         }
 
-        public IEnumerable<Patient> FindPatients(Func<Patient, bool> predicate)
+        public List<Patient> FindPatients(Func<Patient, bool> predicate)
         {
             return base.Find(predicate);
         }

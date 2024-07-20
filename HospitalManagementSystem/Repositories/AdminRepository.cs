@@ -19,14 +19,14 @@ namespace ApplicationDotnetAssignment1.Repositories
             return base.GetById(id);
         }
 
-        public IEnumerable<Appointment> GetAllAppointments()
+        public List<Appointment> GetAllAppointments()
         {
             return base.GetAll();
         }
 
-        public IEnumerable<Appointment> FindAppointments(Func<Appointment, bool> predicate)
+        public List<Appointment> FindAppointments(Func<Appointment, bool> predicate)
         {
-            return base.Find(predicate);
+            return base.Find(predicate).ToList();
         }
 
         public void AddAppointment(Appointment patient)

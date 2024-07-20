@@ -20,12 +20,12 @@ namespace ApplicationDotnetAssignment1.Repositories
             this.context = context;
         }
 
-        public IEnumerable<T> GetAll()
+        public List<T> GetAll()
         {
             return context.Set<T>().ToList();
         }
 
-        public IEnumerable<T> Find(Func<T, bool> predicate)
+        public List<T> Find(Func<T, bool> predicate)
         {
             return context.Set<T>().Where(predicate).ToList();
         }
