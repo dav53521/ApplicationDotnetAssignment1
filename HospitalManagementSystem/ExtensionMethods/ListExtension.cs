@@ -18,7 +18,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
                 Console.Write("-");
             }
 
-            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list
+            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Patient> listToPrint = list.Where(e => e != null);
 
             foreach (Patient item in listToPrint)
@@ -36,7 +36,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
                 Console.Write("-");
             }
 
-            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list
+            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Appointment> listToPrint = list.Where(e => e != null);
 
             foreach (Appointment item in listToPrint)
@@ -54,7 +54,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
                 Console.Write("-");
             }
 
-            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list
+            //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Doctor> listToPrint = list.Where(e => e != null);
 
             foreach (Doctor item in listToPrint)
