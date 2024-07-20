@@ -51,7 +51,7 @@ namespace ApplicationDotnetAssignment1.Services
         static (Patient, Doctor) GetPatientAndDoctorFromAppointment(HospitalSystemUnitOfWork unitOfWork, int patientToFindId, int doctorToFindId)
         {
             Patient? foundPatient = unitOfWork.PatientRepository.GetPatientById(patientToFindId);
-            Doctor? foundDoctor = unitOfWork.DoctorRepository.GetDoctorById(patientToFindId);
+            Doctor? foundDoctor = unitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
             
             if(foundPatient is null || foundDoctor is null)
             {
