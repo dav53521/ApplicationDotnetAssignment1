@@ -16,7 +16,7 @@ namespace ApplicationDotnetAssignment1.Models
         {
             //By using string formatting we're able to make it so that the elements are formatted in a way that makes them all line up so we're able to print doctors in a table like format as all columns will be of the same length
             //Further as the patient may not have a doctor we use a null cascade to print out an empty string and ensure that no null dereferencing occurs and also provide a way to tell the user that the paitent has no doctor
-            return string.Format("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", Name, AssignedDoctor.Name ?? "", Email, Address, PhoneNumber);
+            return string.Format("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", Name, AssignedDoctor?.Name ?? "", Email, Address, PhoneNumber);
         }
     }
 }
