@@ -18,7 +18,7 @@ namespace ApplicationDotnetAssignment1.Services
                 string body = @$"Dear {patient.Name},
 You have sucessfully booked an appointment with {doctor.Name} for the reason {bookedAppointment.Description}
 Sincerely,
-Hospital Management System";
+Dotnet Hospital Management System";
 
                 string fromEmail = "davidhospitalmanagmentsystem@gmail.com";
 
