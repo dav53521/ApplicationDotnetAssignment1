@@ -72,7 +72,7 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.Write("-");
             }
 
-            LoggedInUser.Patients.PrintAllElements();
+            LoggedInUser.Patients.PrintAllValidElements();
 
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
