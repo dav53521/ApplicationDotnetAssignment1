@@ -52,5 +52,26 @@ namespace ApplicationDotnetAssignment1.Services
 
             return maskedInput;
         }
+
+        public static void PrintSeperator()
+        {
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("-");
+            }
+        }
+
+        public static void WaitForKeyPress()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Please press any key to return back to the main menu");
+            Console.ReadKey();
+        }
+
+        public static void PrintInCenter(string thingToPrint)
+        {
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+            Console.WriteLine(thingToPrint);
+        }
     }
 }

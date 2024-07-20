@@ -22,8 +22,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
                 Console.Clear();
-                Console.SetCursorPosition((Console.WindowWidth / 2) - menuTitle.Length, Console.CursorTop);
-                Console.WriteLine(menuTitle);
+                ConsoleService.PrintInCenter(menuTitle);
                 Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
                 Console.WriteLine("Please choose an option:");
 
@@ -40,7 +39,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.WriteLine("Goodbye");
             UnitOfWork.UserRepository.Save();
-            Thread.Sleep(500);
             Environment.Exit(0);
         }
     }
