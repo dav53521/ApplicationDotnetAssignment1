@@ -30,7 +30,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleService.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch (userChoice)
