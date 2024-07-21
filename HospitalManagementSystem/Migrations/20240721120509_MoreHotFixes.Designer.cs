@@ -4,6 +4,7 @@ using ApplicationDotnetAssignment1.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationDotnetAssignment1.Migrations
 {
     [DbContext(typeof(HospitalSystemContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20240721120509_MoreHotFixes")]
+    partial class MoreHotFixes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,14 +85,7 @@ namespace ApplicationDotnetAssignment1.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Cold",
-                            DoctorId = 11,
-                            PatientId = 24
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Test",
+                            Description = "Common Cold",
                             DoctorId = 11,
                             PatientId = 21
                         });
@@ -183,46 +179,6 @@ namespace ApplicationDotnetAssignment1.Migrations
                     b.HasIndex("AssignedDoctorId");
 
                     b.ToTable("Patients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 21,
-                            Address = "10 A real street ave",
-                            AssignedDoctorId = 11,
-                            Email = "Test@email.com",
-                            Name = "Jill Deer",
-                            Password = "123",
-                            PhoneNumber = "0411111111"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Address = "11 A real street ave",
-                            Email = "Test@email.com",
-                            Name = "Jane Deer",
-                            Password = "test",
-                            PhoneNumber = "0411111111"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Address = "11 A real street ave",
-                            AssignedDoctorId = 11,
-                            Email = "Test@email.com",
-                            Name = "Person Person",
-                            Password = "123",
-                            PhoneNumber = "0411111111"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Address = "11 A real street ave",
-                            Email = "david2017au@gmail.com",
-                            Name = "David Sorrell",
-                            Password = "123",
-                            PhoneNumber = "0411111111"
-                        });
                 });
 
             modelBuilder.Entity("ApplicationDotnetAssignment1.Models.Appointment", b =>

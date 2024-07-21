@@ -81,7 +81,6 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0411111111",
                     Email = "david2017au@gmail.com",
                     Address = "11 A real street ave",
-                    AssignedDoctorId = 11
                 }
             );
 
@@ -98,9 +97,16 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Appointment
                 {
                     Id = 1,
+                    PatientId = 24,
+                    DoctorId = 11,
+                    Description = "Cold"
+                },
+                new Appointment
+                {
+                    Id = 2,
                     PatientId = 21,
                     DoctorId = 11,
-                    Description = "Common Cold"
+                    Description = "Test"
                 }
             );
         }

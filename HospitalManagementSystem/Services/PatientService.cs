@@ -47,6 +47,7 @@ namespace ApplicationDotnetAssignment1.Services
                         PrintAllAppointments();
                         return;
                     case 4:
+                        BookANewAppointment();
                         return;
                     case 5:
                         isLoggedIn = false;
@@ -96,6 +97,71 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleHelper.PrintInCenter("My Appointments");
             LoggedInUser.BookedAppointments.PrintAllElements();
             ConsoleHelper.WaitForKeyPress();
+        }
+
+        void BookANewAppointment()
+        {
+            Console.Clear();
+
+            if(LoggedInUser.AssignedDoctor == null)
+            {
+                GetPatientDesiredDoctor();
+            }
+
+            Console.WriteLine($"You are booking a new appointment with {LoggedInUser.AssignedDoctor?.Name}");
+            Console.Write("Description of the appointment: ");
+            string description = Console.ReadLine()!;
+
+            Appointment newAppointment = new Appointment()
+            {
+                DoctorId = LoggedInUser.AssignedDoctorId!.Value,
+                Doctor = LoggedInUser.AssignedDoctor,
+                PatientId = LoggedInUser.Id,
+                Patient = LoggedInUser,
+                Description = description
+            };
+
+
+            if(_emailService.TrySendAppointmentConfirmationEmail(newAppointment))
+            {
+                UnitOfWork.AppointmentRepository.Add(newAppointment);
+                UnitOfWork.Save();
+                Console.WriteLine("The appointment has been booked successfully");
+            }
+            else
+            {
+                Console.WriteLine("The appointment could not be booked.");
+            }
+
+            ConsoleHelper.WaitForKeyPress();
+        }
+
+        void GetPatientDesiredDoctor()
+        {
+            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
+            Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
+            for(int i = 0; i < allDoctors.Count; i++)
+            {
+                Console.WriteLine($"{i + 1} {allDoctors[i]}");
+            }
+
+            bool doctorSelected = false;
+            while(!doctorSelected)
+            {
+                int selectedDoctor = ConsoleHelper.GetIntegerFromUser("Please choose a doctor: ", "Please only enter a number");
+
+                if(selectedDoctor > allDoctors.Count)
+                {
+                    Console.WriteLine("Invalid selection please try again.");
+                }
+                else
+                {
+                    Doctor choosenDoctor = allDoctors[selectedDoctor - 1];
+                    LoggedInUser.AssignedDoctorId = choosenDoctor.Id;
+                    LoggedInUser.AssignedDoctor = choosenDoctor;
+                    doctorSelected = true;
+                }
+            }
         }
     }
 }
