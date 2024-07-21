@@ -14,9 +14,9 @@ namespace ApplicationDotnetAssignment1.Services
     public class LoginService: ILoginService
     {
         HospitalSystemUnitOfWork _unitOfWork;
-        ConsoleService _consoleService;
+        IConsoleService _consoleService;
 
-        public LoginService(HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService)
+        public LoginService(HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             _unitOfWork = unitOfWork;
             _consoleService = consoleService;

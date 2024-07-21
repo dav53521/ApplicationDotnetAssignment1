@@ -1,4 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ApplicationDotnetAssignment1.Services
     {
         EmailService _emailService;
 
-        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
+        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
             _emailService = new EmailService(unitOfWork);
         }

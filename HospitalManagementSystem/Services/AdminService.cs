@@ -1,4 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
     public class AdminService : UserService<Admin>
     {
 
-        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
+        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
         }
 
