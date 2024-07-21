@@ -7,9 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var context = new HospitalSystemContext();
-        HospitalSystemUnitOfWork unitOfWork = new HospitalSystemUnitOfWork(context);
-        ConsoleService consoleService = new ConsoleService();
-        new LoginService(unitOfWork, consoleService).Login();
+        HospitalSystemUnitOfWork unitOfWork = new HospitalSystemUnitOfWork(new HospitalSystemContext());
+        new LoginService(unitOfWork, new ConsoleService()).Login();
     }
 }
