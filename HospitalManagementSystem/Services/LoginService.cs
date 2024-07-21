@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class LoginService: ILoginService
+    public class LoginService : ILoginService
     {
         HospitalSystemUnitOfWork _unitOfWork;
         IConsoleService _consoleService;
