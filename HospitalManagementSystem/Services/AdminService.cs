@@ -11,7 +11,7 @@ namespace ApplicationDotnetAssignment1.Services
     public class AdminService : UserService<Admin>
     {
 
-        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork) : base(loggedInUser, unitOfWork)
+        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
         }
 

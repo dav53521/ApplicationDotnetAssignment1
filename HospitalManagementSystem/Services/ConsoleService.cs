@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public static class ConsoleService
+    public class ConsoleService
     {
-        public static int GetIntegerFromUser(string userPrompt, string errorMessage)
+        public int GetIntegerFromUser(string userPrompt, string errorMessage)
         {
             do
             {
@@ -27,7 +27,7 @@ namespace ApplicationDotnetAssignment1.Services
             } while (true);
         }
 
-        public static string GetMaskedInput(string userPrompt)
+        public string GetMaskedInput(string userPrompt)
         {
             Console.Write(userPrompt);
 
@@ -53,7 +53,7 @@ namespace ApplicationDotnetAssignment1.Services
             return maskedInput;
         }
 
-        public static void PrintSeperator()
+        public void PrintSeperator()
         {
             for (int i = 0; i < Console.WindowWidth; i++)
             {
@@ -61,14 +61,14 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        public static void WaitForKeyPress()
+        public void WaitForKeyPress()
         {
             Console.WriteLine();
             Console.WriteLine("Please press any key to return back to the main menu");
             Console.ReadKey();
         }
 
-        public static void PrintInCenter(string thingToPrint)
+        public void PrintInCenter(string thingToPrint)
         {
             Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
             Console.WriteLine(thingToPrint);

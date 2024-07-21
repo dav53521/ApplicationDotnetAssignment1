@@ -9,8 +9,7 @@ class Program
     {
         var context = new HospitalSystemContext();
         HospitalSystemUnitOfWork unitOfWork = new HospitalSystemUnitOfWork(context);
-        LoginService loginService = new LoginService();
-
-        loginService.Login(unitOfWork);
+        ConsoleService consoleService = new ConsoleService();
+        new LoginService(unitOfWork, consoleService).Login();
     }
 }

@@ -9,11 +9,13 @@ namespace ApplicationDotnetAssignment1.Services
         protected T LoggedInUser { get; }
         protected HospitalSystemUnitOfWork UnitOfWork { get; }
         protected bool isLoggedIn = true;
+        protected ConsoleService ConsoleService { get; }
 
-        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork)
+        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService)
         {
-            this.LoggedInUser = loggedInUser;
+            LoggedInUser = loggedInUser;
             UnitOfWork = unitOfWork;
+            ConsoleService = consoleService;
         }
 
         public virtual void OpenMainMenu()

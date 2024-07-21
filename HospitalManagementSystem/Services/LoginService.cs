@@ -13,7 +13,16 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService: ILoginService
     {
-        public void Login(HospitalSystemUnitOfWork unitOfWork)
+        HospitalSystemUnitOfWork _unitOfWork;
+        ConsoleService _consoleService;
+
+        public LoginService(HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService)
+        {
+            _unitOfWork = unitOfWork;
+            _consoleService = consoleService;
+        }
+
+        public void Login()
         {
             while (true) 
             {
@@ -21,19 +30,19 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.WriteLine("Login");
                 Console.WriteLine("Please Enter Your Login Details Below:");
 
-                User foundUser = GetLoggedInUser(unitOfWork);
-                OpenCorrectUserMenu(foundUser, unitOfWork);
+                User foundUser = GetLoggedInUser();
+                OpenCorrectUserMenu(foundUser);
             }
         }
 
-        User GetLoggedInUser(HospitalSystemUnitOfWork unitOfWork)
+        User GetLoggedInUser()
         {
             while (true)
             {
-                int userToFindId = ConsoleService.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
-                string userToFindPassword = ConsoleService.GetMaskedInput("Password:");
+                int userToFindId = _consoleService.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
+                string userToFindPassword = _consoleService.GetMaskedInput("Password:");
 
-                User? foundUser = unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
+                User? foundUser = _unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
 
                 if(foundUser != null)
                 {
@@ -47,21 +56,21 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        void OpenCorrectUserMenu(User loggedInUser, HospitalSystemUnitOfWork unitOfWork)
+        void OpenCorrectUserMenu(User loggedInUser)
         {
             //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
             switch (loggedInUser.GetType().Name)
             {
                 case "Admin":
-                    var adminService = new AdminService((Admin)loggedInUser, unitOfWork);
+                    var adminService = new AdminService((Admin)loggedInUser, _unitOfWork, _consoleService);
                     adminService.OpenMainMenu();
                     break;
                 case "Patient":
-                    var paitentService = new PatientService((Patient)loggedInUser, unitOfWork);
+                    var paitentService = new PatientService((Patient)loggedInUser, _unitOfWork, _consoleService);
                     paitentService.OpenMainMenu();
                     break;
                 case "Doctor":
-                    var doctorService = new DoctorService((Doctor)loggedInUser, unitOfWork);
+                    var doctorService = new DoctorService((Doctor)loggedInUser, _unitOfWork, _consoleService);
                     doctorService.OpenMainMenu();
                     break;
             }

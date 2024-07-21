@@ -12,7 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class DoctorService : UserService<Doctor>
     {
-        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork) : base(loggedInDoctor, unitOfWork)
+        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInDoctor, unitOfWork, consoleService)
         {
         }
 
@@ -105,7 +105,7 @@ namespace ApplicationDotnetAssignment1.Services
                 ConsoleService.PrintSeperator();
                 Console.WriteLine(foundPatient.ToString());
             }
-            
+
             ConsoleService.WaitForKeyPress();
         }
 
