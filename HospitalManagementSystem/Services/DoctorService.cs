@@ -75,6 +75,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintDoctorDetails()
         {
             Console.Clear();
+            ConsoleHelper.PrintInCenter("My Details");
             Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
             ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());

@@ -16,9 +16,34 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 Console.Write(userPrompt);
                 //The line below is being used to make sure that what the user inputs is a number
-                if (int.TryParse(Console.ReadLine()!, out int inputedUserId))
+                if (int.TryParse(Console.ReadLine()!, out int inputedNumber))
                 {
-                    return inputedUserId;
+                    return inputedNumber;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(errorMessage);
+                }
+            } while (true);
+        }
+
+        public bool GetIntegerFromUser(string userPrompt, string errorMessage, char exitCharacter, out int gottenInteger)
+        {
+            gottenInteger = 0;
+            do
+            {
+                Console.Write(userPrompt);
+                string userInput = Console.ReadLine()!;
+
+                if(userInput == exitCharacter.ToString())
+                {
+                    return false;
+                }
+                else if (int.TryParse(userInput, out int inputedNumber)) //This line below is being used to make sure that what the user inputs is a number
+                {
+                    gottenInteger = inputedNumber;
+                    return true;
                 }
                 else
                 {
@@ -71,7 +96,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void PrintInCenter(string thingToPrint)
         {
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
         }
     }

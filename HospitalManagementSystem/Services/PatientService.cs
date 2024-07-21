@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.ExtensionMethods;
+using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
@@ -37,11 +38,13 @@ namespace ApplicationDotnetAssignment1.Services
                 switch(userChoice)
                 {
                     case 1:
+                        PrintPatientDetails();
                         return;
                     case 2:
                         PrintAssignedDoctorDetails();
                         return;
                     case 3:
+                        PrintAllAppointments();
                         return;
                     case 4:
                         return;
@@ -61,16 +64,37 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAssignedDoctorDetails()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Assigned Doctor");
-            Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString() ?? "You do not have an assigned doctor");
+            ConsoleHelper.PrintInCenter("My Doctor");
+
+            if(LoggedInUser.AssignedDoctor != null)
+            {
+                Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
+                ConsoleHelper.PrintSeperator();
+                Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
+            }
+            else 
+            {
+                Console.WriteLine("You do not have an assigned doctor");
+            }
+            
             ConsoleHelper.WaitForKeyPress();
         }
 
         void PrintPatientDetails()
         {
+            Console.Clear();
+            ConsoleHelper.PrintInCenter("My Details");
             Console.WriteLine("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", "Name", "Doctor", "Email Address", "Address", "Phone");
             ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());
+            ConsoleHelper.WaitForKeyPress();
+        }
+
+        void PrintAllAppointments()
+        {
+            Console.Clear();
+            ConsoleHelper.PrintInCenter("My Appointments");
+            LoggedInUser.BookedAppointments.PrintAllElements();
             ConsoleHelper.WaitForKeyPress();
         }
     }
