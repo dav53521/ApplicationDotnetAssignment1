@@ -22,6 +22,10 @@ namespace ApplicationDotnetAssignment1.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Appointment>()
+            .Property(a => a.Id)
+            .ValueGeneratedOnAdd();
+
             modelBuilder.Entity<Doctor>().HasMany(d => d.Patients).WithOne(p => p.AssignedDoctor).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
             modelBuilder.Entity<Patient>().HasOne(p => p.AssignedDoctor).WithMany(d => d.Patients).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
             modelBuilder.Entity<Appointment>().HasOne(a => a.Patient).WithMany(p => p.BookedAppointments).HasForeignKey(p => p.PatientId).IsRequired(true);
@@ -66,6 +70,16 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
+                    Address = "11 A real street ave",
+                    AssignedDoctorId = 11
+                },
+                new Patient
+                {
+                    Id = 24,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0411111111",
+                    Email = "david2017au@gmail.com",
                     Address = "11 A real street ave",
                     AssignedDoctorId = 11
                 }
