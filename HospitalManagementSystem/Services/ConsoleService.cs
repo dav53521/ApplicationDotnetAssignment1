@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using ApplicationDotnetAssignment1.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public class ConsoleService
+    public class ConsoleService : IConsoleService
     {
         public int GetIntegerFromUser(string userPrompt, string errorMessage)
         {

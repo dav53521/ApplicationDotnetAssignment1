@@ -1,6 +1,7 @@
 ﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 
 namespace ApplicationDotnetAssignment1.Services
 {
@@ -9,9 +10,9 @@ namespace ApplicationDotnetAssignment1.Services
         protected T LoggedInUser { get; }
         protected HospitalSystemUnitOfWork UnitOfWork { get; }
         protected bool isLoggedIn = true;
-        protected ConsoleService ConsoleHelper { get; }
+        protected IConsoleService ConsoleHelper { get; }
 
-        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService)
+        public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             LoggedInUser = loggedInUser;
             UnitOfWork = unitOfWork;

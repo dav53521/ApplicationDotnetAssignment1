@@ -1,5 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.ExtensionMethods;
 using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -12,7 +13,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class DoctorService : UserService<Doctor>
     {
-        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInDoctor, unitOfWork, consoleService)
+        public DoctorService(Doctor loggedInDoctor, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInDoctor, unitOfWork, consoleService)
         {
         }
 

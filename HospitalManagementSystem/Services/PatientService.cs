@@ -60,9 +60,17 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAssignedDoctorDetails()
         {
             Console.Clear();
+            ConsoleHelper.PrintInCenter("Assigned Doctor");
             Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString() ?? "You do not have an assigned doctor");
-            Console.WriteLine("Press any key to return to the main menu");
-            Console.ReadKey();
+            ConsoleHelper.WaitForKeyPress();
+        }
+
+        void PrintPatientDetails()
+        {
+            Console.WriteLine("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", "Name", "Doctor", "Email Address", "Address", "Phone");
+            ConsoleHelper.PrintSeperator();
+            Console.WriteLine(LoggedInUser.ToString());
+            ConsoleHelper.WaitForKeyPress();
         }
     }
 }
