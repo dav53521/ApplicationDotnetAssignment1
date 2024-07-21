@@ -114,7 +114,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("Appointments With");
             int idOfUserToCheck = ConsoleService.GetIntegerFromUser("Enter the ID of the patient to check: ", "Please enter only numbers for IDs");
-            List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck && a.DoctorId == LoggedInUser.Id);
+            List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck);
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
