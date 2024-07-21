@@ -19,12 +19,10 @@ namespace ApplicationDotnetAssignment1.Services
         {
             try
             {
-                (Patient patient, Doctor doctor) = GetPatientAndDoctorFromAppointment( bookedAppointment.PatientId, bookedAppointment.DoctorId);
+                string subject = $"Appointment confirmation for {bookedAppointment.Patient!.Name}";
 
-                string subject = $"Appointment confirmation for {patient.Name}";
-
-                string body = @$"Dear {patient.Name},
-You have sucessfully booked an appointment with {doctor.Name} for the reason {bookedAppointment.Description}
+                string body = @$"Dear {bookedAppointment.Patient!.Name},
+You have sucessfully booked an appointment with {bookedAppointment.Doctor!.Name} for the reason {bookedAppointment.Description}
 
 Sincerely,
 Dotnet Hospital Management System";
@@ -47,7 +45,7 @@ Dotnet Hospital Management System";
                     IsBodyHtml = false,
                 };
 
-                mailMessage.To.Add(new MailAddress(patient.Email));
+                mailMessage.To.Add(new MailAddress(bookedAppointment.Patient!.Email));
                 client.Send(mailMessage);
 
                 return true;
@@ -58,19 +56,6 @@ Dotnet Hospital Management System";
                 Console.WriteLine($"The email failed to send because an error occured: {ex.Message}");
                 return false;
             }
-        }
-
-        (Patient, Doctor) GetPatientAndDoctorFromAppointment(int patientToFindId, int doctorToFindId)
-        {
-            Patient? foundPatient = _unitOfWork.PatientRepository.GetPatientById(patientToFindId);
-            Doctor? foundDoctor = _unitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
-            
-            if(foundPatient is null || foundDoctor is null)
-            {
-                throw new InvalidOperationException("The doctor or patient could not be found");
-            }
-
-            return (foundPatient, foundDoctor);
         }
     }
 }
