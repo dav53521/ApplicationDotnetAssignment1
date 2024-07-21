@@ -3,6 +3,7 @@ using ApplicationDotnetAssignment1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,12 +20,12 @@ namespace ApplicationDotnetAssignment1.Repositories
             return base.GetById(id);
         }
 
-        public IEnumerable<Doctor> GetAllDoctors()
+        public List<Doctor> GetAllDoctors()
         {
             return base.GetAll();
         }
 
-        public IEnumerable<Doctor> FindDoctors(Func<Doctor, bool> predicate)
+        public List<Doctor> FindDoctors(Func<Doctor, bool> predicate)
         {
             return base.Find(predicate);
         }
