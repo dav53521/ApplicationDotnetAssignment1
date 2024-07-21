@@ -11,7 +11,7 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class PatientService : UserService<Patient>
     {
-        EmailService _emailService;
+        IEmailService _emailService;
 
         public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
