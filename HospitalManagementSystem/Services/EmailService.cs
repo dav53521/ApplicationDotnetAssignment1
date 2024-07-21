@@ -7,11 +7,18 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class EmailService
     {
-        public bool TrySendAppointmentConfirmationEmail(Appointment bookedAppointment, HospitalSystemUnitOfWork unitOfWork)
+        HospitalSystemUnitOfWork _unitOfWork;
+
+        public EmailService(HospitalSystemUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public bool TrySendAppointmentConfirmationEmail(Appointment bookedAppointment)
         {
             try
             {
-                (Patient patient, Doctor doctor) = GetPatientAndDoctorFromAppointment(unitOfWork, bookedAppointment.PatientId, bookedAppointment.DoctorId);
+                (Patient patient, Doctor doctor) = GetPatientAndDoctorFromAppointment( bookedAppointment.PatientId, bookedAppointment.DoctorId);
 
                 string subject = $"Appointment confirmation for {patient.Name}";
 
@@ -52,10 +59,10 @@ Dotnet Hospital Management System";
             }
         }
 
-        (Patient, Doctor) GetPatientAndDoctorFromAppointment(HospitalSystemUnitOfWork unitOfWork, int patientToFindId, int doctorToFindId)
+        (Patient, Doctor) GetPatientAndDoctorFromAppointment(int patientToFindId, int doctorToFindId)
         {
-            Patient? foundPatient = unitOfWork.PatientRepository.GetPatientById(patientToFindId);
-            Doctor? foundDoctor = unitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
+            Patient? foundPatient = _unitOfWork.PatientRepository.GetPatientById(patientToFindId);
+            Doctor? foundDoctor = _unitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
             
             if(foundPatient is null || foundDoctor is null)
             {

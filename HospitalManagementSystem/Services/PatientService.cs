@@ -10,8 +10,11 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class PatientService : UserService<Patient>
     {
+        EmailService _emailService;
+
         public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, ConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
+            _emailService = new EmailService(unitOfWork);
         }
 
         protected override void PrintMenuOptions()
