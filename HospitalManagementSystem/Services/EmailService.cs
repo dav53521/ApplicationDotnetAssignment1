@@ -5,9 +5,9 @@ using System.Net.Mail;
 
 namespace ApplicationDotnetAssignment1.Services
 {
-    public static class EmailService
+    public class EmailService
     {
-        public static bool TrySendAppointmentConfirmationEmail(Appointment bookedAppointment, HospitalSystemUnitOfWork unitOfWork)
+        public bool TrySendAppointmentConfirmationEmail(Appointment bookedAppointment, HospitalSystemUnitOfWork unitOfWork)
         {
             try
             {
@@ -52,7 +52,7 @@ Dotnet Hospital Management System";
             }
         }
 
-        static (Patient, Doctor) GetPatientAndDoctorFromAppointment(HospitalSystemUnitOfWork unitOfWork, int patientToFindId, int doctorToFindId)
+        (Patient, Doctor) GetPatientAndDoctorFromAppointment(HospitalSystemUnitOfWork unitOfWork, int patientToFindId, int doctorToFindId)
         {
             Patient? foundPatient = unitOfWork.PatientRepository.GetPatientById(patientToFindId);
             Doctor? foundDoctor = unitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
