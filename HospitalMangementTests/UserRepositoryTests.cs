@@ -35,7 +35,7 @@ namespace HospitalMangementTests
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
-                    Address = "21 test sydney nsw 2000",
+                    Address = "22 test sydney nsw 2000",
                 },
                 new Doctor
                 {
@@ -43,7 +43,7 @@ namespace HospitalMangementTests
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
-                    Address = "21 test sydney nsw 2000",
+                    Address = "22 test sydney nsw 2000",
                 }
             }.AsQueryable();
 
