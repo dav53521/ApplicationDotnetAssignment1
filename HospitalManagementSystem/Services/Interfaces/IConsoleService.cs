@@ -14,5 +14,6 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
         public void PrintSeperator();
         public void WaitForKeyPress();
         public void PrintInCenter(string thingToPrint);
+        public void PrintTableHeaderForType(string tableType);
     }
 }

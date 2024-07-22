@@ -1,4 +1,5 @@
-﻿using ApplicationDotnetAssignment1.Services.Interfaces;
+﻿using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Services.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,22 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
+        }
+
+        public void PrintTableHeaderForType(string tableType)
+        {
+            switch (tableType)
+            {
+                case "Doctor":
+                    Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
+                    break;
+                case "Appointment":
+                    Console.WriteLine("{0,-30} | {1,-30} | {2}", "Doctor", "Patient", "Description");
+                    break;
+                case "Patient":
+                    Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
+                    break;
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(LoggedInUser.AssignedDoctor != null)
             {
-                Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
+                ConsoleHelper.PrintTableHeaderForType("Doctor");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
             }
@@ -85,7 +85,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Details");
-            Console.WriteLine("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", "Name", "Doctor", "Email Address", "Address", "Phone");
+            ConsoleHelper.PrintTableHeaderForType(LoggedInUser.GetType().Name);
             ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());
             ConsoleHelper.WaitForKeyPress();
@@ -95,7 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Appointments");
-            LoggedInUser.BookedAppointments.PrintAllValidElements();
+            LoggedInUser.BookedAppointments.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
 

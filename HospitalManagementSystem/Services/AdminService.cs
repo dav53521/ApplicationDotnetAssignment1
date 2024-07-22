@@ -73,7 +73,7 @@ namespace ApplicationDotnetAssignment1.Services
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
             ConsoleHelper.PrintInCenter("All Doctors\n");
             Console.WriteLine("All doctors registered to DOTNET Hospital Management System\n");
-            allDoctors.PrintAllValidElements();
+            allDoctors.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
 
@@ -104,7 +104,7 @@ namespace ApplicationDotnetAssignment1.Services
             List<Patient> allPatients = UnitOfWork.PatientRepository.GetAllPatients();
             ConsoleHelper.PrintInCenter("All Patients\n");
             Console.WriteLine("All patients registered to DOTNET Hospital Management System\n");
-            allPatients.PrintAllValidElements();
+            allPatients.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
 

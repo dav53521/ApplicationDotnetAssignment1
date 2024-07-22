@@ -14,7 +14,7 @@ namespace ApplicationDotnetAssignment1.Models
         public string Email { get; set; }
         [StringLength(10)]
         public string PhoneNumber { get; set; }
-        [StringLength(50)]
+        [StringLength(30)]
         public string Address { get; set; }
     }
 }
