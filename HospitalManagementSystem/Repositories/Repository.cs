@@ -23,37 +23,37 @@ namespace ApplicationDotnetAssignment1.Repositories
             this.context = context;
         }
 
-        public List<T> GetAll()
+        protected List<T> GetAll()
         {
             return context.Set<T>().ToList();
         }
 
-        public List<T> Find(Func<T, bool> predicate)
+        protected List<T> Find(Func<T, bool> predicate)
         {
             return context.Set<T>().Where(predicate).ToList();
         }
 
-        public T? GetById(int id)
+        protected T? GetById(int id)
         {
             return context.Set<T>().Find(id);
         }
 
-        public void Add(T entityToAdd)
+        protected void Add(T entityToAdd)
         {
             context.Set<T>().Add(entityToAdd);
         }
 
-        public void Remove(T entityToRemove)
+        protected void Remove(T entityToRemove)
         {
             context.Set<T>().Remove(entityToRemove);
         }
 
-        public void Update(T entityToUpdate)
+        protected void Update(T entityToUpdate)
         {
             context.Set<T>().Update(entityToUpdate);
         }
 
-        public void Save()
+        protected void Save()
         {
             context.SaveChanges();
         }

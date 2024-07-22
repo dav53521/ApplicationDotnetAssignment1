@@ -95,7 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Appointments");
-            LoggedInUser.BookedAppointments.PrintAllElements();
+            LoggedInUser.BookedAppointments.PrintAllValidElements();
             ConsoleHelper.WaitForKeyPress();
         }
 
@@ -124,7 +124,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(_emailService.TrySendAppointmentConfirmationEmail(newAppointment))
             {
-                UnitOfWork.AppointmentRepository.Add(newAppointment);
+                UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
                 UnitOfWork.Save();
                 Console.WriteLine("The appointment has been booked successfully");
             }

@@ -35,7 +35,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintAllElements(this List<Appointment> list)
+        public static void PrintAllValidElements(this List<Appointment> list)
         {
             //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Appointment> listToPrint = list.Where(e => e != null);
@@ -60,7 +60,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintAllElements(this List<Doctor> list)
+        public static void PrintAllValidElements(this List<Doctor> list)
         {
             //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Doctor> listToPrint = list.Where(e => e != null);

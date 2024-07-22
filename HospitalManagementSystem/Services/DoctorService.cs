@@ -86,7 +86,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("All Appointments");
-            LoggedInUser.AssignedAppointments.PrintAllElements();
+            LoggedInUser.AssignedAppointments.PrintAllValidElements();
             ConsoleHelper.WaitForKeyPress();
         }
 
@@ -95,7 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleHelper.PrintInCenter("Check Patient Details");
             int idOfUserToCheck = ConsoleHelper.GetIntegerFromUser("Enter the ID of the patient to check: ", "Please enter only numbers for IDs");
-            Patient? foundPatient = UnitOfWork.PatientRepository.GetById(idOfUserToCheck);
+            Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
             if(foundPatient == null)
             {
@@ -120,7 +120,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
-                appointmentsToPrint.PrintAllElements();
+                appointmentsToPrint.PrintAllValidElements();
             }
             else
             {

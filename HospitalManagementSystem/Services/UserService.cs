@@ -41,7 +41,7 @@ namespace ApplicationDotnetAssignment1.Services
         protected void Exit()
         {
             Console.WriteLine("Goodbye");
-            UnitOfWork.UserRepository.Save();
+            UnitOfWork.Save();
             Environment.Exit(0);
         }
     }
