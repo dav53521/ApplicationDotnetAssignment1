@@ -86,7 +86,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(foundDoctor != null)
             {
-                Console.WriteLine($"\nDetails for {foundDoctor.Name}\n");
+                Console.WriteLine($"Details for {foundDoctor.Name}\n");
                 Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundDoctor.ToString());

@@ -15,7 +15,7 @@ namespace ApplicationDotnetAssignment1.Services
             _unitOfWork = unitOfWork;
         }
 
-        public bool TrySendAppointmentConfirmationEmail(Appointment bookedAppointment)
+        public void SendAppointmentConfirmationEmail(Appointment bookedAppointment)
         {
             try
             {
@@ -47,14 +47,11 @@ Dotnet Hospital Management System";
 
                 mailMessage.To.Add(new MailAddress(bookedAppointment.Patient!.Email));
                 client.Send(mailMessage);
-
-                return true;
             }
             //The when is being used so that it's possible to catch multiple exception types in the one catch statement and also ensure that exceptions that shouldn't be caught such as "out of memory exception" are not caught as they should stop the program
             catch (Exception ex) when (ex is SmtpException or InvalidOperationException or SmtpFailedRecipientException or SmtpFailedRecipientsException)
             {
                 Console.WriteLine($"The email failed to send because an error occured: {ex.Message}");
-                return false;
             }
         }
     }

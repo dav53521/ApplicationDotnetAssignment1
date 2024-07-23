@@ -122,16 +122,11 @@ namespace ApplicationDotnetAssignment1.Services
             };
 
 
-            if(_emailService.TrySendAppointmentConfirmationEmail(newAppointment))
-            {
-                UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
-                UnitOfWork.Save();
-                Console.WriteLine("The appointment has been booked successfully");
-            }
-            else
-            {
-                Console.WriteLine("The appointment could not be booked.");
-            }
+            _emailService.SendAppointmentConfirmationEmail(newAppointment);
+            UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
+            UnitOfWork.Save();
+            Console.WriteLine("The appointment has been booked successfully");
+            Console.WriteLine("The appointment could not be booked.");
 
             ConsoleHelper.WaitForKeyPress();
         }
