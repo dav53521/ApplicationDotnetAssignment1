@@ -68,6 +68,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Assigned Patients");
+            ConsoleHelper.PrintTableHeaderForType("Patient");
             LoggedInUser.Patients.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -86,6 +87,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("All Appointments");
+            ConsoleHelper.PrintTableHeaderForType("Appointment");
             LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -120,6 +122,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
+                ConsoleHelper.PrintTableHeaderForType("Appointment");
                 appointmentsToPrint.PrintAllValidElements(ConsoleHelper);
             }
             else

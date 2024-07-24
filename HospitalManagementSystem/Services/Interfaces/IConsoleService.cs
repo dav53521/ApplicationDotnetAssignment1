@@ -14,6 +14,7 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
         public void PrintSeperator();
         public void WaitForKeyPress();
         public void PrintInCenter(string thingToPrint);
+        [Obsolete("This method is being moved into user service as user service will be used for printing of doctors, appointments and patients")]
         public void PrintTableHeaderForType(string tableType);
     }
 }

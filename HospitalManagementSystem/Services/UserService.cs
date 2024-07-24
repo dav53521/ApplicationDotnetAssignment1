@@ -51,10 +51,10 @@ namespace ApplicationDotnetAssignment1.Services
             switch (tableType)
             {
                 case "Doctor":
-                    headerToReturn = string.Format("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
+                    headerToReturn = string.Format("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
                     break;
                 case "Appointment":
-                    headerToReturn = string.Format("{0,-30} | {1,-30} | {2}", "Doctor", "Patient", "Description");
+                    headerToReturn = string.Format("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
                     break;
                 case "Patient":
                     headerToReturn = string.Format("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");

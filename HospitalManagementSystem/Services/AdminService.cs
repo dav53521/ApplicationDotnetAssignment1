@@ -63,6 +63,9 @@ namespace ApplicationDotnetAssignment1.Services
                     case 8:
                         Exit();
                         break;
+                    default:
+                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        break;
                 }
             }
         }
@@ -73,6 +76,7 @@ namespace ApplicationDotnetAssignment1.Services
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
             ConsoleHelper.PrintInCenter("All Doctors\n");
             Console.WriteLine("All doctors registered to DOTNET Hospital Management System\n");
+            ConsoleHelper.PrintTableHeaderForType("Doctor");
             allDoctors.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -87,7 +91,7 @@ namespace ApplicationDotnetAssignment1.Services
             if(foundDoctor != null)
             {
                 Console.WriteLine($"Details for {foundDoctor.Name}\n");
-                Console.WriteLine("{0,-30} | {1,-30} | {2,-50} | {3}", "Name", "Email Address", "Address", "Phone");
+                ConsoleHelper.PrintTableHeaderForType("Doctor");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundDoctor.ToString());
             }
@@ -104,6 +108,7 @@ namespace ApplicationDotnetAssignment1.Services
             List<Patient> allPatients = UnitOfWork.PatientRepository.GetAllPatients();
             ConsoleHelper.PrintInCenter("All Patients\n");
             Console.WriteLine("All patients registered to DOTNET Hospital Management System\n");
+            ConsoleHelper.PrintTableHeaderForType("Patient");
             allPatients.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -118,7 +123,7 @@ namespace ApplicationDotnetAssignment1.Services
             if (foundPatient != null)
             {
                 Console.WriteLine($"\nDetails for {foundPatient.Name}\n");
-                Console.WriteLine("{0,-30} | {1,-30} | {2,-30} | {3,-50} | {4}", "Name", "Doctor", "Email Address", "Address", "Phone");
+                ConsoleHelper.PrintTableHeaderForType("Patient");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundPatient.ToString());
             }

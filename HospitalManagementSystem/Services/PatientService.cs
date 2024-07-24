@@ -66,7 +66,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Details");
-            ConsoleHelper.PrintTableHeaderForType(LoggedInUser.GetType().Name);
+            ConsoleHelper.PrintTableHeaderForType("Patient");
             ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());
             ConsoleHelper.WaitForKeyPress();
@@ -94,6 +94,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllAppointments()
         {
             Console.Clear();
+            ConsoleHelper.PrintTableHeaderForType("Appointment");
             ConsoleHelper.PrintInCenter("My Appointments");
             LoggedInUser.BookedAppointments.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
@@ -126,7 +127,6 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
             UnitOfWork.Save();
             Console.WriteLine("The appointment has been booked successfully");
-            Console.WriteLine("The appointment could not be booked.");
 
             ConsoleHelper.WaitForKeyPress();
         }
