@@ -8,8 +8,8 @@ namespace ApplicationDotnetAssignment1.Models
 {
     public class Doctor : RegisterableUser
     {
-        public List<Patient> Patients { get; } = new List<Patient>();
-        public List<Appointment> AssignedAppointments { get; } = new List<Appointment>();
+        public virtual List<Patient> Patients { get; } = new List<Patient>();
+        public virtual List<Appointment> AssignedAppointments { get; } = new List<Appointment>();
 
         public override string ToString()
         {

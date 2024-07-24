@@ -3,8 +3,8 @@
     public class Patient : RegisterableUser
     {
         public int? AssignedDoctorId { get; set; }
-        public Doctor? AssignedDoctor { get; set; }
-        public List<Appointment> BookedAppointments { get; } = new List<Appointment>();
+        public virtual Doctor? AssignedDoctor { get; set; }
+        public virtual List<Appointment> BookedAppointments { get; } = new List<Appointment>();
 
         public override string ToString()
         {

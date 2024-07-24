@@ -21,7 +21,7 @@ namespace ApplicationDotnetAssignment1.Repositories
         {
             //We are able to union the three tables together as we all have to do is upcast each table representation into parent class of user which allows for all admins, patients and doctors to be retrieved
             //The include in the unioning of the doctors and paitent ensures that the many relationships are loaded as they are lazy loaded meaning that they have to be specifically gotten via include
-            return new List<User>().Union(context.Admins).Union(context.Doctors.Include(x => x.Patients).Include(x => x.AssignedAppointments)).Union(context.Patients.Include(x => x.BookedAppointments)).ToList();
+            return new List<User>().Union(context.Admins).Union(context.Doctors).Union(context.Patients).ToList();
         }
 
         public User? GetUserById(int id)

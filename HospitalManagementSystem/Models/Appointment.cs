@@ -14,10 +14,10 @@ namespace ApplicationDotnetAssignment1.Models
         public string Description { get; set; }
         [Required]
         public int PatientId { get; set; }
-        public Patient? Patient { get; set; }
+        public virtual Patient? Patient { get; set; }
         [Required]
         public int DoctorId { get; set; }
-        public Doctor? Doctor { get; set; }
+        public virtual Doctor? Doctor { get; set; }
 
         public override string ToString()
         {
