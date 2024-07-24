@@ -47,7 +47,7 @@ namespace ApplicationDotnetAssignment1.Services
                         PrintAllAppointments();
                         return;
                     case 4:
-                        BookANewAppointment();
+                        BookNewAppointment();
                         return;
                     case 5:
                         isLoggedIn = false;
@@ -60,6 +60,16 @@ namespace ApplicationDotnetAssignment1.Services
                         break;
                 }
             }
+        }
+
+        void PrintPatientDetails()
+        {
+            Console.Clear();
+            ConsoleHelper.PrintInCenter("My Details");
+            ConsoleHelper.PrintTableHeaderForType(LoggedInUser.GetType().Name);
+            ConsoleHelper.PrintSeperator();
+            Console.WriteLine(LoggedInUser.ToString());
+            ConsoleHelper.WaitForKeyPress();
         }
 
         void PrintAssignedDoctorDetails()
@@ -81,16 +91,6 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleHelper.WaitForKeyPress();
         }
 
-        void PrintPatientDetails()
-        {
-            Console.Clear();
-            ConsoleHelper.PrintInCenter("My Details");
-            ConsoleHelper.PrintTableHeaderForType(LoggedInUser.GetType().Name);
-            ConsoleHelper.PrintSeperator();
-            Console.WriteLine(LoggedInUser.ToString());
-            ConsoleHelper.WaitForKeyPress();
-        }
-
         void PrintAllAppointments()
         {
             Console.Clear();
@@ -99,7 +99,7 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleHelper.WaitForKeyPress();
         }
 
-        void BookANewAppointment()
+        void BookNewAppointment()
         {
             Console.Clear();
 
@@ -137,7 +137,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
             for(int i = 0; i < allDoctors.Count; i++)
             {
-                Console.WriteLine($"{i + 1} {allDoctors[i]}");
+                Console.WriteLine($"{i + 1} {allDoctors[i].ToString()}");
             }
 
             bool doctorSelected = false;
