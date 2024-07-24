@@ -101,6 +101,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(thingToPrint);
         }
 
+        [Obsolete("This method is being moved into user service as user service will be used for printing of doctors, appointments and patients")]
         public void PrintTableHeaderForType(string tableType)
         {
             switch (tableType)
