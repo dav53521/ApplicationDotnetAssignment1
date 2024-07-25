@@ -11,7 +11,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 {
     public static class ListExtension //Improve by passing in consoleHelper and also remove the need to 
     {
-        public static void PrintAllValidElements(this List<Patient> list, IConsoleService consoleService) 
+        public static void PrintAllValidElements(this List<Patient> list, IConsoleService consoleService)
         {
             //This LINQ expression is being used to filter out all the null elements so that only the elements that aren't null which ensures that a null reference exception won't be thrown if there is a null in the list as it's filtered out
             IEnumerable<Patient> listToPrint = list.Where(e => e != null);
@@ -22,12 +22,12 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                consoleService.PrintTableHeaderForType(list.First().GetType().Name);
+                Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
                 consoleService.PrintSeperator();
 
                 foreach (Patient item in listToPrint)
                 {
-                    Console.WriteLine(item!.ToString());
+                    Console.WriteLine(item.GetPatientAsRow());
                 }
             }
         }
@@ -43,16 +43,12 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                consoleService.PrintTableHeaderForType(list.First().GetType().Name);
-
-                for (int i = 0; i < Console.WindowWidth; i++)
-                {
-                    Console.Write("-");
-                }
+                consoleService.PrintSeperator();
+                Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
 
                 foreach (Appointment item in listToPrint)
                 {
-                    Console.WriteLine(item!.ToString());
+                    Console.WriteLine(item.GetAppointmentAsRow());
                 }
             }
         }
@@ -68,16 +64,13 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                consoleService.PrintTableHeaderForType(list.First().GetType().Name);
+                Console.WriteLine("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
 
-                for (int i = 0; i < Console.WindowWidth; i++)
-                {
-                    Console.Write("-");
-                }
+                consoleService.PrintSeperator();
 
                 foreach (Doctor item in listToPrint)
                 {
-                    Console.WriteLine(item!.ToString());
+                    Console.WriteLine(item.GetDoctorAsRow());
                 }
             }
         }

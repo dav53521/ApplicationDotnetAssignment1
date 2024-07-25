@@ -23,7 +23,7 @@ namespace ApplicationDotnetAssignment1.Models
 
     public static class AppointmentExtentions
     {
-        public static string GetAppointmentAsRow(Appointment appointment)
+        public static string GetAppointmentAsRow(this Appointment appointment)
         {
             //By using string formatting we're able to make it so that the elements are formatted in a way that makes them all line up so we're able to print doctors in a table like format as all columns will be of the same length
             //We're using the null forgiving operator `!` as the Doctor and Patient should not be blank as they're required meaning that it is not possible to create an appointment without them and if one does get created then the program should stop as something has gone wrong.

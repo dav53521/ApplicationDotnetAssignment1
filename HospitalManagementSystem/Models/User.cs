@@ -21,10 +21,5 @@ namespace ApplicationDotnetAssignment1.Models
         public string PhoneNumber { get; set; }
         [StringLength(30)]
         public string Address { get; set; }
-
-        public override string ToString()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -76,7 +76,6 @@ namespace ApplicationDotnetAssignment1.Services
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
             ConsoleHelper.PrintInCenter("All Doctors\n");
             Console.WriteLine("All doctors registered to DOTNET Hospital Management System\n");
-            ConsoleHelper.PrintTableHeaderForType("Doctor");
             allDoctors.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -91,7 +90,6 @@ namespace ApplicationDotnetAssignment1.Services
             if(foundDoctor != null)
             {
                 Console.WriteLine($"Details for {foundDoctor.Name}\n");
-                ConsoleHelper.PrintTableHeaderForType("Doctor");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundDoctor.ToString());
             }
@@ -108,7 +106,6 @@ namespace ApplicationDotnetAssignment1.Services
             List<Patient> allPatients = UnitOfWork.PatientRepository.GetAllPatients();
             ConsoleHelper.PrintInCenter("All Patients\n");
             Console.WriteLine("All patients registered to DOTNET Hospital Management System\n");
-            ConsoleHelper.PrintTableHeaderForType("Patient");
             allPatients.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -123,7 +120,6 @@ namespace ApplicationDotnetAssignment1.Services
             if (foundPatient != null)
             {
                 Console.WriteLine($"\nDetails for {foundPatient.Name}\n");
-                ConsoleHelper.PrintTableHeaderForType("Patient");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundPatient.ToString());
             }
