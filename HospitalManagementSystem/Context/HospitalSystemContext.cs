@@ -89,7 +89,10 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 1,
                     Name = "David Sorrell",
-                    Password = "123"
+                    Email = "Test@Test.com",
+                    PhoneNumber = "0411111111",
+                    Password = "123",
+                    Address = "21 Test Test"
                 }
             );
 
