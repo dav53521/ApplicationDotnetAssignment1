@@ -22,12 +22,12 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
+                Console.WriteLine(listToPrint.First().TableHeader);
                 consoleService.PrintSeperator();
 
                 foreach (Patient item in listToPrint)
                 {
-                    Console.WriteLine(item.GetPatientAsRow());
+                    Console.WriteLine(item.TableBody);
                 }
             }
         }
@@ -43,12 +43,12 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
+                Console.WriteLine(listToPrint.First().TableHeader);
                 consoleService.PrintSeperator();
 
                 foreach (Appointment item in listToPrint)
                 {
-                    Console.WriteLine(item.GetAppointmentAsRow());
+                    Console.WriteLine(item.TableBody);
                 }
             }
         }
@@ -64,12 +64,12 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                Console.WriteLine("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
+                Console.WriteLine(listToPrint.First().TableHeader);
                 consoleService.PrintSeperator();
 
                 foreach (Doctor item in listToPrint)
                 {
-                    Console.WriteLine(item.GetDoctorAsRow());
+                    Console.WriteLine(item.TableBody);
                 }
             }
         }

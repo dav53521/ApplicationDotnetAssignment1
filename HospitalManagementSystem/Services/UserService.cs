@@ -1,4 +1,6 @@
-﻿using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.ExtensionMethods;
+using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using ApplicationDotnetAssignment1.UnitOfWork.Interface;
@@ -10,13 +12,13 @@ namespace ApplicationDotnetAssignment1.Services
         protected T LoggedInUser { get; }
         protected HospitalSystemUnitOfWork UnitOfWork { get; }
         protected bool isLoggedIn = true;
-        protected IConsoleService ConsoleHelper { get; }
+        protected IConsoleService ConsoleService { get; }
 
         public UserService(T loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             LoggedInUser = loggedInUser;
             UnitOfWork = unitOfWork;
-            ConsoleHelper = consoleService;
+            ConsoleService = consoleService;
         }
 
         public virtual void OpenMainMenu()
@@ -25,12 +27,13 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
                 Console.Clear();
-                ConsoleHelper.PrintInCenter(menuTitle);
+                ConsoleService.PrintInCenter(menuTitle);
                 Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
                 Console.WriteLine("Please choose an option:");
 
                 PrintMenuOptions();
                 GetUserOptionChoice();
+                ConsoleService.WaitForKeyPress();
             }
         }
 
@@ -45,23 +48,27 @@ namespace ApplicationDotnetAssignment1.Services
             Environment.Exit(0);
         }
 
-        string GetTableHeaderForEntity(string tableType)
+        protected void PrintLoggedInUserDetails()
         {
-            string headerToReturn = "";
-            switch (tableType)
-            {
-                case "Doctor":
-                    headerToReturn = string.Format("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-                    break;
-                case "Appointment":
-                    headerToReturn = string.Format("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-                    break;
-                case "Patient":
-                    headerToReturn = string.Format("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-                    break;
-            }
+            Console.Clear();
+            ConsoleService.PrintInCenter("My Details");
+            Console.WriteLine(LoggedInUser.ToString());
+        }
 
-            return headerToReturn;
+        public void PrintRelatedEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities, string title)
+        {
+            ConsoleService.PrintInCenter(title);
+            Console.WriteLine(listOfEntities.First().TableHeader);
+            ConsoleService.PrintSeperator();
+
+            foreach (Appointment item in listOfEntities)
+            {
+                Console.WriteLine(item.TableBody);
+            }
+        }
+
+        public void PrintListOfEntityAsTable(List<IPrintableAsTable> test, string title, string successMessage)
+        {
         }
     }
 }

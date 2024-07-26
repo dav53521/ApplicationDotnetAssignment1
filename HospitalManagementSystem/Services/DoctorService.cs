@@ -31,13 +31,13 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch(userChoice)
                 {
                     case 1:
-                        PrintDoctorDetails();
+                        PrintLoggedInUserDetails();
                         return;
                     case 2:
                         PrintAssignedPatients();
@@ -58,7 +58,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         return;
                     default:
-                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleService.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
@@ -67,32 +67,22 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAssignedPatients()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Assigned Patients");
-            LoggedInUser.Patients.PrintAllValidElements(ConsoleHelper);
-            ConsoleHelper.WaitForKeyPress();
-        }
-
-        void PrintDoctorDetails()
-        {
-            Console.Clear();
-            ConsoleHelper.PrintInCenter("My Details");
-            Console.WriteLine(LoggedInUser.ToString());
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.PrintInCenter("Assigned Patients");
+            LoggedInUser.Patients.PrintAllValidElements(ConsoleService);
         }
 
         void PrintAssignedAppointments()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("All Appointments");
-            LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleHelper);
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.PrintInCenter("All Appointments");
+            LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleService);
         }
 
         void PrintParticularPatientDetails()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Check Patient Details");
-            int idOfUserToCheck = ConsoleHelper.GetIdFromUser("Enter the ID of the patient to check: ");
+            ConsoleService.PrintInCenter("Check Patient Details");
+            int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
             if(foundPatient == null)
@@ -103,27 +93,23 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 Console.WriteLine(foundPatient.ToString());
             }
-
-            ConsoleHelper.WaitForKeyPress();
         }
 
         void PrintAppointmentsWithPatient()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Appointments With");
-            int idOfUserToCheck = ConsoleHelper.GetIdFromUser("Enter the ID of the patient to check: ");
+            ConsoleService.PrintInCenter("Appointments With");
+            int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck);
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
-                appointmentsToPrint.PrintAllValidElements(ConsoleHelper);
+                appointmentsToPrint.PrintAllValidElements(ConsoleService);
             }
             else
             {
                 Console.WriteLine("No appointments found");
             }
-
-            ConsoleHelper.WaitForKeyPress();
         }
     }
 }

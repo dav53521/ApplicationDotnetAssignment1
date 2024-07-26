@@ -1,7 +1,9 @@
 ﻿using ApplicationDotnetAssignment1.ExtensionMethods;
 using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +34,13 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "Please input a number as your option");
+            int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "Please input a number as your option");
             while (true)
             {
                 switch(userChoice)
                 {
                     case 1:
-                        PrintPatientDetails();
+                        PrintLoggedInUserDetails();
                         return;
                     case 2:
                         PrintAssignedDoctorDetails();
@@ -56,45 +58,39 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         return;
                     default:
-                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "Please input a number as your option");
+                        userChoice = ConsoleService.GetNumberFromUser("Please select one of the displayed options: ", "Please input a number as your option");
                         break;
                 }
             }
         }
 
-        void PrintPatientDetails()
-        {
-            Console.Clear();
-            ConsoleHelper.PrintInCenter("My Details");
-            ConsoleHelper.PrintSeperator();
-            Console.WriteLine(LoggedInUser.ToString());
-            ConsoleHelper.WaitForKeyPress();
-        }
 
         void PrintAssignedDoctorDetails()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("My Doctor");
+            ConsoleService.PrintInCenter("My Doctor");
 
             if(LoggedInUser.AssignedDoctor != null)
             {
-                ConsoleHelper.PrintSeperator();
-                Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
+                Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString());
             }
             else 
             {
                 Console.WriteLine("You do not have an assigned doctor");
             }
-            
-            ConsoleHelper.WaitForKeyPress();
         }
 
         void PrintAllAppointments()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("My Appointments");
-            LoggedInUser.BookedAppointments.PrintAllValidElements(ConsoleHelper);
-            ConsoleHelper.WaitForKeyPress();
+            if(!LoggedInUser.BookedAppointments.IsNullOrEmpty())
+            {
+                PrintRelatedEntitiesAsTable(LoggedInUser.BookedAppointments.ConvertAll(a => (IPrintableAsTable)a), "My Appointments");
+            }
+            else
+            {
+                Console.WriteLine("No Appointments Booked");
+            }
         }
 
         void BookNewAppointment()
@@ -125,7 +121,7 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.Save();
             Console.WriteLine("The appointment has been booked successfully");
 
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.WaitForKeyPress();
         }
 
         void GetPatientDesiredDoctor()
@@ -140,7 +136,7 @@ namespace ApplicationDotnetAssignment1.Services
             bool doctorSelected = false;
             while(!doctorSelected)
             {
-                int selectedDoctor = ConsoleHelper.GetNumberFromUser("Please choose a doctor: ", "Please only enter a number");
+                int selectedDoctor = ConsoleService.GetNumberFromUser("Please choose a doctor: ", "Please only enter a number");
 
                 if(selectedDoctor > allDoctors.Count)
                 {

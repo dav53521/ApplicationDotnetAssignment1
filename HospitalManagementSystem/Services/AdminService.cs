@@ -34,7 +34,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch (userChoice)
@@ -64,7 +64,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         break;
                     default:
-                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleService.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
@@ -74,66 +74,66 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
-            ConsoleHelper.PrintInCenter("All Doctors\n");
+            ConsoleService.PrintInCenter("All Doctors\n");
             Console.WriteLine("All doctors registered to DOTNET Hospital Management System\n");
-            allDoctors.PrintAllValidElements(ConsoleHelper);
-            ConsoleHelper.WaitForKeyPress();
+            allDoctors.PrintAllValidElements(ConsoleService);
+            ConsoleService.WaitForKeyPress();
         }
 
         void PrintSpecificDoctorDetails()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Doctor Details");
-            int doctorToFind = ConsoleHelper.GetIdFromUser("Plese enter the ID of the doctor who's detail you want to see: ");
+            ConsoleService.PrintInCenter("Doctor Details");
+            int doctorToFind = ConsoleService.GetIdFromUser("Plese enter the ID of the doctor who's detail you want to see: ");
             Doctor? foundDoctor = UnitOfWork.DoctorRepository.GetDoctorById(doctorToFind);
 
             if(foundDoctor != null)
             {
                 Console.WriteLine($"Details for {foundDoctor.Name}\n");
-                ConsoleHelper.PrintSeperator();
+                ConsoleService.PrintSeperator();
                 Console.WriteLine(foundDoctor.ToString());
             }
             else
             {
                 Console.WriteLine("No Doctor with that ID was found");
             }
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.WaitForKeyPress();
         }
 
         void PrintAllPatients()
         {
             Console.Clear();
             List<Patient> allPatients = UnitOfWork.PatientRepository.GetAllPatients();
-            ConsoleHelper.PrintInCenter("All Patients\n");
+            ConsoleService.PrintInCenter("All Patients\n");
             Console.WriteLine("All patients registered to DOTNET Hospital Management System\n");
-            allPatients.PrintAllValidElements(ConsoleHelper);
-            ConsoleHelper.WaitForKeyPress();
+            allPatients.PrintAllValidElements(ConsoleService);
+            ConsoleService.WaitForKeyPress();
         }
 
         void PrintSpecificPatientDetails()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Doctor Details");
-            int patientToFind = ConsoleHelper.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
+            ConsoleService.PrintInCenter("Doctor Details");
+            int patientToFind = ConsoleService.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(patientToFind);
 
             if (foundPatient != null)
             {
                 Console.WriteLine($"\nDetails for {foundPatient.Name}\n");
-                ConsoleHelper.PrintSeperator();
+                ConsoleService.PrintSeperator();
                 Console.WriteLine(foundPatient.ToString());
             }
             else
             {
                 Console.WriteLine("No Patient with that ID was found");
             }
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.WaitForKeyPress();
         }
 
         void AddPatient()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Add Patient");
+            ConsoleService.PrintInCenter("Add Patient");
             Console.WriteLine("Registering a new patient with the DOTNET Hospital Management System");
 
             Console.Write("First Name: ");
@@ -145,9 +145,9 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("Email: ");
             string email = Console.ReadLine()!;
 
-            int phoneNumber = ConsoleHelper.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
+            int phoneNumber = ConsoleService.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
 
-            int streetNumber = ConsoleHelper.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
+            int streetNumber = ConsoleService.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
 
             Console.Write("Street: ");
             string street = Console.ReadLine()!;
@@ -158,7 +158,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("State: ");
             string state = Console.ReadLine()!;
 
-            string password = ConsoleHelper.GetMaskedInput("Password: ");
+            string password = ConsoleService.GetMaskedInput("Password: ");
 
             Patient patientToAdd = new Patient()
             {
@@ -173,13 +173,13 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.Save();
 
             Console.WriteLine($"Patient {patientToAdd.Name} has been created");
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.WaitForKeyPress();
         }
 
         void AddDoctor()
         {
             Console.Clear();
-            ConsoleHelper.PrintInCenter("Add Doctor");
+            ConsoleService.PrintInCenter("Add Doctor");
             Console.WriteLine("Registering a new doctor with the DOTNET Hospital Management System");
 
             Console.Write("First Name: ");
@@ -191,9 +191,9 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("Email: ");
             string email = Console.ReadLine()!;
 
-            int phoneNumber = ConsoleHelper.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
+            int phoneNumber = ConsoleService.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
 
-            int streetNumber = ConsoleHelper.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
+            int streetNumber = ConsoleService.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
 
             Console.Write("Street: ");
             string street = Console.ReadLine()!;
@@ -204,7 +204,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("State: ");
             string state = Console.ReadLine()!;
 
-            string password = ConsoleHelper.GetMaskedInput("Password: ");
+            string password = ConsoleService.GetMaskedInput("Password: ");
 
             Doctor doctorToAdd = new Doctor()
             {
@@ -219,7 +219,7 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.Save();
 
             Console.WriteLine($"Doctor {doctorToAdd.Name} has been created");
-            ConsoleHelper.WaitForKeyPress();
+            ConsoleService.WaitForKeyPress();
         }
     }
 }

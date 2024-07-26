@@ -96,22 +96,5 @@ namespace ApplicationDotnetAssignment1.Services
             Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
         }
-
-        [Obsolete("This method is being moved into user service as user service will be used for printing of doctors, appointments and patients", true)]
-        public void PrintTableHeaderForType(string tableType)
-        {
-            switch (tableType)
-            {
-                case "Doctor":
-                    Console.WriteLine("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-                    break;
-                case "Appointment":
-                    Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-                    break;
-                case "Patient":
-                    Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-                    break;
-            }
-        }
     }
 }
