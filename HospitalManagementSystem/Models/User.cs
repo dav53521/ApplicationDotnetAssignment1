@@ -21,5 +21,16 @@ namespace ApplicationDotnetAssignment1.Models
         public string PhoneNumber { get; set; }
         [StringLength(30)]
         public string Address { get; set; }
+
+        public override string ToString()
+        {
+            return @$"{Name}'s user details:
+
+User Id: {Id}
+Full Name: {Name}
+Phone Number: {PhoneNumber}
+Email: {Email}
+Address: {Address}";
+        }
     }
 }
