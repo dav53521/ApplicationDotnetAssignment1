@@ -34,7 +34,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch (userChoice)
@@ -64,7 +64,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         break;
                     default:
-                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
@@ -84,7 +84,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Doctor Details");
-            int doctorToFind = ConsoleHelper.GetIntegerFromUser("Plese enter the ID of the doctor who's detail you want to see: ", "Please only enter numbers for IDs");
+            int doctorToFind = ConsoleHelper.GetIdFromUser("Plese enter the ID of the doctor who's detail you want to see: ");
             Doctor? foundDoctor = UnitOfWork.DoctorRepository.GetDoctorById(doctorToFind);
 
             if(foundDoctor != null)
@@ -114,7 +114,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Doctor Details");
-            int patientToFind = ConsoleHelper.GetIntegerFromUser("Plese enter the ID of the patient who's detail you want to see: ", "Please only enter numbers for IDs");
+            int patientToFind = ConsoleHelper.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(patientToFind);
 
             if (foundPatient != null)
@@ -145,9 +145,9 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("Email: ");
             string email = Console.ReadLine()!;
 
-            int phoneNumber = ConsoleHelper.GetIntegerFromUser("Phone: 04", "Please Only Enter Numbers");
+            int phoneNumber = ConsoleHelper.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
 
-            int streetNumber = ConsoleHelper.GetIntegerFromUser("Street Number: ", "Please Only Enter Numbers");
+            int streetNumber = ConsoleHelper.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
 
             Console.Write("Street: ");
             string street = Console.ReadLine()!;
@@ -191,9 +191,9 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Write("Email: ");
             string email = Console.ReadLine()!;
 
-            int phoneNumber = ConsoleHelper.GetIntegerFromUser("Phone: 04", "Please Only Enter Numbers");
+            int phoneNumber = ConsoleHelper.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
 
-            int streetNumber = ConsoleHelper.GetIntegerFromUser("Street Number: ", "Please Only Enter Numbers");
+            int streetNumber = ConsoleHelper.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
 
             Console.Write("Street: ");
             string street = Console.ReadLine()!;

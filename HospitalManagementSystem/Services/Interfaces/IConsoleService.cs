@@ -8,8 +8,8 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
     public interface IConsoleService
     {
-        public int GetIntegerFromUser(string userPrompt, string errorMessage);
-        public bool GetIntegerFromUser(string userPrompt, string errorMessage, char exitCharacter, out int gottenInteger);
+        public int GetIdFromUser(string userPrompt);
+        public int GetNumberFromUser(string userPrompt, string errorMessage);
         public string GetMaskedInput(string userPrompt);
         public void PrintSeperator();
         public void WaitForKeyPress();

@@ -43,8 +43,8 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
             else
             {
-                consoleService.PrintSeperator();
                 Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
+                consoleService.PrintSeperator();
 
                 foreach (Appointment item in listToPrint)
                 {
@@ -65,7 +65,6 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             else
             {
                 Console.WriteLine("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-
                 consoleService.PrintSeperator();
 
                 foreach (Doctor item in listToPrint)

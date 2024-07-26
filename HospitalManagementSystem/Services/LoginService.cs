@@ -39,7 +39,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while (true)
             {
-                int userToFindId = _consoleService.GetIntegerFromUser("Id:", "Please only enter numbers for Ids");
+                int userToFindId = _consoleService.GetIdFromUser("Id:");
                 string userToFindPassword = _consoleService.GetMaskedInput("Password:");
 
                 User? foundUser = _unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();

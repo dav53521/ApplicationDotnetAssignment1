@@ -31,7 +31,7 @@ namespace HospitalMangementTests
             {
                 new Doctor
                 {
-                    Id = 11,
+                    Id = 11000,
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
@@ -39,7 +39,7 @@ namespace HospitalMangementTests
                 },
                 new Doctor
                 {
-                    Id = 12,
+                    Id = 11001,
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
@@ -51,7 +51,7 @@ namespace HospitalMangementTests
             {
                 new Patient
                 {
-                    Id = 21,
+                    Id = 20000,
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
@@ -59,7 +59,7 @@ namespace HospitalMangementTests
                 },
                 new Patient
                 {
-                    Id = 22,
+                    Id = 20001,
                     Name = "Test test",
                     Email = "test@test.com",
                     Password = "123",
@@ -71,12 +71,12 @@ namespace HospitalMangementTests
             {
                 new Admin
                 {
-                    Id = 1,
+                    Id = 10000,
                     Password = "123",
                 },
                 new Admin
                 {
-                    Id = 2,
+                    Id = 10001,
                     Password = "123",
                 }
             }.AsQueryable();

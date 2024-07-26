@@ -11,40 +11,36 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class ConsoleService : IConsoleService
     {
-        public int GetIntegerFromUser(string userPrompt, string errorMessage)
+        public int GetIdFromUser(string userPrompt)
         {
             do
             {
                 Console.Write(userPrompt);
+                string userInput = Console.ReadLine()!;
+
                 //The line below is being used to make sure that what the user inputs is a number
-                if (int.TryParse(Console.ReadLine()!, out int inputedNumber))
+                if (userInput.Length > 4 && int.TryParse(userInput, out int inputedNumber))
                 {
                     return inputedNumber;
                 }
                 else
                 {
                     Console.WriteLine();
-                    Console.WriteLine(errorMessage);
+                    Console.WriteLine("Valid IDs are at least 5 characters long and only consist of numbers. Please Try Again");
                 }
             } while (true);
         }
 
-        public bool GetIntegerFromUser(string userPrompt, string errorMessage, char exitCharacter, out int gottenInteger)
+        public int GetNumberFromUser(string userPrompt, string errorMessage)
         {
-            gottenInteger = 0;
             do
             {
                 Console.Write(userPrompt);
                 string userInput = Console.ReadLine()!;
 
-                if(userInput == exitCharacter.ToString())
+                if (int.TryParse(userInput, out int inputedNumber)) //This line below is being used to make sure that what the user inputs is a number
                 {
-                    return false;
-                }
-                else if (int.TryParse(userInput, out int inputedNumber)) //This line below is being used to make sure that what the user inputs is a number
-                {
-                    gottenInteger = inputedNumber;
-                    return true;
+                    return inputedNumber;
                 }
                 else
                 {

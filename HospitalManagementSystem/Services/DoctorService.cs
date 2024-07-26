@@ -31,7 +31,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
             while (true)
             {
                 switch(userChoice)
@@ -58,7 +58,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         return;
                     default:
-                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "To select an option please input a number");
                         break;
                 }
             }
@@ -68,7 +68,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Assigned Patients");
-            ConsoleHelper.PrintTableHeaderForType("Patient");
             LoggedInUser.Patients.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -77,8 +76,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Details");
-            ConsoleHelper.PrintTableHeaderForType("Doctor");
-            ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());
             ConsoleHelper.WaitForKeyPress();
         }
@@ -87,7 +84,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("All Appointments");
-            ConsoleHelper.PrintTableHeaderForType("Appointment");
             LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
         }
@@ -96,7 +92,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Check Patient Details");
-            int idOfUserToCheck = ConsoleHelper.GetIntegerFromUser("Enter the ID of the patient to check: ", "Please enter only numbers for IDs");
+            int idOfUserToCheck = ConsoleHelper.GetIdFromUser("Enter the ID of the patient to check: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
             if(foundPatient == null)
@@ -105,8 +101,6 @@ namespace ApplicationDotnetAssignment1.Services
             }
             else
             {
-                ConsoleHelper.PrintTableHeaderForType("Patient");
-                ConsoleHelper.PrintSeperator();
                 Console.WriteLine(foundPatient.ToString());
             }
 
@@ -117,12 +111,11 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("Appointments With");
-            int idOfUserToCheck = ConsoleHelper.GetIntegerFromUser("Enter the ID of the patient to check: ", "Please enter only numbers for IDs");
+            int idOfUserToCheck = ConsoleHelper.GetIdFromUser("Enter the ID of the patient to check: ");
             List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck);
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
-                ConsoleHelper.PrintTableHeaderForType("Appointment");
                 appointmentsToPrint.PrintAllValidElements(ConsoleHelper);
             }
             else

@@ -32,7 +32,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         protected override void GetUserOptionChoice()
         {
-            int userChoice = ConsoleHelper.GetIntegerFromUser("Please select an option: ", "To select an option please input a number");
+            int userChoice = ConsoleHelper.GetNumberFromUser("Please select an option: ", "Please input a number as your option");
             while (true)
             {
                 switch(userChoice)
@@ -56,7 +56,7 @@ namespace ApplicationDotnetAssignment1.Services
                         Exit();
                         return;
                     default:
-                        userChoice = ConsoleHelper.GetIntegerFromUser("Please select one of the displayed options: ", "To select an option please input a number");
+                        userChoice = ConsoleHelper.GetNumberFromUser("Please select one of the displayed options: ", "Please input a number as your option");
                         break;
                 }
             }
@@ -66,7 +66,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleHelper.PrintInCenter("My Details");
-            ConsoleHelper.PrintTableHeaderForType("Patient");
             ConsoleHelper.PrintSeperator();
             Console.WriteLine(LoggedInUser.ToString());
             ConsoleHelper.WaitForKeyPress();
@@ -79,7 +78,6 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(LoggedInUser.AssignedDoctor != null)
             {
-                ConsoleHelper.PrintTableHeaderForType("Doctor");
                 ConsoleHelper.PrintSeperator();
                 Console.WriteLine(LoggedInUser.AssignedDoctor.ToString());
             }
@@ -94,7 +92,6 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllAppointments()
         {
             Console.Clear();
-            ConsoleHelper.PrintTableHeaderForType("Appointment");
             ConsoleHelper.PrintInCenter("My Appointments");
             LoggedInUser.BookedAppointments.PrintAllValidElements(ConsoleHelper);
             ConsoleHelper.WaitForKeyPress();
@@ -143,7 +140,7 @@ namespace ApplicationDotnetAssignment1.Services
             bool doctorSelected = false;
             while(!doctorSelected)
             {
-                int selectedDoctor = ConsoleHelper.GetIntegerFromUser("Please choose a doctor: ", "Please only enter a number");
+                int selectedDoctor = ConsoleHelper.GetNumberFromUser("Please choose a doctor: ", "Please only enter a number");
 
                 if(selectedDoctor > allDoctors.Count)
                 {

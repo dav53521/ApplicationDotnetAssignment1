@@ -34,7 +34,7 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Doctor>().HasData(
                 new Doctor
                 {
-                    Id = 11,
+                    Id = 11000,
                     Name = "John Deer",
                     Password = "test",
                     PhoneNumber = "0411111111",
@@ -46,17 +46,17 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Patient>().HasData(
                 new Patient
                 {
-                    Id = 21,
+                    Id = 20000,
                     Name = "Jill Deer",
                     Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
                     Address = "10 A real street ave",
-                    AssignedDoctorId = 11
+                    AssignedDoctorId = 11000
                 },
                 new Patient
                 {
-                    Id = 22,
+                    Id = 20001,
                     Name = "Jane Deer",
                     Password = "test",
                     PhoneNumber = "0411111111",
@@ -65,17 +65,17 @@ namespace ApplicationDotnetAssignment1.Contexts
                 },
                 new Patient
                 {
-                    Id = 23,
+                    Id = 20002,
                     Name = "Person Person",
                     Password = "123",
                     PhoneNumber = "0411111111",
                     Email = "Test@email.com",
                     Address = "11 A real street ave",
-                    AssignedDoctorId = 11
+                    AssignedDoctorId = 11000
                 },
                 new Patient
                 {
-                    Id = 24,
+                    Id = 20003,
                     Name = "David Sorrell",
                     Password = "123",
                     PhoneNumber = "0411111111",
@@ -87,7 +87,7 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    Id = 1,
+                    Id = 10000,
                     Name = "David Sorrell",
                     Email = "Test@Test.com",
                     PhoneNumber = "0411111111",
@@ -99,16 +99,16 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Appointment>().HasData(
                 new Appointment
                 {
-                    Id = 1,
-                    PatientId = 24,
-                    DoctorId = 11,
+                    Id = 10000,
+                    PatientId = 20000,
+                    DoctorId = 11000,
                     Description = "Cold"
                 },
                 new Appointment
                 {
-                    Id = 2,
-                    PatientId = 21,
-                    DoctorId = 11,
+                    Id = 10001,
+                    PatientId = 20002,
+                    DoctorId = 11000,
                     Description = "Test"
                 }
             );
