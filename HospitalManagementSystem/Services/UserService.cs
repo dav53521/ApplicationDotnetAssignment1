@@ -66,7 +66,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(listOfEntities.FirstOrDefault()?.TableHeader);
             ConsoleService.PrintSeperator();
 
-            foreach (Appointment item in listOfEntities)
+            foreach (IPrintableAsTable item in listOfEntities)
             {
                 Console.WriteLine(item.TableBody);
             }
