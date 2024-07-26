@@ -72,7 +72,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        public void PrintRelatedEntitiesAsTable(List<IPrintableAsTable> relatedEntitiesToPrint, string successMessage)
+        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> relatedEntitiesToPrint, string successMessage)
         {
             Console.WriteLine(successMessage);
             Console.WriteLine(); //This is being used to create a bit of space between the table and the sucess message so the screen feels less crowded

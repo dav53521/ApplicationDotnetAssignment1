@@ -83,7 +83,7 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllAppointments()
         {
             Console.Clear();
-            List<IPrintableAsTable> validAppointments = LoggedInUser.BookedAppointments.GetAllValidElements().ConvertAll(a => (IPrintableAsTable)a);
+            List<Appointment> validAppointments = LoggedInUser.BookedAppointments.GetAllValidElements();
 
             ConsoleService.PrintInCenter("My Appointments");
             if (!validAppointments.IsNullOrEmpty())

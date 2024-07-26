@@ -68,14 +68,32 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Assigned Patients");
-            //LoggedInUser.Patients.PrintAllValidElements(ConsoleService);
+            List<Patient> assignedPatients = LoggedInUser.Patients.GetAllValidElements();
+
+            if(!assignedPatients.IsNullOrEmpty())
+            {
+                PrintEntitiesAsTable(assignedPatients);
+            }
+            else
+            {
+                Console.WriteLine("No assigned patients");
+            }
         }
 
         void PrintAssignedAppointments()
         {
             Console.Clear();
             ConsoleService.PrintInCenter("All Appointments");
-            //LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleService);
+            List<Appointment> assignedAppointments = LoggedInUser.AssignedAppointments.GetAllValidElements();
+
+            if(!assignedAppointments.IsNullOrEmpty())
+            {
+                PrintEntitiesAsTable(assignedAppointments);
+            }
+            else
+            {
+                Console.WriteLine("No appointments have been assigned");
+            }
         }
 
         void PrintParticularPatientDetails()
@@ -106,7 +124,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
-                //appointmentsToPrint.PrintAllValidElements(ConsoleService);
+                PrintEntitiesAsTable(appointmentsToPrint);
             }
             else
             {

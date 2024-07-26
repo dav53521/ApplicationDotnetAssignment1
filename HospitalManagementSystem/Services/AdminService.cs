@@ -74,10 +74,10 @@ namespace ApplicationDotnetAssignment1.Services
         void ListAllDoctors()
         {
             Console.Clear();
-            List<IPrintableAsTable> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements().ConvertAll(d => (IPrintableAsTable)d);
+            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
             ConsoleService.PrintInCenter("All Doctors");
             Console.WriteLine();
-            PrintRelatedEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System\n");
+            PrintEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System\n");
         }
 
         void PrintSpecificDoctorDetails()
@@ -101,9 +101,9 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllPatients()
         {
             Console.Clear();
-            List<IPrintableAsTable> patientsToPrint = UnitOfWork.PatientRepository.GetAllPatients().GetAllValidElements().ConvertAll(p => (IPrintableAsTable)p);
+            List<Patient> patientsToPrint = UnitOfWork.PatientRepository.GetAllPatients().GetAllValidElements();
             ConsoleService.PrintInCenter("All Patients");
-            PrintRelatedEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System\n");
+            PrintEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System\n");
         }
 
         void PrintSpecificPatientDetails()
