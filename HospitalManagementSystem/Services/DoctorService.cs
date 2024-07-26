@@ -68,20 +68,21 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Assigned Patients");
-            LoggedInUser.Patients.PrintAllValidElements(ConsoleService);
+            //LoggedInUser.Patients.PrintAllValidElements(ConsoleService);
         }
 
         void PrintAssignedAppointments()
         {
             Console.Clear();
             ConsoleService.PrintInCenter("All Appointments");
-            LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleService);
+            //LoggedInUser.AssignedAppointments.PrintAllValidElements(ConsoleService);
         }
 
         void PrintParticularPatientDetails()
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Check Patient Details");
+
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
@@ -99,12 +100,13 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Appointments With");
+
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
-            List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck);
+            List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck).GetAllValidElements();
 
             if(!appointmentsToPrint.IsNullOrEmpty())
             {
-                appointmentsToPrint.PrintAllValidElements(ConsoleService);
+                //appointmentsToPrint.PrintAllValidElements(ConsoleService);
             }
             else
             {

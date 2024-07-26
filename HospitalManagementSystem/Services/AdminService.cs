@@ -1,6 +1,7 @@
 ﻿using ApplicationDotnetAssignment1.ExtensionMethods;
 using ApplicationDotnetAssignment1.Migrations;
 using ApplicationDotnetAssignment1.Models;
+using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
@@ -73,11 +74,10 @@ namespace ApplicationDotnetAssignment1.Services
         void ListAllDoctors()
         {
             Console.Clear();
-            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
-            ConsoleService.PrintInCenter("All Doctors\n");
-            Console.WriteLine("All doctors registered to DOTNET Hospital Management System\n");
-            allDoctors.PrintAllValidElements(ConsoleService);
-            ConsoleService.WaitForKeyPress();
+            List<IPrintableAsTable> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements().ConvertAll(d => (IPrintableAsTable)d);
+            ConsoleService.PrintInCenter("All Doctors");
+            Console.WriteLine();
+            PrintRelatedEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System\n");
         }
 
         void PrintSpecificDoctorDetails()
@@ -90,24 +90,20 @@ namespace ApplicationDotnetAssignment1.Services
             if(foundDoctor != null)
             {
                 Console.WriteLine($"Details for {foundDoctor.Name}\n");
-                ConsoleService.PrintSeperator();
                 Console.WriteLine(foundDoctor.ToString());
             }
             else
             {
                 Console.WriteLine("No Doctor with that ID was found");
             }
-            ConsoleService.WaitForKeyPress();
         }
 
         void PrintAllPatients()
         {
             Console.Clear();
-            List<Patient> allPatients = UnitOfWork.PatientRepository.GetAllPatients();
-            ConsoleService.PrintInCenter("All Patients\n");
-            Console.WriteLine("All patients registered to DOTNET Hospital Management System\n");
-            allPatients.PrintAllValidElements(ConsoleService);
-            ConsoleService.WaitForKeyPress();
+            List<IPrintableAsTable> patientsToPrint = UnitOfWork.PatientRepository.GetAllPatients().GetAllValidElements().ConvertAll(p => (IPrintableAsTable)p);
+            ConsoleService.PrintInCenter("All Patients");
+            PrintRelatedEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System\n");
         }
 
         void PrintSpecificPatientDetails()
@@ -119,15 +115,13 @@ namespace ApplicationDotnetAssignment1.Services
 
             if (foundPatient != null)
             {
-                Console.WriteLine($"\nDetails for {foundPatient.Name}\n");
-                ConsoleService.PrintSeperator();
+                Console.WriteLine($"Details for {foundPatient.Name}\n");
                 Console.WriteLine(foundPatient.ToString());
             }
             else
             {
                 Console.WriteLine("No Patient with that ID was found");
             }
-            ConsoleService.WaitForKeyPress();
         }
 
         void AddPatient()
@@ -172,7 +166,7 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.PatientRepository.AddPatient(patientToAdd);
             UnitOfWork.Save();
 
-            Console.WriteLine($"Patient {patientToAdd.Name} has been created");
+            Console.WriteLine($"Patient {patientToAdd.Name} has been created with the Id {patientToAdd.Id}");
             ConsoleService.WaitForKeyPress();
         }
 
@@ -206,7 +200,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             string password = ConsoleService.GetMaskedInput("Password: ");
 
-            Doctor doctorToAdd = new Doctor()
+            Doctor userToAdd = new Doctor()
             {
                 Name = $"{firstName} {lastName}",
                 Password = password,
@@ -215,11 +209,10 @@ namespace ApplicationDotnetAssignment1.Services
                 Address = $"{streetNumber} {street} {city} {state}"
             };
 
-            UnitOfWork.DoctorRepository.AddDoctor(doctorToAdd);
+            UnitOfWork.DoctorRepository.AddDoctor(userToAdd);
             UnitOfWork.Save();
 
-            Console.WriteLine($"Doctor {doctorToAdd.Name} has been created");
-            ConsoleService.WaitForKeyPress();
+            Console.WriteLine($"Doctor {userToAdd.Name} has been created with the Id {userToAdd.Id}");
         }
     }
 }

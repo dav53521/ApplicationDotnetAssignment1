@@ -4,6 +4,7 @@ using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using ApplicationDotnetAssignment1.UnitOfWork.Interface;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ApplicationDotnetAssignment1.Services
 {
@@ -33,7 +34,11 @@ namespace ApplicationDotnetAssignment1.Services
 
                 PrintMenuOptions();
                 GetUserOptionChoice();
-                ConsoleService.WaitForKeyPress();
+
+                if(isLoggedIn) //This is so that we can automatically bring back the login screen while also reducing code as there's no need for almost every single method to have "ConsoleService.WaitForKeyPress()"
+                {
+                    ConsoleService.WaitForKeyPress();
+                }
             }
         }
 
@@ -55,10 +60,10 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(LoggedInUser.ToString());
         }
 
-        public void PrintRelatedEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities, string title)
+        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities)
         {
-            ConsoleService.PrintInCenter(title);
-            Console.WriteLine(listOfEntities.First().TableHeader);
+            Console.WriteLine(); //This is being used to create a bit of space between the table and the header so the screen feels less crowded
+            Console.WriteLine(listOfEntities.FirstOrDefault()?.TableHeader);
             ConsoleService.PrintSeperator();
 
             foreach (Appointment item in listOfEntities)
@@ -67,8 +72,17 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        public void PrintListOfEntityAsTable(List<IPrintableAsTable> test, string title, string successMessage)
+        public void PrintRelatedEntitiesAsTable(List<IPrintableAsTable> relatedEntitiesToPrint, string successMessage)
         {
+            Console.WriteLine(successMessage);
+            Console.WriteLine(); //This is being used to create a bit of space between the table and the sucess message so the screen feels less crowded
+
+            Console.WriteLine(relatedEntitiesToPrint.FirstOrDefault()?.TableHeader);
+            ConsoleService.PrintSeperator();
+            foreach(IPrintableAsTable item in relatedEntitiesToPrint)
+            {
+                Console.WriteLine(item.TableBody);
+            }
         }
     }
 }

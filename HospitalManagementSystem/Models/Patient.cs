@@ -13,7 +13,7 @@ namespace ApplicationDotnetAssignment1.Models
         public override string ToString()
         {
             return base.ToString() + $@"
-Assigned Doctor Name: {AssignedDoctor?.Name ?? string.Empty}";
+Assigned Doctor's Name: {AssignedDoctor?.Name ?? string.Empty}";
         }
 
         [NotMapped]

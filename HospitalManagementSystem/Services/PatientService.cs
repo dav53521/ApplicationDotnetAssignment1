@@ -83,9 +83,12 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllAppointments()
         {
             Console.Clear();
-            if(!LoggedInUser.BookedAppointments.IsNullOrEmpty())
+            List<IPrintableAsTable> validAppointments = LoggedInUser.BookedAppointments.GetAllValidElements().ConvertAll(a => (IPrintableAsTable)a);
+
+            ConsoleService.PrintInCenter("My Appointments");
+            if (!validAppointments.IsNullOrEmpty())
             {
-                PrintRelatedEntitiesAsTable(LoggedInUser.BookedAppointments.ConvertAll(a => (IPrintableAsTable)a), "My Appointments");
+                PrintEntitiesAsTable(validAppointments);
             }
             else
             {
@@ -120,17 +123,15 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
             UnitOfWork.Save();
             Console.WriteLine("The appointment has been booked successfully");
-
-            ConsoleService.WaitForKeyPress();
         }
 
         void GetPatientDesiredDoctor()
         {
-            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors();
+            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
             Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
             for(int i = 0; i < allDoctors.Count; i++)
             {
-                Console.WriteLine($"{i + 1} {allDoctors[i].ToString()}");
+                Console.WriteLine($"{i + 1} {((IPrintableAsTable)allDoctors[i]).TableBody}");
             }
 
             bool doctorSelected = false;
@@ -147,6 +148,7 @@ namespace ApplicationDotnetAssignment1.Services
                     Doctor choosenDoctor = allDoctors[selectedDoctor - 1];
                     LoggedInUser.AssignedDoctorId = choosenDoctor.Id;
                     LoggedInUser.AssignedDoctor = choosenDoctor;
+                    UnitOfWork.PatientRepository.UpdatePatient(LoggedInUser);
                     doctorSelected = true;
                 }
             }

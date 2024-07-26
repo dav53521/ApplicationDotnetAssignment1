@@ -73,6 +73,7 @@ namespace ApplicationDotnetAssignment1.Services
                 keyPressed = Console.ReadKey(true);
             }
 
+            Console.WriteLine(); //This is being used so that the next ouput into the console will be on a new line
             return maskedInput;
         }
 
