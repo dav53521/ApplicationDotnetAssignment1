@@ -1,8 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Models;
-using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ApplicationDotnetAssignment1.Services
 {

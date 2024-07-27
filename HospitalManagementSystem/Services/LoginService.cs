@@ -1,13 +1,6 @@
-﻿using ApplicationDotnetAssignment1.Contexts;
-using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Services
 {

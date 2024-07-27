@@ -1,9 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace ApplicationDotnetAssignment1.Contexts
 {

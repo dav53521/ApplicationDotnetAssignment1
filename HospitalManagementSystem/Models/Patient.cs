@@ -1,6 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Models.Interface;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net;
 
 namespace ApplicationDotnetAssignment1.Models
 {

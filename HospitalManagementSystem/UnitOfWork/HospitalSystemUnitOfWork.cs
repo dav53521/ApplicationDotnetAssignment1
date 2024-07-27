@@ -1,11 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Contexts;
 using ApplicationDotnetAssignment1.Repositories;
 using ApplicationDotnetAssignment1.UnitOfWork.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.UnitOfWork
 {

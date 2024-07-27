@@ -1,13 +1,5 @@
 ﻿using ApplicationDotnetAssignment1.Models.Interface;
-using Microsoft.Identity.Client;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationDotnetAssignment1.Models
 {
