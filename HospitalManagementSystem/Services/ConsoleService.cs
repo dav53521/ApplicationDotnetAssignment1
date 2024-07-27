@@ -51,7 +51,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        public string GetMaskedInputFromuser(string userPrompt)
+        public string GetMaskedInputFromUser(string userPrompt)
         {
             Console.Write(userPrompt);
 
@@ -76,21 +76,6 @@ namespace ApplicationDotnetAssignment1.Services
 
             Console.WriteLine(); //This is being used so that the next ouput into the console will be on a new line
             return maskedInput;
-        }
-
-        public void PrintSeperator()
-        {
-            for (int i = 0; i < Console.WindowWidth; i++)
-            {
-                Console.Write("-");
-            }
-        }
-
-        public void WaitForKeyPress()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Please press any key to return back to the main menu");
-            Console.ReadKey();
         }
 
         public void PrintInCenter(string thingToPrint)
@@ -138,7 +123,7 @@ namespace ApplicationDotnetAssignment1.Services
             string firstName = GetUserInput("First Name: ");
             string lastName = GetUserInput("Last Name: ");
 
-            return firstName + lastName;
+            return $"{firstName} {lastName}";
         }
 
         public string GetAddressFromUser()

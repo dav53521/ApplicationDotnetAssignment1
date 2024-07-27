@@ -66,10 +66,9 @@ namespace ApplicationDotnetAssignment1.Services
         void ListAllDoctors()
         {
             Console.Clear();
-            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
             ConsoleService.PrintInCenter("All Doctors");
             Console.WriteLine();
-            PrintEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System", "No doctors have been registered");
+            UnitOfWork.DoctorRepository.GetAllDoctors().PrintDoctorsAsTable("No doctors registered");
         }
 
         void PrintSpecificDoctorDetails()
@@ -94,9 +93,8 @@ namespace ApplicationDotnetAssignment1.Services
         void PrintAllPatients()
         {
             Console.Clear();
-            List<Patient> patientsToPrint = UnitOfWork.PatientRepository.GetAllPatients().GetAllValidElements();
             ConsoleService.PrintInCenter("All Patients");
-            PrintEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System", "No patients have been registered");
+            UnitOfWork.PatientRepository.GetAllPatients().PrintPatientsAsTable("No patients registered");
         }
 
         void PrintSpecificPatientDetails()
@@ -132,7 +130,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             string address = ConsoleService.GetAddressFromUser();
 
-            string password = ConsoleService.GetMaskedInputFromuser("Password: ");
+            string password = ConsoleService.GetMaskedInputFromUser("Password: ");
 
             Patient patientToAdd = new Patient()
             {
@@ -162,7 +160,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             string address = ConsoleService.GetAddressFromUser();
 
-            string password = ConsoleService.GetMaskedInputFromuser("Password: ");
+            string password = ConsoleService.GetMaskedInputFromUser("Password: ");
 
             Doctor doctorToAdd = new Doctor()
             {

@@ -24,7 +24,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while (isLoggedIn)
             {
-                string menuTitle = $"{LoggedInUser.GetType().Name} Menu";
+                string menuTitle = $"{LoggedInUser.GetType().BaseType?.Name} Menu"; //We're getting the base type because I'm using lazy loading via proxies which means that a proxy that inherits the logged in user's role is used so I'm getting the user's role via the base class
                 Console.Clear();
                 ConsoleService.PrintInCenter(menuTitle);
                 Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
@@ -35,7 +35,9 @@ namespace ApplicationDotnetAssignment1.Services
 
                 if(isLoggedIn) //This is so that we can automatically bring back the login screen while also reducing code as there's no need for almost every single method to have "ConsoleService.WaitForKeyPress()"
                 {
-                    ConsoleService.WaitForKeyPress();
+                    Console.WriteLine();
+                    Console.WriteLine("Please press any key to return back to the main menu");
+                    Console.ReadKey();
                 }
             }
         }
@@ -58,40 +60,15 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(LoggedInUser.ToString());
         }
 
-        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities, string noEntitiesMessage)
+        protected void PrintEntity<TEntityToPrint>(TEntityToPrint? entityToPrint, string noEntityMessage)
         {
-            if (!listOfEntities.IsNullOrEmpty())
+            if(entityToPrint != null)
             {
-                Console.WriteLine(listOfEntities.First().TableHeader); //This is because the table header is stored on the instance of an entity
-                ConsoleService.PrintSeperator();
-                foreach (IPrintableAsTable entity in listOfEntities)
-                {
-                    Console.WriteLine(entity.TableRow);
-                }
+                Console.WriteLine(entityToPrint.ToString());
             }
             else
             {
-                Console.WriteLine(noEntitiesMessage);
-            }
-        }
-
-        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> relatedEntitiesToPrint, string successMessage, string noEntitiesMessage)
-        {
-            if(!relatedEntitiesToPrint.IsNullOrEmpty())
-            {
-                Console.WriteLine(successMessage);
-                Console.WriteLine(); //This is being used to create a bit of space between the table and the success message so the screen feels less condensed
-
-                Console.WriteLine(relatedEntitiesToPrint.FirstOrDefault()?.TableHeader);
-                ConsoleService.PrintSeperator();
-                foreach (IPrintableAsTable item in relatedEntitiesToPrint)
-                {
-                    Console.WriteLine(item.TableRow);
-                }
-            }
-            else
-            {
-                Console.WriteLine(noEntitiesMessage);
+                Console.WriteLine(noEntityMessage);
             }
         }
     }

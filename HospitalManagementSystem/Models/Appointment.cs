@@ -23,16 +23,7 @@ namespace ApplicationDotnetAssignment1.Models
         public virtual Doctor? Doctor { get; set; }
 
         [NotMapped]
-        public string TableHeader //This function is not mapped because this string doesn't need to be stored in the database as all it does is format the appointment table header string which means that it will be the same across all rows
-        { 
-            get
-            {
-                return string.Format("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-            } 
-        }
-
-        [NotMapped]
-        public string TableRow //This function is not mapped because this string doesn't need to be stored in the database as all it does is format the appointment body table string which means that it will be the same across all rows
+        public string EntityAsTableRow //This function is not mapped because this string doesn't need to be stored in the database as all it does is format the appointment body table string which means that it will be the same across all rows
         {
             get
             {

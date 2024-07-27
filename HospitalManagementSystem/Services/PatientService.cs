@@ -63,30 +63,19 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("My Doctor");
-
-            if(LoggedInUser.AssignedDoctor != null)
-            {
-                Console.WriteLine(LoggedInUser.AssignedDoctor?.ToString());
-            }
-            else 
-            {
-                Console.WriteLine("You do not have an assigned doctor");
-            }
+            PrintEntity(LoggedInUser.AssignedDoctor, "You do not have an assigned doctor.");
         }
 
         void PrintAllAppointments()
         {
             Console.Clear();
-            List<Appointment> validAppointments = LoggedInUser.BookedAppointments.GetAllValidElements();
-
             ConsoleService.PrintInCenter("My Appointments");
-            PrintEntitiesAsTable(validAppointments, "No Appointments Booked");
+            LoggedInUser.BookedAppointments.PrintAppointmentsAsTable("No Appointments Booked");
         }
 
         void BookNewAppointment()
         {
             Console.Clear();
-
             ConsoleService.PrintInCenter("Book New Appointment");
 
             if(LoggedInUser.AssignedDoctor == null)
@@ -116,7 +105,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
             for(int i = 0; i < allDoctors.Count; i++)
             {
-                Console.WriteLine($"{i + 1} {((IPrintableAsTable)allDoctors[i]).TableRow}");
+                Console.WriteLine($"{i + 1} {((IPrintableAsTable)allDoctors[i]).EntityAsTableRow}");
             }
 
             bool doctorSelected = false;
@@ -130,7 +119,7 @@ namespace ApplicationDotnetAssignment1.Services
                 }
                 else
                 {
-                    Doctor choosenDoctor = allDoctors[selectedDoctor - 1];
+                    Doctor choosenDoctor = allDoctors[selectedDoctor - 1]; //As it is easier for a user to use base one we need to subtract 1 from their input as collections start from base zero
                     LoggedInUser.AssignedDoctorId = choosenDoctor.Id;
                     UnitOfWork.PatientRepository.UpdatePatient(LoggedInUser);
                     doctorSelected = true;

@@ -8,7 +8,6 @@ namespace ApplicationDotnetAssignment1.Models.Interface
 {
     public interface IPrintableAsTable
     {
-        string TableHeader { get; }
-        string TableRow { get; }
+        string EntityAsTableRow { get; }
     }
 }

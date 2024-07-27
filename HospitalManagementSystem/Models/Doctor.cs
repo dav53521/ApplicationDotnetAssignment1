@@ -17,16 +17,7 @@ namespace ApplicationDotnetAssignment1.Models
         public virtual List<Appointment> AssignedAppointments { get; } = new List<Appointment>();
 
         [NotMapped]
-        public string TableHeader
-        {
-            get 
-            {
-                return string.Format("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-            }
-        }
-
-        [NotMapped]
-        public string TableRow
+        public string EntityAsTableRow
         {
             get
             {
