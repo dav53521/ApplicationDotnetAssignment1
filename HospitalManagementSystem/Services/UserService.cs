@@ -24,7 +24,8 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while (isLoggedIn)
             {
-                string menuTitle = $"{LoggedInUser.GetType().BaseType?.Name} Menu"; //We're getting the base type because I'm using lazy loading via proxies which means that a proxy that inherits the logged in user's role is used so I'm getting the user's role via the base class
+                //The reason why base type is being used to get the user's role is because I'm using proxy lazy loading which means that a proxy that inherits the user's role is being used which means that to get the user's actual role the base class needs to be used
+                string menuTitle = $"{LoggedInUser.GetType().BaseType?.Name} Menu";
                 Console.Clear();
                 ConsoleService.PrintInCenter(menuTitle);
                 Console.WriteLine($"Welcome to the DOTNET Hospital Management System {LoggedInUser.Name.ToString()}\n");
@@ -33,7 +34,7 @@ namespace ApplicationDotnetAssignment1.Services
                 PrintMenuOptions();
                 GetUserOptionChoice();
 
-                if(isLoggedIn) //This is so that we can automatically bring back the login screen while also reducing code as there's no need for almost every single method to have "ConsoleService.WaitForKeyPress()"
+                if(isLoggedIn) //This is so that we can automatically bring back the login screen while also reducing code as there's no need for almost every single method to have code to wait for a user's input to return to the main screen
                 {
                     Console.WriteLine();
                     Console.WriteLine("Please press any key to return back to the main menu");
