@@ -95,8 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
 
             Console.WriteLine($"You are booking a new appointment with {LoggedInUser.AssignedDoctor?.Name}");
-            Console.Write("Description of the appointment: ");
-            string description = Console.ReadLine()!;
+            string description = ConsoleService.GetUserInput("Description of the appointment: ");
 
             Appointment newAppointment = new Appointment()
             {

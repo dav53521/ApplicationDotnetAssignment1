@@ -18,7 +18,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string userInput = GetUserInput(userPrompt);
 
-                //The line below is being used to make sure that what the user inputs is both longer than 4 characters and is also a number as that's what a valid Id consists of
+                //The line below is being used to make sure that what the user inputs is both longer than 4 characters and is also an integer as a valid Id consists of 5 numbers
                 if (userInput.Length > 4 && int.TryParse(userInput, out int inputedNumber))
                 {
                     return inputedNumber;
@@ -38,7 +38,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string userInput = GetUserInput(userPrompt);
 
-                if (int.TryParse(userInput, out int inputedNumber)) //This line is being used to make sure that what the user inputs is a number and is also used to convert the input into a number so that if it is a number it can be returned immediately
+                if (int.TryParse(userInput, out int inputedNumber)) //This line is being used to make sure that what the user inputs is an integer and is also used to convert the input into an integer
                 {
                     return inputedNumber;
                 }
@@ -135,11 +135,8 @@ namespace ApplicationDotnetAssignment1.Services
 
         public string GetFullNameFromUser()
         {
-            Console.Write("First Name: ");
-            string firstName = Console.ReadLine()!;
-
-            Console.Write("Last Name: ");
-            string lastName = Console.ReadLine()!;
+            string firstName = GetUserInput("First Name: ");
+            string lastName = GetUserInput("Last Name: ");
 
             return firstName + lastName;
         }
@@ -147,24 +144,21 @@ namespace ApplicationDotnetAssignment1.Services
         public string GetAddressFromUser()
         {
             int streetNumber = GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
-
             string? streetName = GetUserInput("Street: ");
-
             string? city = GetUserInput("City: ");
-
             string? state = GetUserInput("State: ");
 
             return $"{streetNumber.ToString()} {streetName} {city} {state}";
         }
 
-        string GetUserInput(string userPrompt)
+        public string GetUserInput(string userPrompt)
         {
-            Console.Write(userPrompt);
             while(true)
             {
+                Console.Write(userPrompt);
                 string? userInput = Console.ReadLine();
 
-                if (userInput != null)
+                if (userInput != null &&  userInput != string.Empty)
                 {
                     return userInput;
                 }

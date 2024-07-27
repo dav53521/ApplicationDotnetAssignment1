@@ -18,5 +18,6 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
         public string GetEmailFromUser();
         public string GetFullNameFromUser();
         public string GetAddressFromUser();
+        public string GetUserInput(string userPrompt);
     }
 }
