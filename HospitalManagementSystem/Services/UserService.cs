@@ -1,10 +1,7 @@
-﻿using ApplicationDotnetAssignment1.ExtensionMethods;
-using ApplicationDotnetAssignment1.Models;
+﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
-using ApplicationDotnetAssignment1.UnitOfWork.Interface;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ApplicationDotnetAssignment1.Services
@@ -23,7 +20,7 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService = consoleService;
         }
 
-        public virtual void OpenMainMenu()
+        public void OpenMainMenu()
         {
             while (isLoggedIn)
             {
