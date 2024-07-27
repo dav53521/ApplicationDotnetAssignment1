@@ -32,7 +32,7 @@ namespace ApplicationDotnetAssignment1.Models
         }
 
         [NotMapped]
-        public string TableBody //This function is not mapped because this string doesn't need to be stored in the database as all it does is format the appointment body table string which means that it will be the same across all rows
+        public string TableRow //This function is not mapped because this string doesn't need to be stored in the database as all it does is format the appointment body table string which means that it will be the same across all rows
         {
             get
             {

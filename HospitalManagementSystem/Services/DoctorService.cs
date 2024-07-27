@@ -70,14 +70,7 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("Assigned Patients");
             List<Patient> assignedPatients = LoggedInUser.Patients.GetAllValidElements();
 
-            if(!assignedPatients.IsNullOrEmpty())
-            {
-                PrintEntitiesAsTable(assignedPatients);
-            }
-            else
-            {
-                Console.WriteLine("No assigned patients");
-            }
+            PrintEntitiesAsTable(assignedPatients, "No assigned patients");
         }
 
         void PrintAssignedAppointments()
@@ -86,14 +79,7 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("All Appointments");
             List<Appointment> assignedAppointments = LoggedInUser.AssignedAppointments.GetAllValidElements();
 
-            if(!assignedAppointments.IsNullOrEmpty())
-            {
-                PrintEntitiesAsTable(assignedAppointments);
-            }
-            else
-            {
-                Console.WriteLine("No appointments have been assigned");
-            }
+            PrintEntitiesAsTable(assignedAppointments, "No appointments have been assigned");
         }
 
         void PrintParticularPatientDetails()
@@ -104,13 +90,13 @@ namespace ApplicationDotnetAssignment1.Services
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
-            if(foundPatient == null)
+            if(foundPatient != null)
             {
-                Console.WriteLine("No Patient was found");
+                Console.WriteLine(foundPatient.ToString());
             }
             else
             {
-                Console.WriteLine(foundPatient.ToString());
+                Console.WriteLine("No Patient was found");
             }
         }
 
@@ -121,15 +107,8 @@ namespace ApplicationDotnetAssignment1.Services
 
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             List<Appointment> appointmentsToPrint = UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck).GetAllValidElements();
-
-            if(!appointmentsToPrint.IsNullOrEmpty())
-            {
-                PrintEntitiesAsTable(appointmentsToPrint);
-            }
-            else
-            {
-                Console.WriteLine("No appointments found");
-            }
+            
+            PrintEntitiesAsTable(appointmentsToPrint, "No appointments found");
         }
     }
 }

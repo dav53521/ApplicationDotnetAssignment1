@@ -77,7 +77,7 @@ namespace ApplicationDotnetAssignment1.Services
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
             ConsoleService.PrintInCenter("All Doctors");
             Console.WriteLine();
-            PrintEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System\n");
+            PrintEntitiesAsTable(allDoctors, "All doctors registered to DOTNET Hospital Management System", "No doctors have been registered");
         }
 
         void PrintSpecificDoctorDetails()
@@ -103,7 +103,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             List<Patient> patientsToPrint = UnitOfWork.PatientRepository.GetAllPatients().GetAllValidElements();
             ConsoleService.PrintInCenter("All Patients");
-            PrintEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System\n");
+            PrintEntitiesAsTable(patientsToPrint, "All patients registered to DOTNET Hospital Management System", "No patients have been registered");
         }
 
         void PrintSpecificPatientDetails()
@@ -164,7 +164,6 @@ namespace ApplicationDotnetAssignment1.Services
             };
 
             UnitOfWork.PatientRepository.AddPatient(patientToAdd);
-            UnitOfWork.Save();
 
             Console.WriteLine($"Patient {patientToAdd.Name} has been created with the Id {patientToAdd.Id}");
             ConsoleService.WaitForKeyPress();
@@ -210,7 +209,6 @@ namespace ApplicationDotnetAssignment1.Services
             };
 
             UnitOfWork.DoctorRepository.AddDoctor(userToAdd);
-            UnitOfWork.Save();
 
             Console.WriteLine($"Doctor {userToAdd.Name} has been created with the Id {userToAdd.Id}");
         }

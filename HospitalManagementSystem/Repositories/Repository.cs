@@ -41,16 +41,19 @@ namespace ApplicationDotnetAssignment1.Repositories
         protected void Add(T entityToAdd)
         {
             context.Set<T>().Add(entityToAdd);
+            context.SaveChanges();
         }
 
         protected void Remove(T entityToRemove)
         {
             context.Set<T>().Remove(entityToRemove);
+            context.SaveChanges();
         }
 
         protected void Update(T entityToUpdate)
         {
             context.Set<T>().Update(entityToUpdate);
+            context.SaveChanges();
         }
 
         protected void Save()

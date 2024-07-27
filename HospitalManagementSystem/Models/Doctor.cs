@@ -26,7 +26,7 @@ namespace ApplicationDotnetAssignment1.Models
         }
 
         [NotMapped]
-        public string TableBody
+        public string TableRow
         {
             get
             {

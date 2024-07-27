@@ -26,7 +26,7 @@ Assigned Doctor's Name: {AssignedDoctor?.Name ?? string.Empty}";
         }
 
         [NotMapped]
-        public string TableBody
+        public string TableRow
         {
             get
             {

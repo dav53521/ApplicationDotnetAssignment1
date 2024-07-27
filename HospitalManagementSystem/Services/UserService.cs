@@ -5,6 +5,7 @@ using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ApplicationDotnetAssignment1.Services
 {
@@ -60,28 +61,39 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(LoggedInUser.ToString());
         }
 
-        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities)
+        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> listOfEntities, string noEntitiesMessage)
         {
-            Console.WriteLine(); //This is being used to create a bit of space between the table and the header so the screen feels less crowded
-            Console.WriteLine(listOfEntities.FirstOrDefault()?.TableHeader);
-            ConsoleService.PrintSeperator();
-
-            foreach (IPrintableAsTable item in listOfEntities)
+            if (!listOfEntities.IsNullOrEmpty())
             {
-                Console.WriteLine(item.TableBody);
+                Console.WriteLine(listOfEntities.First().TableHeader); //This is because the table header is stored on the instance of an entity
+                foreach(IPrintableAsTable entity in listOfEntities)
+                {
+                    Console.WriteLine(entity.TableRow);
+                }
+            }
+            else
+            {
+                Console.WriteLine(noEntitiesMessage);
             }
         }
 
-        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> relatedEntitiesToPrint, string successMessage)
+        public void PrintEntitiesAsTable(IEnumerable<IPrintableAsTable> relatedEntitiesToPrint, string successMessage, string noEntitiesMessage)
         {
-            Console.WriteLine(successMessage);
-            Console.WriteLine(); //This is being used to create a bit of space between the table and the sucess message so the screen feels less crowded
-
-            Console.WriteLine(relatedEntitiesToPrint.FirstOrDefault()?.TableHeader);
-            ConsoleService.PrintSeperator();
-            foreach(IPrintableAsTable item in relatedEntitiesToPrint)
+            if(!relatedEntitiesToPrint.IsNullOrEmpty())
             {
-                Console.WriteLine(item.TableBody);
+                Console.WriteLine(successMessage);
+                Console.WriteLine(); //This is being used to create a bit of space between the table and the success message so the screen feels less condensed
+
+                Console.WriteLine(relatedEntitiesToPrint.FirstOrDefault()?.TableHeader);
+                ConsoleService.PrintSeperator();
+                foreach (IPrintableAsTable item in relatedEntitiesToPrint)
+                {
+                    Console.WriteLine(item.TableRow);
+                }
+            }
+            else
+            {
+                Console.WriteLine(noEntitiesMessage);
             }
         }
     }

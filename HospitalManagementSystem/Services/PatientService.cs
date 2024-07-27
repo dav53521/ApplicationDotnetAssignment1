@@ -86,23 +86,18 @@ namespace ApplicationDotnetAssignment1.Services
             List<Appointment> validAppointments = LoggedInUser.BookedAppointments.GetAllValidElements();
 
             ConsoleService.PrintInCenter("My Appointments");
-            if (!validAppointments.IsNullOrEmpty())
-            {
-                PrintEntitiesAsTable(validAppointments);
-            }
-            else
-            {
-                Console.WriteLine("No Appointments Booked");
-            }
+            PrintEntitiesAsTable(validAppointments, "No Appointments Booked");
         }
 
         void BookNewAppointment()
         {
             Console.Clear();
 
+            ConsoleService.PrintInCenter("Book New Appointment");
+
             if(LoggedInUser.AssignedDoctor == null)
             {
-                GetPatientDesiredDoctor();
+                GetTheDesiredDoctorForPatient();
             }
 
             Console.WriteLine($"You are booking a new appointment with {LoggedInUser.AssignedDoctor?.Name}");
@@ -112,26 +107,23 @@ namespace ApplicationDotnetAssignment1.Services
             Appointment newAppointment = new Appointment()
             {
                 DoctorId = LoggedInUser.AssignedDoctorId!.Value,
-                Doctor = LoggedInUser.AssignedDoctor,
                 PatientId = LoggedInUser.Id,
-                Patient = LoggedInUser,
                 Description = description
             };
 
-
-            _emailService.SendAppointmentConfirmationEmail(newAppointment);
             UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
-            UnitOfWork.Save();
+            Console.WriteLine("Saving Appointment");
+            _emailService.SendAppointmentConfirmationEmail(newAppointment);
             Console.WriteLine("The appointment has been booked successfully");
         }
 
-        void GetPatientDesiredDoctor()
+        void GetTheDesiredDoctorForPatient()
         {
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
             Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
             for(int i = 0; i < allDoctors.Count; i++)
             {
-                Console.WriteLine($"{i + 1} {((IPrintableAsTable)allDoctors[i]).TableBody}");
+                Console.WriteLine($"{i + 1} {((IPrintableAsTable)allDoctors[i]).TableRow}");
             }
 
             bool doctorSelected = false;
@@ -147,7 +139,6 @@ namespace ApplicationDotnetAssignment1.Services
                 {
                     Doctor choosenDoctor = allDoctors[selectedDoctor - 1];
                     LoggedInUser.AssignedDoctorId = choosenDoctor.Id;
-                    LoggedInUser.AssignedDoctor = choosenDoctor;
                     UnitOfWork.PatientRepository.UpdatePatient(LoggedInUser);
                     doctorSelected = true;
                 }
