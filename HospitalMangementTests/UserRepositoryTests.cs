@@ -23,6 +23,24 @@ namespace HospitalMangementTests
             Assert.That(result, Is.SupersetOf(patientData));
         }
 
+        [Test]
+        public void UserRepositoryCannotGetUsersThatAreNotInDB()
+        {
+            List<User> result = unitOfWork.UserRepository.GetAllUsers();
+
+            Doctor nonDbUser = new Doctor
+            {
+                Id = 11000,
+                Name = "Test test",
+                Email = "test@test.com",
+                Password = "123",
+                Address = "22 test sydney nsw 2000",
+                PhoneNumber = "1234567890",
+            };
+
+            Assert.That(result, Does.Not.Contain(nonDbUser));
+        }
+
 
         [SetUp]
         public void Setup()
@@ -36,6 +54,7 @@ namespace HospitalMangementTests
                     Email = "test@test.com",
                     Password = "123",
                     Address = "22 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
                 },
                 new Doctor
                 {
@@ -44,6 +63,7 @@ namespace HospitalMangementTests
                     Email = "test@test.com",
                     Password = "123",
                     Address = "22 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
                 }
             }.AsQueryable();
 
@@ -56,6 +76,7 @@ namespace HospitalMangementTests
                     Email = "test@test.com",
                     Password = "123",
                     Address = "21 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
                 },
                 new Patient
                 {
@@ -64,6 +85,7 @@ namespace HospitalMangementTests
                     Email = "test@test.com",
                     Password = "123",
                     Address = "21 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
                 }
             }.AsQueryable();
 
@@ -73,11 +95,20 @@ namespace HospitalMangementTests
                 {
                     Id = 10000,
                     Password = "123",
+                    Name = "Test test",
+                    Email = "test@test.com",
+                    Address = "21 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
+
                 },
                 new Admin
                 {
                     Id = 10001,
                     Password = "123",
+                    Name = "Test test",
+                    Email = "test@test.com",
+                    Address = "21 test sydney nsw 2000",
+                    PhoneNumber = "1234567890",
                 }
             }.AsQueryable();
 

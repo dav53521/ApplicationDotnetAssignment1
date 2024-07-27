@@ -27,6 +27,7 @@ namespace ApplicationDotnetAssignment1.Services
                 {
                     Console.WriteLine();
                     Console.WriteLine("Valid IDs are at least 5 characters long and only consist of numbers. Please Try Again");
+                    Console.WriteLine();
                 }
             }
         }
@@ -45,6 +46,7 @@ namespace ApplicationDotnetAssignment1.Services
                 {
                     Console.WriteLine();
                     Console.WriteLine(errorMessage);
+                    Console.WriteLine();
                 }
             }
         }
@@ -101,9 +103,9 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while(true)
             {
-                string inputtedPhoneNumber = GetUserInput("Please enter your phone number: 04");
+                string? inputtedPhoneNumber = GetUserInput("Please enter your phone number: 04");
 
-                if (inputtedPhoneNumber.Length == 8 && int.TryParse(inputtedPhoneNumber, out _))
+                if (inputtedPhoneNumber != null && inputtedPhoneNumber.Length == 8 && int.TryParse(inputtedPhoneNumber, out _))
                 {
                     return "04" + inputtedPhoneNumber;
                 }
@@ -146,11 +148,11 @@ namespace ApplicationDotnetAssignment1.Services
         {
             int streetNumber = GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
 
-            string streetName = GetUserInput("Street: ");
+            string? streetName = GetUserInput("Street: ");
 
-            string city = GetUserInput("City: ");
+            string? city = GetUserInput("City: ");
 
-            string state = GetUserInput("State: ");
+            string? state = GetUserInput("State: ");
 
             return $"{streetNumber.ToString()} {streetName} {city} {state}";
         }
@@ -158,7 +160,19 @@ namespace ApplicationDotnetAssignment1.Services
         string GetUserInput(string userPrompt)
         {
             Console.Write(userPrompt);
-            return Console.ReadLine()!;
+            while(true)
+            {
+                string? userInput = Console.ReadLine();
+
+                if (userInput != null)
+                {
+                    return userInput;
+                }
+                else
+                {
+                    Console.WriteLine("No input was recieved please try again");
+                }
+            }
         }
     }
 }

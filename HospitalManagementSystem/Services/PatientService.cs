@@ -27,7 +27,7 @@ namespace ApplicationDotnetAssignment1.Services
 2. List my doctor details
 3. List all appointments
 4. Book appointments
-5. Exit to Login
+5. Logout
 6. Exit System
 ");
         }

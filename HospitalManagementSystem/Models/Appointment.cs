@@ -14,7 +14,7 @@ namespace ApplicationDotnetAssignment1.Models
     public class Appointment: IPrintableAsTable
     {
         public int Id { get; set; }
-        public string Description { get; set; }
+        public required string Description { get; set; }
         [Required]
         public int PatientId { get; set; }
         public virtual Patient? Patient { get; set; }
