@@ -3,6 +3,7 @@ using ApplicationDotnetAssignment1.Services.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,11 @@ namespace ApplicationDotnetAssignment1.Services
     {
         public int GetIdFromUser(string userPrompt)
         {
-            do
+            while (true)
             {
-                Console.Write(userPrompt);
-                string userInput = Console.ReadLine()!;
+                string userInput = GetUserInput(userPrompt);
 
-                //The line below is being used to make sure that what the user inputs is a number
+                //The line below is being used to make sure that what the user inputs is both longer than 4 characters and is also a number as that's what a valid Id consists of
                 if (userInput.Length > 4 && int.TryParse(userInput, out int inputedNumber))
                 {
                     return inputedNumber;
@@ -28,17 +28,16 @@ namespace ApplicationDotnetAssignment1.Services
                     Console.WriteLine();
                     Console.WriteLine("Valid IDs are at least 5 characters long and only consist of numbers. Please Try Again");
                 }
-            } while (true);
+            }
         }
 
         public int GetNumberFromUser(string userPrompt, string errorMessage)
         {
-            do
+            while (true)
             {
-                Console.Write(userPrompt);
-                string userInput = Console.ReadLine()!;
+                string userInput = GetUserInput(userPrompt);
 
-                if (int.TryParse(userInput, out int inputedNumber)) //This line below is being used to make sure that what the user inputs is a number
+                if (int.TryParse(userInput, out int inputedNumber)) //This line is being used to make sure that what the user inputs is a number and is also used to convert the input into a number so that if it is a number it can be returned immediately
                 {
                     return inputedNumber;
                 }
@@ -47,10 +46,10 @@ namespace ApplicationDotnetAssignment1.Services
                     Console.WriteLine();
                     Console.WriteLine(errorMessage);
                 }
-            } while (true);
+            }
         }
 
-        public string GetMaskedInput(string userPrompt)
+        public string GetMaskedInputFromuser(string userPrompt)
         {
             Console.Write(userPrompt);
 
@@ -96,6 +95,70 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
+        }
+
+        public string GetPhoneNumberFromUser()
+        {
+            while(true)
+            {
+                string inputtedPhoneNumber = GetUserInput("Please enter your phone number: 04");
+
+                if (inputtedPhoneNumber.Length == 8 && int.TryParse(inputtedPhoneNumber, out _))
+                {
+                    return "04" + inputtedPhoneNumber;
+                }
+                else
+                {
+                    Console.WriteLine("Please input a valid phone number.");
+                }
+            }
+        }
+
+        public string GetEmailFromUser()
+        {
+            while(true)
+            {
+                string inputtedEmail = GetUserInput("Email: ");
+
+                if (inputtedEmail != null && new EmailAddressAttribute().IsValid(inputtedEmail))
+                {
+                    return inputtedEmail;
+                }
+                else
+                {
+                    Console.WriteLine("Please input a valid email.");
+                }
+            }
+        }
+
+        public string GetFullNameFromUser()
+        {
+            Console.Write("First Name: ");
+            string firstName = Console.ReadLine()!;
+
+            Console.Write("Last Name: ");
+            string lastName = Console.ReadLine()!;
+
+            return firstName + lastName;
+        }
+
+        public string GetAddressFromUser()
+        {
+            int streetNumber = GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
+
+            string streetName = GetUserInput("Street: ");
+
+            string city = GetUserInput("City: ");
+
+            string state = GetUserInput("State: ");
+
+            return $"{streetNumber.ToString()} {streetName} {city} {state}";
+        }
+
+        string GetUserInput(string userPrompt)
+        {
+            Console.Write(userPrompt);
+            return Console.ReadLine()!;
         }
     }
 }

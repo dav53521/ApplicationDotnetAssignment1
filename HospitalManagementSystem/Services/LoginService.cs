@@ -40,7 +40,7 @@ namespace ApplicationDotnetAssignment1.Services
             while (true)
             {
                 int userToFindId = _consoleService.GetIdFromUser("Id:");
-                string userToFindPassword = _consoleService.GetMaskedInput("Password:");
+                string userToFindPassword = _consoleService.GetMaskedInputFromuser("Password:");
 
                 User? foundUser = _unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
 

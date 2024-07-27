@@ -6,6 +6,7 @@ using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -130,43 +131,28 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("Add Patient");
             Console.WriteLine("Registering a new patient with the DOTNET Hospital Management System");
 
-            Console.Write("First Name: ");
-            string firstName = Console.ReadLine()!;
+            string fullName = ConsoleService.GetFullNameFromUser();
 
-            Console.Write("Last Name: ");
-            string lastName = Console.ReadLine()!;
+            string email = ConsoleService.GetEmailFromUser();
 
-            Console.Write("Email: ");
-            string email = Console.ReadLine()!;
+            string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
 
-            int phoneNumber = ConsoleService.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
+            string address = ConsoleService.GetAddressFromUser();
 
-            int streetNumber = ConsoleService.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
-
-            Console.Write("Street: ");
-            string street = Console.ReadLine()!;
-
-            Console.Write("City: ");
-            string city = Console.ReadLine()!;
-
-            Console.Write("State: ");
-            string state = Console.ReadLine()!;
-
-            string password = ConsoleService.GetMaskedInput("Password: ");
+            string password = ConsoleService.GetMaskedInputFromuser("Password: ");
 
             Patient patientToAdd = new Patient()
             {
-                Name = $"{firstName} {lastName}",
+                Name = fullName,
                 Password = password,
                 Email = email,
-                PhoneNumber = "04" + phoneNumber.ToString(),
-                Address = $"{streetNumber} {street} {city} {state}"
+                PhoneNumber = phoneNumber,
+                Address = address
             };
 
             UnitOfWork.PatientRepository.AddPatient(patientToAdd);
 
             Console.WriteLine($"Patient {patientToAdd.Name} has been created with the Id {patientToAdd.Id}");
-            ConsoleService.WaitForKeyPress();
         }
 
         void AddDoctor()
@@ -175,42 +161,28 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("Add Doctor");
             Console.WriteLine("Registering a new doctor with the DOTNET Hospital Management System");
 
-            Console.Write("First Name: ");
-            string firstName = Console.ReadLine()!;
+            string fullName = ConsoleService.GetFullNameFromUser();
 
-            Console.Write("Last Name: ");
-            string lastName = Console.ReadLine()!;
+            string email = ConsoleService.GetEmailFromUser();
 
-            Console.Write("Email: ");
-            string email = Console.ReadLine()!;
+            string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
 
-            int phoneNumber = ConsoleService.GetNumberFromUser("Phone: 04", "Please Only Enter Numbers");
+            string address = ConsoleService.GetAddressFromUser();
 
-            int streetNumber = ConsoleService.GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
+            string password = ConsoleService.GetMaskedInputFromuser("Password: ");
 
-            Console.Write("Street: ");
-            string street = Console.ReadLine()!;
-
-            Console.Write("City: ");
-            string city = Console.ReadLine()!;
-
-            Console.Write("State: ");
-            string state = Console.ReadLine()!;
-
-            string password = ConsoleService.GetMaskedInput("Password: ");
-
-            Doctor userToAdd = new Doctor()
+            Doctor doctorToAdd = new Doctor()
             {
-                Name = $"{firstName} {lastName}",
+                Name = fullName,
                 Password = password,
                 Email = email,
-                PhoneNumber = "04" + phoneNumber.ToString(),
-                Address = $"{streetNumber} {street} {city} {state}"
+                PhoneNumber = phoneNumber,
+                Address = address
             };
 
-            UnitOfWork.DoctorRepository.AddDoctor(userToAdd);
+            UnitOfWork.DoctorRepository.AddDoctor(doctorToAdd);
 
-            Console.WriteLine($"Doctor {userToAdd.Name} has been created with the Id {userToAdd.Id}");
+            Console.WriteLine($"Doctor {doctorToAdd.Name} has been created with the Id {doctorToAdd.Id}");
         }
     }
 }

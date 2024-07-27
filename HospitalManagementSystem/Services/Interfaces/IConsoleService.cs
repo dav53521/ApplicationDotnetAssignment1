@@ -10,9 +10,13 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
     {
         public int GetIdFromUser(string userPrompt);
         public int GetNumberFromUser(string userPrompt, string errorMessage);
-        public string GetMaskedInput(string userPrompt);
+        public string GetMaskedInputFromuser(string userPrompt);
         public void PrintSeperator();
         public void WaitForKeyPress();
         public void PrintInCenter(string thingToPrint);
+        public string GetPhoneNumberFromUser();
+        public string GetEmailFromUser();
+        public string GetFullNameFromUser();
+        public string GetAddressFromUser();
     }
 }
