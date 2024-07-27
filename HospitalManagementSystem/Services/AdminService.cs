@@ -2,6 +2,7 @@
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
 using ApplicationDotnetAssignment1.UnitOfWork;
+using System;
 
 namespace ApplicationDotnetAssignment1.Services
 {
@@ -80,7 +81,8 @@ namespace ApplicationDotnetAssignment1.Services
 
             if(foundDoctor != null)
             {
-                Console.WriteLine($"Details for {foundDoctor.Name}\n");
+                Console.WriteLine($"Details for {foundDoctor.Name}");
+                Console.WriteLine();
                 Console.WriteLine(foundDoctor.ToString());
             }
             else
@@ -106,7 +108,8 @@ namespace ApplicationDotnetAssignment1.Services
 
             if (foundPatient != null)
             {
-                Console.WriteLine($"Details for {foundPatient.Name}\n");
+                Console.WriteLine($"Details for {foundPatient.Name}");
+                Console.WriteLine();
                 Console.WriteLine(foundPatient.ToString());
             }
             else
