@@ -66,7 +66,8 @@ namespace ApplicationDotnetAssignment1.Services
             if (!listOfEntities.IsNullOrEmpty())
             {
                 Console.WriteLine(listOfEntities.First().TableHeader); //This is because the table header is stored on the instance of an entity
-                foreach(IPrintableAsTable entity in listOfEntities)
+                ConsoleService.PrintSeperator();
+                foreach (IPrintableAsTable entity in listOfEntities)
                 {
                     Console.WriteLine(entity.TableRow);
                 }
