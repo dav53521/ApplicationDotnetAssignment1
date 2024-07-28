@@ -95,7 +95,6 @@ namespace ApplicationDotnetAssignment1.Services
             int patientToFindId = ConsoleService.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(patientToFindId);
 
-
             PrintEntityDetails(foundPatient, $"Details for the patient with Id {patientToFindId}:", "No Patient with that ID was found");
         }
 

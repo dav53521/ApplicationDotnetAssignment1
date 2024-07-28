@@ -15,7 +15,7 @@ namespace ApplicationDotnetAssignment1.Services
             _emailService = new EmailService(unitOfWork); //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
         }
 
-        protected override void PrintMenuOptions()
+        protected override void PrintMenuOptions() //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
         {
             Console.WriteLine(@"1. List patient details
 2. List my doctor details
@@ -26,7 +26,7 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
-        protected override void GetUserOptionChoice()
+        protected override void GetUserOptionChoice() //This override is for the template method in the UserService as the Patient menu options are unique so the menu option selection logic must be defined here
         {
             int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "Please input a number as your option");
             while (true)
@@ -78,7 +78,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("Book New Appointment");
 
-            if(LoggedInUser.AssignedDoctor == null)
+            if(LoggedInUser.AssignedDoctorId == null) //If the assigned doctor of the logged in user is null then it is known that the user does not have an allocated doctor so the user must be prompted to assign themselves a doctor
             {
                 GetTheDesiredDoctorForPatient();
             }

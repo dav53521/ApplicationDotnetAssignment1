@@ -29,6 +29,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         User GetLoggedInUser()
         {
+            //This loop is used to keep the user in this function until a valid user has been gotten so that the user cannot enter the login screen until a valid login has been provided
             while (true)
             {
                 int userToFindId = _consoleService.GetIdFromUser("Id:");
@@ -50,7 +51,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         void OpenCorrectUserMenu(User loggedInUser)
         {
-            //This switch works GetType gets the compile time type of the object which means that the cast has no affect as it changes the type during the runtime
+            //This switch works because the pattern matching is done on the compile time type of the loggedInUser which means that the cast has no affect as that affects the run time type
             switch (loggedInUser)
             {
                 case Admin loggedInAdmin:
