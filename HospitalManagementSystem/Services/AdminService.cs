@@ -74,19 +74,10 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Doctor Details");
-            int doctorToFind = ConsoleService.GetIdFromUser("Plese enter the ID of the doctor who's detail you want to see: ");
-            Doctor? foundDoctor = UnitOfWork.DoctorRepository.GetDoctorById(doctorToFind);
+            int doctorToFindId = ConsoleService.GetIdFromUser("Plese enter the ID of the doctor who's detail you want to see: ");
+            Doctor? foundDoctor = UnitOfWork.DoctorRepository.GetDoctorById(doctorToFindId);
 
-            if(foundDoctor != null)
-            {
-                Console.WriteLine($"Details for {foundDoctor.Name}");
-                Console.WriteLine();
-                Console.WriteLine(foundDoctor.ToString());
-            }
-            else
-            {
-                Console.WriteLine("No Doctor with that ID was found");
-            }
+            PrintEntityDetails(foundDoctor, $"Details for the doctor with Id {doctorToFindId}:", "No Doctor with that ID was found");
         }
 
         void PrintAllPatients()
@@ -100,19 +91,11 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Doctor Details");
-            int patientToFind = ConsoleService.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
-            Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(patientToFind);
+            int patientToFindId = ConsoleService.GetIdFromUser("Plese enter the ID of the patient who's detail you want to see: ");
+            Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(patientToFindId);
 
-            if (foundPatient != null)
-            {
-                Console.WriteLine($"Details for {foundPatient.Name}");
-                Console.WriteLine();
-                Console.WriteLine(foundPatient.ToString());
-            }
-            else
-            {
-                Console.WriteLine("No Patient with that ID was found");
-            }
+
+            PrintEntityDetails(foundPatient, $"Details for the patient with Id {patientToFindId}:", "No Patient with that ID was found");
         }
 
         void AddPatient()
@@ -142,7 +125,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             UnitOfWork.PatientRepository.AddPatient(patientToAdd);
 
-            Console.WriteLine($"Patient {patientToAdd.Name} has been created with the Id {patientToAdd.Id}");
+            Console.WriteLine($"A new Patient with the name: {patientToAdd.Name} has been created with the Id: {patientToAdd.Id}");
         }
 
         void AddDoctor()
@@ -172,7 +155,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             UnitOfWork.DoctorRepository.AddDoctor(doctorToAdd);
 
-            Console.WriteLine($"Doctor {doctorToAdd.Name} has been created with the Id {doctorToAdd.Id}");
+            Console.WriteLine($"A new Doctor with the name: {doctorToAdd.Name} has been created with the Id: {doctorToAdd.Id}");
         }
     }
 }

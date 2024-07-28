@@ -61,10 +61,12 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine(LoggedInUser.ToString());
         }
 
-        protected void PrintEntity<TEntityToPrint>(TEntityToPrint? entityToPrint, string noEntityMessage)
+        protected void PrintEntityDetails<TEntityToPrint>(TEntityToPrint? entityToPrint, string successMessage, string noEntityMessage)
         {
             if(entityToPrint != null)
             {
+                Console.WriteLine(successMessage);
+                Console.WriteLine();
                 Console.WriteLine(entityToPrint.ToString());
             }
             else

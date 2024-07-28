@@ -19,7 +19,6 @@ namespace ApplicationDotnetAssignment1.Services
                 }
                 else
                 {
-                    Console.WriteLine();
                     Console.WriteLine("Valid IDs are at least 5 characters long and only consist of numbers. Please Try Again");
                     Console.WriteLine();
                 }
@@ -38,7 +37,6 @@ namespace ApplicationDotnetAssignment1.Services
                 }
                 else
                 {
-                    Console.WriteLine();
                     Console.WriteLine(errorMessage);
                     Console.WriteLine();
                 }
@@ -92,6 +90,7 @@ namespace ApplicationDotnetAssignment1.Services
                 else
                 {
                     Console.WriteLine("Please input a valid phone number.");
+                    Console.WriteLine();
                 }
             }
         }
@@ -109,6 +108,7 @@ namespace ApplicationDotnetAssignment1.Services
                 else
                 {
                     Console.WriteLine("Please input a valid email.");
+                    Console.WriteLine();
                 }
             }
         }
@@ -145,6 +145,7 @@ namespace ApplicationDotnetAssignment1.Services
                 else
                 {
                     Console.WriteLine("No input was recieved please try again");
+                    Console.WriteLine();
                 }
             }
         }

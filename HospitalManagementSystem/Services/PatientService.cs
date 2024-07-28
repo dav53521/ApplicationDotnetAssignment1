@@ -63,7 +63,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("My Doctor");
-            PrintEntity(LoggedInUser.AssignedDoctor, "You do not have an assigned doctor.");
+            PrintEntityDetails(LoggedInUser.AssignedDoctor, $"{LoggedInUser.Name}'s assigned doctor", "You do not have an assigned doctor.");
         }
 
         void PrintAllAppointments()

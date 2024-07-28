@@ -80,14 +80,7 @@ namespace ApplicationDotnetAssignment1.Services
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
             Patient? foundPatient = UnitOfWork.PatientRepository.GetPatientById(idOfUserToCheck);
 
-            if(foundPatient != null)
-            {
-                Console.WriteLine(foundPatient.ToString());
-            }
-            else
-            {
-                Console.WriteLine("No Patient was found");
-            }
+            PrintEntityDetails(foundPatient, $"Found patient with the Id of {idOfUserToCheck}:", "No Patient was found");
         }
 
         void PrintAppointmentsWithPatient()
