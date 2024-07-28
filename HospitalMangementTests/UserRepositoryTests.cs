@@ -14,6 +14,7 @@ namespace HospitalMangementTests
             List<User> result = _userRepository.GetAllUsers();
 
             Assert.That(result.Count(), Is.EqualTo(6));
+            //The below lines are asserting that all doctors, admins and patients are able to be gotten from the user repository
             Assert.That(result, Is.SupersetOf(_doctorData));
             Assert.That(result, Is.SupersetOf(_adminData));
             Assert.That(result, Is.SupersetOf(_patientData));
