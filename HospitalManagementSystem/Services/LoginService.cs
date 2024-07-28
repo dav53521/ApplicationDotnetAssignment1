@@ -19,8 +19,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             while (true) 
             {
-                Console.SetCursorPosition((Console.WindowWidth / 2) - 5, Console.CursorTop);
-                Console.WriteLine("Login");
+                _consoleService.PrintInCenter("Login");
                 Console.WriteLine("Please Enter Your Login Details Below:");
 
                 User foundUser = GetLoggedInUser();
