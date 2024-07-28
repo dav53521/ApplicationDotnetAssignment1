@@ -13,6 +13,36 @@ namespace HospitalMangementTests
 {
     public class DoctorRepositoryTests
     {
+        [Test]
+        public void TestGetAllDoctors()
+        {
+            List<Doctor> actual = _doctorRepository.GetAllDoctors();
+            Assert.That(actual, Is.EquivalentTo(_doctorData));
+        }
+
+        [Test]
+        public void TestDoesNotGetDoctorsThatAreNotInDbSet()
+        {
+            Doctor nonDbDoctor = new Doctor
+            {
+                Id = 10005,
+                Name = "Test5",
+                Email = "10005@test.com",
+                Password = "1235",
+                Address = "21 test sydney nsw 2000",
+                PhoneNumber = "1234567893",
+            };
+
+            List<Doctor> actual = _doctorRepository.GetAllDoctors();
+            Assert.That(actual, Does.Not.Contain(nonDbDoctor));
+        }
+
+        [Test]
+        public void TestGetAllDoctorsDoesNotGetUsersThatAreNotDoctors()
+        {
+            List<Doctor> actual = _doctorRepository.GetAllDoctors();
+            Assert.That(actual, Does.Not.Contains(_patientData));
+        }
 
         [SetUp]
         public void Setup()
@@ -57,18 +87,40 @@ namespace HospitalMangementTests
                 }
             }.AsQueryable();
 
+            _patientData = new List<Patient>
+            {
+                new Patient
+                {
+                    Id = 20000,
+                    Name = "Test3",
+                    Email = "20000@test.com",
+                    Password = "1233",
+                    Address = "20 test sydney nsw 2000",
+                    PhoneNumber = "1234567892",
+                }
+            }.AsQueryable();
+
             Mock<DbSet<Doctor>> mockDoctorSet = new Mock<DbSet<Doctor>>();
             mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Provider).Returns(_doctorData.Provider);
             mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Expression).Returns(_doctorData.Expression);
             mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.ElementType).Returns(_doctorData.ElementType);
             mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.GetEnumerator()).Returns(() => _doctorData.GetEnumerator());
 
+            Mock<DbSet<Patient>> mockPatientSet = new Mock<DbSet<Patient>>();
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Provider).Returns(_patientData.Provider);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Expression).Returns(_patientData.Expression);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.ElementType).Returns(_patientData.ElementType);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.GetEnumerator()).Returns(() => _patientData.GetEnumerator());
+
             Mock<HospitalSystemContext> mockContext = new Mock<HospitalSystemContext>();
+            mockContext.Setup(m => m.Set<Doctor>()).Returns(mockDoctorSet.Object);
+            mockContext.Setup(m => m.Set<Patient>()).Returns(mockPatientSet.Object);
 
             _doctorRepository = new HospitalSystemUnitOfWork(mockContext.Object).DoctorRepository;
         }
 
         IQueryable<Doctor> _doctorData;
+        IQueryable<Patient> _patientData;
         DoctorRepository _doctorRepository;
     }
 }

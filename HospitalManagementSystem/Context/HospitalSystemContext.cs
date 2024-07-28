@@ -18,10 +18,6 @@ namespace ApplicationDotnetAssignment1.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Appointment>()
-            .Property(a => a.Id)
-            .ValueGeneratedOnAdd();
-
             modelBuilder.Entity<Doctor>().HasMany(d => d.Patients).WithOne(p => p.AssignedDoctor).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
             modelBuilder.Entity<Patient>().HasOne(p => p.AssignedDoctor).WithMany(d => d.Patients).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);
             modelBuilder.Entity<Appointment>().HasOne(a => a.Patient).WithMany(p => p.BookedAppointments).HasForeignKey(p => p.PatientId).IsRequired(true);
@@ -30,7 +26,7 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Doctor>().HasData(
                 new Doctor
                 {
-                    Id = 11000,
+                    Id = 10000,
                     Name = "John Deer",
                     Password = "test",
                     PhoneNumber = "0491570156",
@@ -48,7 +44,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0491570157",
                     Email = "Test@email.com",
                     Address = "10 place street Sydney NSW",
-                    AssignedDoctorId = 11000
+                    AssignedDoctorId = 10000
                 },
                 new Patient
                 {
@@ -67,7 +63,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0491570158",
                     Email = "Test@email.com",
                     Address = "10 Nowhere Drive Sydney NSW",
-                    AssignedDoctorId = 11000
+                    AssignedDoctorId = 10000
                 },
                 new Patient
                 {
@@ -83,7 +79,7 @@ namespace ApplicationDotnetAssignment1.Contexts
             modelBuilder.Entity<Admin>().HasData(
                 new Admin
                 {
-                    Id = 10000,
+                    Id = 30000,
                     Name = "David Sorrell",
                     Email = "Test@Test.com",
                     PhoneNumber = "0491570110",
@@ -97,14 +93,14 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 10000,
                     PatientId = 20000,
-                    DoctorId = 11000,
+                    DoctorId = 10000,
                     Description = "Cold"
                 },
                 new Appointment
                 {
                     Id = 10001,
                     PatientId = 20002,
-                    DoctorId = 11000,
+                    DoctorId = 10000,
                     Description = "Covid-19"
                 }
             );
