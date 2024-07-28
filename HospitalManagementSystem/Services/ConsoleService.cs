@@ -73,7 +73,7 @@ namespace ApplicationDotnetAssignment1.Services
         public void PrintInCenter(string thingToPrint)
         {
             //The line below is moving the cursor so that it's in the top of the screen and will center the middle of the input text
-            Console.SetCursorPosition((Console.WindowWidth - thingToPrint.Length / 2), Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
             Console.WriteLine();
         }
