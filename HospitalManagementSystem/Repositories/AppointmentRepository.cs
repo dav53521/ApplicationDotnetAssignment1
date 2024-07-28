@@ -29,19 +29,19 @@ namespace ApplicationDotnetAssignment1.Repositories
             return base.Find(predicate).ToList();
         }
 
-        public void AddAppointment(Appointment patient)
+        public void AddAppointment(Appointment appointmentToAdd)
         {
-            base.Add(patient);
+            base.Add(appointmentToAdd);
         }
 
-        public void RemoveAppointment(Appointment patient)
+        public void RemoveAppointment(Appointment appointmentToRemove)
         {
-            base.Remove(patient);
+            base.Remove(appointmentToRemove);
         }
 
-        public void UpdateAppointment(Appointment patient)
+        public void UpdateAppointment(Appointment appointmentToUpdate)
         {
-            base.Update(patient);
+            base.Update(appointmentToUpdate);
         }
     }
 }

@@ -30,19 +30,19 @@ namespace ApplicationDotnetAssignment1.Repositories
             return base.Find(predicate);
         }
 
-        public void AddDoctor(Doctor patient)
+        public void AddDoctor(Doctor doctorToAdd)
         {
-            base.Add(patient);
+            base.Add(doctorToAdd);
         }
 
-        public void RemoveDoctor(Doctor patient)
+        public void RemoveDoctor(Doctor doctorToRemove)
         {
-            base.Remove(patient);
+            base.Remove(doctorToRemove);
         }
 
-        public void UpdateDoctor(Doctor patient)
+        public void UpdateDoctor(Doctor doctorToUpdate)
         {
-            base.Update(patient);
+            base.Update(doctorToUpdate);
         }
     }
 }
