@@ -33,9 +33,9 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 11000,
                     Name = "John Deer",
                     Password = "test",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570156",
                     Email = "Test@email.com",
-                    Address = "12 A real street ave"
+                    Address = "12 Ultimo Road Sydney NSW"
                 }
             );
 
@@ -45,9 +45,9 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 20000,
                     Name = "Jill Deer",
                     Password = "123",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570157",
                     Email = "Test@email.com",
-                    Address = "10 A real street ave",
+                    Address = "10 place street Sydney NSW",
                     AssignedDoctorId = 11000
                 },
                 new Patient
@@ -55,18 +55,18 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 20001,
                     Name = "Jane Deer",
                     Password = "test",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570006",
                     Email = "Test@email.com",
-                    Address = "11 A real street ave",
+                    Address = "11 A real street ave Melbourne VIC",
                 },
                 new Patient
                 {
                     Id = 20002,
                     Name = "Person Person",
                     Password = "123",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570158",
                     Email = "Test@email.com",
-                    Address = "11 A real street ave",
+                    Address = "10 The Road to Nowhere Drive Sydney NSW",
                     AssignedDoctorId = 11000
                 },
                 new Patient
@@ -74,9 +74,9 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 20003,
                     Name = "David Sorrell",
                     Password = "123",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570159",
                     Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave",
+                    Address = "11 A real street ave Sydney NSW",
                 }
             );
 
@@ -86,9 +86,9 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 10000,
                     Name = "David Sorrell",
                     Email = "Test@Test.com",
-                    PhoneNumber = "0411111111",
+                    PhoneNumber = "0491570110",
                     Password = "123",
-                    Address = "21 Test Test"
+                    Address = "21 Test Test Drive Sydney NSW"
                 }
             );
 
@@ -105,7 +105,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Id = 10001,
                     PatientId = 20002,
                     DoctorId = 11000,
-                    Description = "Test"
+                    Description = "Covid-19"
                 }
             );
         }
