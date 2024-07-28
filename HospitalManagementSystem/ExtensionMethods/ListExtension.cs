@@ -27,7 +27,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!validPatientsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-40} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-                PrintEntities(validPatientsToPrint!); //This cannot be null as we guard against it in the if statement 
+                PrintEntities(validPatientsToPrint!); //This cannot be null as we guard against nulls in the if statement 
             }
             else
             {
@@ -42,7 +42,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!validDoctorsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-30} | {2,-40} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-                PrintEntities(validDoctorsToPrint!); //This cannot be null as we guard against it in the if statement
+                PrintEntities(validDoctorsToPrint!); //This cannot be null as we guard against nulls in the if statement
             }
             else
             {
@@ -57,7 +57,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!appointments.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-                PrintEntities(validAppointsToPrint);
+                PrintEntities(validAppointsToPrint); //This cannot be null as we guard against nulls in the if statement
             }
             else
             {
@@ -74,7 +74,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintSeperator()
+        static void PrintSeperator()
         {
             for(int i = 0; i < Console.WindowWidth; i++)
             {
