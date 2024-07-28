@@ -14,7 +14,7 @@ namespace ApplicationDotnetAssignment1.Models
             get
             {
                 // By using string formatting we're able to make it so that the elements are formatted in a way that makes them all line up so we're able to print doctors in a table like format as all columns will be of the same length
-                return string.Format("{0,-20} | {1,-30} | {2,-30} | {3,-10}", Name, Email, Address, PhoneNumber);
+                return string.Format("{0,-20} | {1,-30} | {2,-40} | {3,-10}", Name, Email, Address, PhoneNumber);
             }
         }
     }

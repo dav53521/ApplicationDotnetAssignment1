@@ -57,7 +57,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "test",
                     PhoneNumber = "0491570006",
                     Email = "Test@email.com",
-                    Address = "11 A real street ave Melbourne VIC",
+                    Address = "11 real street Melbourne VIC",
                 },
                 new Patient
                 {
@@ -66,7 +66,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                     Password = "123",
                     PhoneNumber = "0491570158",
                     Email = "Test@email.com",
-                    Address = "10 The Road to Nowhere Drive Sydney NSW",
+                    Address = "10 Nowhere Drive Sydney NSW",
                     AssignedDoctorId = 11000
                 },
                 new Patient

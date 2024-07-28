@@ -26,7 +26,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 
             if (!validPatientsToPrint.IsNullOrEmpty())
             {
-                Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
+                Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-40} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
                 PrintEntities(validPatientsToPrint!); //This cannot be null as we guard against it in the if statement 
             }
             else
@@ -41,7 +41,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 
             if (!validDoctorsToPrint.IsNullOrEmpty())
             {
-                Console.WriteLine("{0,-20} | {1,-30} | {2,-30} | {3,-10}", "Name", "Email Address", "Address", "Phone");
+                Console.WriteLine("{0,-20} | {1,-30} | {2,-40} | {3,-10}", "Name", "Email Address", "Address", "Phone");
                 PrintEntities(validDoctorsToPrint!); //This cannot be null as we guard against it in the if statement
             }
             else

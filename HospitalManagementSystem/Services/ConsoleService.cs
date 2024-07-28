@@ -76,6 +76,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.SetCursorPosition((Console.WindowWidth / 2) - thingToPrint.Length, Console.CursorTop);
             Console.WriteLine(thingToPrint);
+            Console.WriteLine();
         }
 
         public string GetPhoneNumberFromUser()

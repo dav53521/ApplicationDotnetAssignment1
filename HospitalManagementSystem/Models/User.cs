@@ -13,7 +13,7 @@ namespace ApplicationDotnetAssignment1.Models
         public required string Email { get; set; }
         [StringLength(10)]
         public required string PhoneNumber { get; set; }
-        [MaxLength(30)]
+        [MaxLength(40)]
         public required string Address { get; set; }
 
         public override string ToString()
