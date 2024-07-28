@@ -6,15 +6,15 @@ namespace ApplicationDotnetAssignment1.Models
     public class User
     {
         public int Id { get; set; }
-        public required string Password { get; set; }
+        public string Password { get; set; }
         [MaxLength(30)]
-        public required string Name { get; set; }
+        public string Name { get; set; }
         [MaxLength(30)]
-        public required string Email { get; set; }
+        public string Email { get; set; }
         [StringLength(10)]
-        public required string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         [MaxLength(40)]
-        public required string Address { get; set; }
+        public string Address { get; set; }
 
         public override string ToString()
         {

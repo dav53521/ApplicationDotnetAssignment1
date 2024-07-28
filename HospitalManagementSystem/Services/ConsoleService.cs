@@ -138,7 +138,7 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.Write(userPrompt);
                 string? userInput = Console.ReadLine();
 
-                if (userInput != null &&  userInput != string.Empty)
+                if (userInput != null && userInput != string.Empty) //This makes sure that the user actually inputs something and 
                 {
                     return userInput;
                 }
