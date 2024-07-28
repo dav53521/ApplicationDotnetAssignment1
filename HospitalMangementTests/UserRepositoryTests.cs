@@ -22,7 +22,7 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCannotGetUsersThatAreNotInContext()
         {
-            //Creating a user that is not stored within a dbset which mimics the data not being in the database 
+            //Creating a set of users that are not contained within a dbset which mimics the data not being in the database 
             Doctor nonDbDoctor = new Doctor
             {
                 Id = 10003,
@@ -63,6 +63,7 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCanGetUsersById()
         {
+            //Getting three different types to ensure that all types of users can be gotten
             User? foundDoctor = _userRepository.GetUserById(10000);
             User? foundPatient = _userRepository.GetUserById(20000);
             User? foundAdmin = _userRepository.GetUserById(30000);
@@ -75,6 +76,7 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCannotGetUsersByInvalidId()
         {
+            //Getting users that do not exist within the dbsets which mimic invalid Ids
             User? invalidUser1 = _userRepository.GetUserById(10003);
             User? invalidUser2 = _userRepository.GetUserById(20003);
             User? invalidUser3 = _userRepository.GetUserById(30003);
@@ -87,6 +89,7 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCanFindUsersByPredicate()
         {
+            //getting a collection of users that all meet a certain condition
             List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000").OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
 
             Assert.That(actual.Count, Is.EqualTo(3));
@@ -98,11 +101,17 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCannotFindUsersThatDoNotMeetThePredicate()
         {
+            //getting a collection of users that all meet a certain condition and filtering out some of the users using a predicate with tighter conditions
             List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000" && (u.Id == 10001 || u.Id == 20001)).OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
+            User invalidUser = _adminData.Where(a => a.Id == 30001).First();
 
             Assert.That(actual.Count, Is.EqualTo(2));
+            AssertThatUserCredentalsAreCorrect(actual[0], 10001, "Test2", "1232", "10001@test.com", "21 test sydney nsw 2000", "1234567891");
+            AssertThatUserCredentalsAreCorrect(actual[1], 20001, "Test4", "1234", "20001@test.com", "21 test sydney nsw 2000", "1234567893");
+            Assert.That(actual, Does.Not.Contain(invalidUser));
         }
 
+        //The below method is a helper method for asserting whether a user has been gotten correctly as there's no point in repeating the same assertions multiple times
         void AssertThatUserCredentalsAreCorrect(User? userToCheck, int expectedId, string expectedName, string expectedPassword, string expectedEmail, string expectedAddress, string expectedPhoneNumber)
         {
             Assert.That(userToCheck, Is.Not.Null);
