@@ -101,7 +101,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         void GetTheDesiredDoctorForPatient()
         {
-            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().GetAllValidElements();
+            List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().Where(d => d != null).ToList();
             Console.WriteLine("You are not registered to a doctor! Please choose which doctor you would like to register with");
             for(int i = 0; i < allDoctors.Count; i++)
             {
@@ -111,6 +111,7 @@ namespace ApplicationDotnetAssignment1.Services
             bool doctorSelected = false;
             while(!doctorSelected)
             {
+                Console.WriteLine();
                 int selectedDoctor = ConsoleService.GetNumberFromUser("Please choose a doctor: ", "Please only enter a number");
 
                 if(selectedDoctor > allDoctors.Count)

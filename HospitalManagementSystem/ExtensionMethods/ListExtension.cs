@@ -6,20 +6,6 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 {
     public static class ListExtension
     {
-        public static List<T> GetAllValidElements<T>(this List<T> listToCheck)
-        {
-            if (!listToCheck.IsNullOrEmpty())
-            {
-                List<T> validElements = listToCheck.Where(e => e != null).ToList();
-
-                return validElements;
-            }
-            else
-            {
-                return listToCheck ?? new List<T>();
-            }
-        }
-
         public static void PrintPatientsAsTable(this List<Patient> patients, string noPatientsMessage)
         {
             List<Patient>? validPatientsToPrint = patients?.Where(p => p != null).ToList();
@@ -65,7 +51,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints)
+        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints) //This is where the table rows are printed out as this is shared logic amongst all the methods so moving it here helps enforce DRY
         {
             PrintSeperator();
             foreach (IPrintableAsTable entity in entityToPrints)
@@ -74,7 +60,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        static void PrintSeperator()
+        static void PrintSeperator() //This is in its own method because it helps enforce single responsibility as the methods that print the entities shouldn't be concerned with printing a seperator as that's different logic in my opinion
         {
             for(int i = 0; i < Console.WindowWidth; i++)
             {
