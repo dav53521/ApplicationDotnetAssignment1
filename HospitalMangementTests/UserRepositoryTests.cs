@@ -22,7 +22,8 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCannotGetUsersThatAreNotInContext()
         {
-            Doctor nonDbUser = new Doctor
+            //Creating a user that is not stored within a dbset which mimics the data not being in the database 
+            Doctor nonDbDoctor = new Doctor
             {
                 Id = 10003,
                 Name = "Test test",
@@ -32,9 +33,31 @@ namespace HospitalMangementTests
                 PhoneNumber = "1234567890",
             };
 
+            Patient nonDbPatient = new Patient
+            {
+                Id = 20004,
+                Name = "Test test",
+                Email = "test@test.com",
+                Password = "123",
+                Address = "22 test sydney nsw 2000",
+                PhoneNumber = "1234567890",
+            };
+
+            Admin nonDbAdmin = new Admin
+            {
+                Id = 30004,
+                Name = "Test test",
+                Email = "test@test.com",
+                Password = "123",
+                Address = "22 test sydney nsw 2000",
+                PhoneNumber = "1234567890",
+            };
+
             List<User> result = _userRepository.GetAllUsers();
 
-            Assert.That(result, Does.Not.Contain(nonDbUser));
+            Assert.That(result, Does.Not.Contain(nonDbDoctor));
+            Assert.That(result, Does.Not.Contain(nonDbPatient));
+            Assert.That(result, Does.Not.Contain(nonDbAdmin));
         }
 
         [Test]
@@ -46,7 +69,7 @@ namespace HospitalMangementTests
 
             AssertThatUserCredentalsAreCorrect(foundDoctor, 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890");
             AssertThatUserCredentalsAreCorrect(foundPatient, 20000, "Test3", "1233", "20000@test.com", "20 test sydney nsw 2000", "1234567892");
-            AssertThatUserCredentalsAreCorrect(foundAdmin, 30000, "Test5", "1234", "30000@test.com", "20 test sydney nsw 2000", "1234567894");
+            AssertThatUserCredentalsAreCorrect(foundAdmin, 30000, "Test5", "1235", "30000@test.com", "20 test sydney nsw 2000", "1234567894");
         }
 
         [Test]
@@ -64,9 +87,20 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCanFindUsersByPredicate()
         {
-            List<User> actual = _userRepository.FindUsers(u => u.Address == "20 test sydney nsw 2000");
+            List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000").OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
 
             Assert.That(actual.Count, Is.EqualTo(3));
+            AssertThatUserCredentalsAreCorrect(actual[0], 10001, "Test2", "1232", "10001@test.com", "21 test sydney nsw 2000", "1234567891");
+            AssertThatUserCredentalsAreCorrect(actual[1], 20001, "Test4", "1234", "20001@test.com", "21 test sydney nsw 2000", "1234567893");
+            AssertThatUserCredentalsAreCorrect(actual[2], 30001, "Test6", "1236", "30001@test.com", "21 test sydney nsw 2000", "1234567895");
+        }
+
+        [Test]
+        public void TestUserRepositoryCannotFindUsersThatDoNotMeetThePredicate()
+        {
+            List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000" && (u.Id == 10001 || u.Id == 20001)).OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
+
+            Assert.That(actual.Count, Is.EqualTo(2));
         }
 
         void AssertThatUserCredentalsAreCorrect(User? userToCheck, int expectedId, string expectedName, string expectedPassword, string expectedEmail, string expectedAddress, string expectedPhoneNumber)
@@ -80,6 +114,7 @@ namespace HospitalMangementTests
         }
 
 
+        //This setup is being used so that the arrangement of the tests are contained in one function as all of the tests above will be using the data from this setup
         [SetUp]
         public void Setup()
         {
@@ -121,7 +156,7 @@ namespace HospitalMangementTests
                     Id = 20001,
                     Name = "Test4",
                     Email = "20001@test.com",
-                    Password = "123",
+                    Password = "1234",
                     Address = "21 test sydney nsw 2000",
                     PhoneNumber = "1234567893",
                 }
@@ -132,7 +167,7 @@ namespace HospitalMangementTests
                 new Admin
                 {
                     Id = 30000,
-                    Password = "1234",
+                    Password = "1235",
                     Name = "Test5",
                     Email = "30000@test.com",
                     Address = "20 test sydney nsw 2000",
@@ -142,9 +177,9 @@ namespace HospitalMangementTests
                 new Admin
                 {
                     Id = 30001,
-                    Password = "1235",
+                    Password = "1236",
                     Name = "Test6",
-                    Email = "10001@test.com",
+                    Email = "30001@test.com",
                     Address = "21 test sydney nsw 2000",
                     PhoneNumber = "1234567895",
                 }
