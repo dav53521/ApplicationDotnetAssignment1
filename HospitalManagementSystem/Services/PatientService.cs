@@ -12,7 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public PatientService(Patient loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
-            _emailService = new EmailService(unitOfWork);
+            _emailService = new EmailService(unitOfWork); //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
         }
 
         protected override void PrintMenuOptions()
@@ -83,7 +83,7 @@ namespace ApplicationDotnetAssignment1.Services
                 GetTheDesiredDoctorForPatient();
             }
 
-            Console.WriteLine($"You are booking a new appointment with {LoggedInUser.AssignedDoctor?.Name}");
+            Console.WriteLine($"You are booking a new appointment with the doctor: {LoggedInUser.AssignedDoctor!.Name}");
             string description = ConsoleService.GetUserInput("Description of the appointment: ");
 
             Appointment newAppointment = new Appointment()

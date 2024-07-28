@@ -20,7 +20,7 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService = consoleService;
         }
 
-        //This method follows the template method design pattern as each user role follows a similar pattern for their main menu however, there are a few slight variations so by using this pattern the repeated code is shared whie the variations are defined by the child class
+        //This method follows the template method design pattern as each user role follows a similar design for their main menu however, there are a few slight variations so by using this pattern the repeated code is shared whie the variations are defined by the child class, which reduces the needed amount of code
         public void OpenMainMenu()
         {
             while (IsLoggedIn)

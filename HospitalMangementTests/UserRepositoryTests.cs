@@ -13,7 +13,7 @@ namespace HospitalMangementTests
     public class UserRepositoryTests
     {
         [Test]
-        public void UserRepositoryCanGetAllUsers()
+        public void UserRepositoryCanGetAllUsersInContext()
         {
             List<User> result = unitOfWork.UserRepository.GetAllUsers();
 
@@ -24,10 +24,8 @@ namespace HospitalMangementTests
         }
 
         [Test]
-        public void UserRepositoryCannotGetUsersThatAreNotInDB()
+        public void UserRepositoryCannotGetUsersThatAreNotInContext()
         {
-            List<User> result = unitOfWork.UserRepository.GetAllUsers();
-
             Doctor nonDbUser = new Doctor
             {
                 Id = 11000,
@@ -38,7 +36,30 @@ namespace HospitalMangementTests
                 PhoneNumber = "1234567890",
             };
 
+            List<User> result = unitOfWork.UserRepository.GetAllUsers();
+
             Assert.That(result, Does.Not.Contain(nonDbUser));
+        }
+
+        [Test]
+        public void UserRepositoryCanFindUsersById()
+        {
+            User? foundDoctor = unitOfWork.UserRepository.GetUserById(11000);
+            User? foundPatient = unitOfWork.UserRepository.GetUserById(20000);
+            User? foundAdmin = unitOfWork.UserRepository.GetUserById(10000);
+
+            AssertThatUserCredentalsAreCorrect(foundDoctor, 11000, "Test1", "1231", "11000@test.com", "20 test sydney nsw 2000", "1234567890");
+            //AssertThatUserCredentalsAreCorrect(foundPatient, 20000, "Test3", "1233", "20000@test.com");
+        }
+
+        void AssertThatUserCredentalsAreCorrect(User? userToCheck, int expectedId, string expectedName, string expectedPassword, string expectedEmail, string expectedAddress, string expectedPhoneNumber)
+        {
+            Assert.That(userToCheck, Is.Not.Null);
+            Assert.That(userToCheck.Id, Is.EqualTo(expectedId));
+            Assert.That(userToCheck.Name, Is.EqualTo(expectedName));
+            Assert.That(userToCheck.Password, Is.EqualTo(expectedPassword));
+            Assert.That(userToCheck.Address, Is.EqualTo(expectedAddress));
+            Assert.That(userToCheck.PhoneNumber, Is.EqualTo(expectedPhoneNumber));
         }
 
 
@@ -50,20 +71,20 @@ namespace HospitalMangementTests
                 new Doctor
                 {
                     Id = 11000,
-                    Name = "Test test",
-                    Email = "test@test.com",
-                    Password = "123",
-                    Address = "22 test sydney nsw 2000",
+                    Name = "Test1",
+                    Email = "11000@test.com",
+                    Password = "1231",
+                    Address = "20 test sydney nsw 2000",
                     PhoneNumber = "1234567890",
                 },
                 new Doctor
                 {
                     Id = 11001,
-                    Name = "Test test",
-                    Email = "test@test.com",
-                    Password = "123",
-                    Address = "22 test sydney nsw 2000",
-                    PhoneNumber = "1234567890",
+                    Name = "Test2",
+                    Email = "11001@test.com",
+                    Password = "1232",
+                    Address = "21 test sydney nsw 2000",
+                    PhoneNumber = "1234567891",
                 }
             }.AsQueryable();
 
@@ -72,20 +93,20 @@ namespace HospitalMangementTests
                 new Patient
                 {
                     Id = 20000,
-                    Name = "Test test",
-                    Email = "test@test.com",
-                    Password = "123",
-                    Address = "21 test sydney nsw 2000",
-                    PhoneNumber = "1234567890",
+                    Name = "Test3",
+                    Email = "20000@test.com",
+                    Password = "1233",
+                    Address = "22 test sydney nsw 2000",
+                    PhoneNumber = "1234567892",
                 },
                 new Patient
                 {
                     Id = 20001,
-                    Name = "Test test",
-                    Email = "test@test.com",
+                    Name = "test4",
+                    Email = "20001@test.com",
                     Password = "123",
-                    Address = "21 test sydney nsw 2000",
-                    PhoneNumber = "1234567890",
+                    Address = "23 test sydney nsw 2000",
+                    PhoneNumber = "1234567893",
                 }
             }.AsQueryable();
 
@@ -94,21 +115,21 @@ namespace HospitalMangementTests
                 new Admin
                 {
                     Id = 10000,
-                    Password = "123",
-                    Name = "Test test",
-                    Email = "test@test.com",
-                    Address = "21 test sydney nsw 2000",
-                    PhoneNumber = "1234567890",
+                    Password = "1234",
+                    Name = "test5",
+                    Email = "10000@test.com",
+                    Address = "24 test sydney nsw 2000",
+                    PhoneNumber = "1234567894",
 
                 },
                 new Admin
                 {
                     Id = 10001,
-                    Password = "123",
-                    Name = "Test test",
-                    Email = "test@test.com",
-                    Address = "21 test sydney nsw 2000",
-                    PhoneNumber = "1234567890",
+                    Password = "1235",
+                    Name = "test6",
+                    Email = "10001@test.com",
+                    Address = "25 test sydney nsw 2000",
+                    PhoneNumber = "1234567895",
                 }
             }.AsQueryable();
 
