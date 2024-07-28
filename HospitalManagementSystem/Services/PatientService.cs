@@ -2,7 +2,7 @@
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Models.Interface;
 using ApplicationDotnetAssignment1.Services.Interfaces;
-using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 
 namespace ApplicationDotnetAssignment1.Services
 {
@@ -10,7 +10,7 @@ namespace ApplicationDotnetAssignment1.Services
     {
         IEmailService _emailService;
 
-        public PatientService(Patient loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
+        public PatientService(Patient loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
             _emailService = new EmailService(unitOfWork);
         }
@@ -46,7 +46,7 @@ namespace ApplicationDotnetAssignment1.Services
                         BookNewAppointment();
                         return;
                     case 5:
-                        isLoggedIn = false;
+                        IsLoggedIn = false;
                         return;
                     case 6:
                         Exit();

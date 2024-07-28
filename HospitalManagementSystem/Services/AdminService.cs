@@ -1,13 +1,14 @@
 ﻿using ApplicationDotnetAssignment1.ExtensionMethods;
 using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
-using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 
 namespace ApplicationDotnetAssignment1.Services
 {
     public class AdminService : UserService<Admin>
     {
-        public AdminService(Admin loggedInUser, HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
+        //This constructor is being used to pass up the logged in user and the necessary depndency inections into it's parent class which is the user service so they can be stored in the user service's fields
+        public AdminService(Admin loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
         }
 
@@ -50,7 +51,7 @@ namespace ApplicationDotnetAssignment1.Services
                         AddPatient();
                         return;
                     case 7:
-                        isLoggedIn = false;
+                        IsLoggedIn = false;
                         return;
                     case 8:
                         Exit();

@@ -1,6 +1,6 @@
 ﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
-using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 using System.Net;
 using System.Net.Mail;
 
@@ -8,9 +8,9 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class EmailService : IEmailService
     {
-        HospitalSystemUnitOfWork _unitOfWork;
+        IHospitalSystemUnitOfWork _unitOfWork;
 
-        public EmailService(HospitalSystemUnitOfWork unitOfWork)
+        public EmailService(IHospitalSystemUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

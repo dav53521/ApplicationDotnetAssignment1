@@ -1,15 +1,15 @@
 ﻿using ApplicationDotnetAssignment1.Models;
 using ApplicationDotnetAssignment1.Services.Interfaces;
-using ApplicationDotnetAssignment1.UnitOfWork;
+using ApplicationDotnetAssignment1.UnitOfWork.Interface;
 
 namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService : ILoginService
     {
-        HospitalSystemUnitOfWork _unitOfWork;
+        IHospitalSystemUnitOfWork _unitOfWork;
         IConsoleService _consoleService;
 
-        public LoginService(HospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
+        public LoginService(IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             _unitOfWork = unitOfWork;
             _consoleService = consoleService;
