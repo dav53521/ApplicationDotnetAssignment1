@@ -18,7 +18,7 @@ namespace HospitalMangementTests
         public void TestGetAllDoctors()
         {
             List<Doctor> actual = _DoctorRepository.GetAllDoctors();
-            Assert.That(actual, Is.EquivalentTo(_DoctorData)); //Asserting that both containers have the same data
+            Assert.That(actual, Is.EquivalentTo(_DoctorData)); //Asserting that both collections have the same data
         }
 
         [Test]
@@ -65,6 +65,7 @@ namespace HospitalMangementTests
         {
             List<Doctor> actual = _DoctorRepository.FindDoctors(d => d.Address == "20 test sydney nsw 2000").OrderBy(d => d.Id).ToList(); //Ordering the data so that there's no randomness in how the data is gotten
             Assert.That(actual.Count, Is.EqualTo(2));
+            //Asserting that both doctors with the address have been found
             AssertThatDoctorDetailsAreCorrect(actual[0], 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890");
             AssertThatDoctorDetailsAreCorrect(actual[1], 10002, "Test3", "1233", "10002@test.com", "20 test sydney nsw 2000", "1234567892");
         }
@@ -103,6 +104,7 @@ namespace HospitalMangementTests
 
             _DoctorRepository.AddDoctor(doctorToAdd);
             
+            //Asserting that the doctor has been added and saved after the AddDoctor function has been called
             _MockDoctorSet.Verify(m => m.Add(It.IsAny<Doctor>()), Times.Once());
             _MockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
