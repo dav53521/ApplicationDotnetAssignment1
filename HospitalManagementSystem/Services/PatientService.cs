@@ -70,7 +70,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("My Appointments");
-            LoggedInUser.BookedAppointments.PrintTableOfEntities("No Appointments Booked");
+            LoggedInUser.BookedAppointments.PrintEntitiesAsTable("No Appointments Booked");
         }
 
         void BookNewAppointment()

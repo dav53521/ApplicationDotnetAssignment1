@@ -6,7 +6,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 {
     public static class ListExtension
     {
-        public static void PrintTableOfEntities(this List<Patient> patients, string noPatientsMessage)
+        public static void PrintEntitiesAsTable(this List<Patient> patients, string noPatientsMessage)
         {
             List<Patient>? validPatientsToPrint = patients?.Where(p => p != null).ToList();
 
@@ -21,7 +21,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintTableOfEntities(this List<Doctor> doctors, string noDoctorsMessage)
+        public static void PrintEntitiesAsTable(this List<Doctor> doctors, string noDoctorsMessage)
         {
             List<Doctor>? validDoctorsToPrint = doctors?.Where(d => d != null).ToList();
 
@@ -36,7 +36,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintTableOfEntities(this List<Appointment> appointments, string noAppointmentsMessage)
+        public static void PrintEntitiesAsTable(this List<Appointment> appointments, string noAppointmentsMessage)
         {
             List<Appointment> validAppointsToPrint = appointments.Where(a => a != null).ToList();
 

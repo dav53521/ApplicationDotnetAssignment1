@@ -68,7 +68,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("All Doctors");
             Console.WriteLine();
-            UnitOfWork.DoctorRepository.GetAllDoctors().PrintTableOfEntities("No doctors registered");
+            UnitOfWork.DoctorRepository.GetAllDoctors().PrintEntitiesAsTable("No doctors registered");
         }
 
         void PrintSpecificDoctorDetails()
@@ -85,7 +85,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("All Patients");
-            UnitOfWork.PatientRepository.GetAllPatients().PrintTableOfEntities("No patients registered");
+            UnitOfWork.PatientRepository.GetAllPatients().PrintEntitiesAsTable("No patients registered");
         }
 
         void PrintSpecificPatientDetails()
