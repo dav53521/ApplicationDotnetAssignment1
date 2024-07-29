@@ -4,7 +4,7 @@
     {
         public int GetIdFromUser(string userPrompt);
         public int GetNumberFromUser(string userPrompt, string errorMessage);
-        public string GetMaskedInputFromUser(string userPrompt);
+        public string GetPasswordFromUser();
         public void PrintInCenter(string thingToPrint);
         public string GetPhoneNumberFromUser();
         public string GetEmailFromUser();

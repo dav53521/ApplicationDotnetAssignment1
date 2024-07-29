@@ -104,16 +104,9 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("Add Patient");
             Console.WriteLine("Registering a new patient with the DOTNET Hospital Management System");
 
-            string fullName = ConsoleService.GetFullNameFromUser();
+            (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            string email = ConsoleService.GetEmailFromUser();
-
-            string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
-
-            string address = ConsoleService.GetAddressFromUser();
-
-            string password = ConsoleService.GetMaskedInputFromUser("Password: ");
-
+            //Creating a new patient based off of the recieved user inputs so that a new doctor can be inserted into the databasde
             Patient patientToAdd = new Patient()
             {
                 Name = fullName,
@@ -134,16 +127,9 @@ namespace ApplicationDotnetAssignment1.Services
             ConsoleService.PrintInCenter("Add Doctor");
             Console.WriteLine("Registering a new doctor with the DOTNET Hospital Management System");
 
-            string fullName = ConsoleService.GetFullNameFromUser();
+            (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            string email = ConsoleService.GetEmailFromUser();
-
-            string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
-
-            string address = ConsoleService.GetAddressFromUser();
-
-            string password = ConsoleService.GetMaskedInputFromUser("Password: ");
-
+            //Creating a new doctor based off of the recieved user inputs so that a new doctor can be inserted into the databasde
             Doctor doctorToAdd = new Doctor()
             {
                 Name = fullName,
@@ -156,6 +142,22 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.DoctorRepository.AddDoctor(doctorToAdd);
 
             Console.WriteLine($"A new Doctor with the name: {doctorToAdd.Name} has been created with the Id: {doctorToAdd.Id}");
+        }
+
+        //This function is being used to just get a new user's details so they can be used to create a new user
+        (string, string, string, string, string) GetNewUserDetails()
+        {
+            string fullName = ConsoleService.GetFullNameFromUser();
+
+            string email = ConsoleService.GetEmailFromUser();
+
+            string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
+
+            string address = ConsoleService.GetAddressFromUser();
+
+            string password = ConsoleService.GetPasswordFromUser();
+
+            return (fullName, email, phoneNumber, address, password);
         }
     }
 }

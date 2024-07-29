@@ -6,20 +6,22 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 {
     public class HospitalSystemUnitOfWork : IHospitalSystemUnitOfWork
     {
-        public HospitalSystemContext hospitalSystemContext;
+        HospitalSystemContext _hospitalSystemContext;
 
         public HospitalSystemUnitOfWork(HospitalSystemContext context)
         {
-            hospitalSystemContext = context;
+            //Getting the passed in context and storing it so that it can be passed into each repository so they can access the database
+            _hospitalSystemContext = context;
         }
 
         public AppointmentRepository AppointmentRepository
         {
             get
             {
-                if(appointmentRepository == null)
+                //This getter will be used to either create or get the existing Appointment repository depending on whether it exists or not which means that the user repository is stored and created in the unit of work
+                if (appointmentRepository == null)
                 {
-                    appointmentRepository = new AppointmentRepository(hospitalSystemContext);
+                    appointmentRepository = new AppointmentRepository(_hospitalSystemContext);
                 }
 
                 return appointmentRepository;
@@ -30,11 +32,12 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 
         public DoctorRepository DoctorRepository
         {
+            //This getter will be used to either create or get the existing Doctor repository depending on whether it exists or not which means that the user repository is stored and created in the unit of work
             get
             {
                 if (doctorRepository == null)
                 {
-                    doctorRepository = new DoctorRepository(hospitalSystemContext);
+                    doctorRepository = new DoctorRepository(_hospitalSystemContext);
                 }
 
                 return doctorRepository;
@@ -45,11 +48,12 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 
         public PatientRepository PatientRepository
         {
+            //This getter will be used to either create or get the existing Patient repository depending on whether it exists or not which means that the user repository is stored and created in the unit of work
             get
             {
                 if (patientRepository == null)
                 {
-                    patientRepository = new PatientRepository(hospitalSystemContext);
+                    patientRepository = new PatientRepository(_hospitalSystemContext);
                 }
 
                 return patientRepository;
@@ -60,11 +64,12 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 
         public UserRepository UserRepository
         {
-            get 
+            //This getter will be used to either create or get the existing User repository depending on whether it exists or not which means that the user repository is stored and created in the unit of work
+            get
             {
                 if (userRepository == null)
                 {
-                    userRepository = new UserRepository(hospitalSystemContext);
+                    userRepository = new UserRepository(_hospitalSystemContext);
                 }
 
                 return userRepository;
@@ -73,9 +78,10 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 
         UserRepository? userRepository;
 
+        //This is exposing a save function so it's possible to save the database without making any changes
         public void Save()
         {
-            hospitalSystemContext.SaveChanges();
+            _hospitalSystemContext.SaveChanges();
         }
     }
 }

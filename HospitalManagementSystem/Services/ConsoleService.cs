@@ -43,9 +43,9 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        public string GetMaskedInputFromUser(string userPrompt)
+        public string GetPasswordFromUser()
         {
-            Console.Write(userPrompt);
+            Console.Write("Password: ");
 
             string maskedInput = ""; //Empty string so that if a user presses enter right away then an empty string will be returned instead of a null
             var keyPressed = Console.ReadKey(true);
