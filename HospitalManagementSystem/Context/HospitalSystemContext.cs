@@ -54,64 +54,64 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Doctor
                 {
                     Id = 10003,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Jane Dane",
+                    Password = "123Jane",
+                    PhoneNumber = "0491570152",
+                    Email = "Jane@fakegmail.com",
+                    Address = "14 100% Real Street Sydney NSW"
                 },
                 new Doctor
                 {
                     Id = 10004,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Jack Test",
+                    Password = "JackTest",
+                    PhoneNumber = "0491570153",
+                    Email = "Jack@PigeonSnailMail.com",
+                    Address = "100 Place Street Sydney NSW"
                 },
                 new Doctor
                 {
                     Id = 10005,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Florence Padilla",
+                    Password = "hellohello",
+                    PhoneNumber = "0491570154",
+                    Email = "Florence@PigeonMail.com",
+                    Address = "2 Somewhere Street Sydney NSW"
                 }, new Doctor
                 {
                     Id = 10006,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Riya Jordan",
+                    Password = "JordanRules",
+                    PhoneNumber = "0491570155",
+                    Email = "Jordan@PigeonMail.com",
+                    Address = "10 A Real Street Sydney NSW"
                 },
                 new Doctor
                 {
                     Id = 10007,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Dan Peters",
+                    Password = "DanSaysHello",
+                    PhoneNumber = "0491570156",
+                    Email = "Dan@PigeonMail.com",
+                    Address = "13 Place Street Sydney NSW"
                 },
                 new Doctor
                 {
                     Id = 10008,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Jazmine Church",
+                    Password = "JazmineJazmine",
+                    PhoneNumber = "0491570157",
+                    Email = "Church@PigeonMail.com",
+                    Address = "14 Place Street Sydney NSW"
                 },
                 new Doctor
                 {
                     Id = 10009,
-                    Name = "Jack Doe",
-                    Password = "hello",
-                    PhoneNumber = "0491570151",
-                    Email = "Jack@PigeonMail.com",
-                    Address = "12 Place Street Sydney NSW"
+                    Name = "Victoria Mckee",
+                    Password = "Mckee",
+                    PhoneNumber = "0491570158",
+                    Email = "Victoria@PigeonMail.com",
+                    Address = "15 Place Street Sydney NSW"
                 }
             );
 
@@ -120,26 +120,26 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 20000,
                     Name = "Jill Deer",
-                    Password = "123",
+                    Password = "DeerIsMyName",
                     PhoneNumber = "0491570157",
                     Email = "Test@email.com",
-                    Address = "10 place street Sydney NSW",
+                    Address = "10 Street Street Sydney NSW",
                     AssignedDoctorId = 10000
                 },
                 new Patient
                 {
                     Id = 20001,
                     Name = "Jane Deer",
-                    Password = "test",
+                    Password = "Anonymous",
                     PhoneNumber = "0491570006",
                     Email = "Test@email.com",
-                    Address = "11 real street Melbourne VIC",
+                    Address = "11 Real Street Melbourne VIC",
                 },
                 new Patient
                 {
                     Id = 20002,
                     Name = "Person Person",
-                    Password = "123",
+                    Password = "Person",
                     PhoneNumber = "0491570158",
                     Email = "Test@email.com",
                     Address = "10 Nowhere Drive Sydney NSW",
@@ -149,63 +149,66 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 20003,
                     Name = "David Sorrell",
-                    Password = "123",
+                    Password = "MyRealPassword",
                     PhoneNumber = "0491570159",
                     Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Address = "11 Street Street Sydney NSW",
                 },
                 new Patient
                 {
                     Id = 20004,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Vinnie Goodwin",
+                    Password = "VinnieIsGood",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Goodwin@gmail2.com",
+                    Address = "12 Street Street Sydney NSW",
+                    AssignedDoctorId = 10004
                 },
                 new Patient
                 {
                     Id = 20005,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Subhan Walls",
+                    Password = "WallsRule",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Walls@gmail2.com",
+                    Address = "13 Street Street Sydney NSW",
                 }, new Patient
                 {
                     Id = 20006,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Lillie Sears",
+                    Password = "Sears",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Sears@gmail2.com",
+                    Address = "14 Street Street Sydney NSW",
+                    AssignedDoctorId = 10006
                 },
                 new Patient
                 {
                     Id = 20007,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Connie Clay",
+                    Password = "ClayIsTasty",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Clay@gmail2.com",
+                    Address = "15 Street Street Sydney NSW",
                 },
                 new Patient
                 {
                     Id = 20008,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Diana Petty",
+                    Password = "Petty",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Diana@gmail2.com",
+                    Address = "16 Street Street Sydney NSW",
+                    AssignedDoctorId = 10008
                 },
                 new Patient
                 {
                     Id = 20009,
-                    Name = "David Sorrell",
-                    Password = "123",
+                    Name = "Sam Santana",
+                    Password = "InspectorSam",
                     PhoneNumber = "0491570159",
-                    Email = "david2017au@gmail.com",
-                    Address = "11 A real street ave Sydney NSW",
+                    Email = "Santana@gmail2.com",
+                    Address = "17 Street Street Sydney NSW",
                 }
             );
 
@@ -214,7 +217,7 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 30000,
                     Name = "David Sorrell",
-                    Email = "Test@Test.com",
+                    Email = "David@Test.com",
                     PhoneNumber = "0491570110",
                     Password = "123",
                     Address = "21 Test Test Drive Sydney NSW"
@@ -223,82 +226,82 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 30001,
                     Name = "David Person",
-                    Email = "Test@Test.com",
+                    Email = "Person@Test.com",
                     PhoneNumber = "0491570110",
-                    Password = "test",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "Person",
+                    Address = "22 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30002,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Norma Rubio",
+                    Email = "Rubio@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "FInTheChat",
+                    Address = "23 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30003,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Ifan Norton",
+                    Email = "Ifan@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "NortonAntiVirus",
+                    Address = "24 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30004,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Sapphire Shaw",
+                    Email = "Shaw@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "GrimShaw",
+                    Address = "25 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30005,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Rick Sanchez",
+                    Email = "Rick@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "IAmARickAndMortyReference",
+                    Address = "26 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30006,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Eleanor Mcclain",
+                    Email = "Mcclain@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "McclainIsTheName",
+                    Address = "27 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30007,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Grace O'Connor",
+                    Email = "Grace@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "GraceExists",
+                    Address = "28 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30008,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Evie Ward",
+                    Email = "Ward@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "HospitalWard",
+                    Address = "29 Test Test Drive Sydney NSW"
                 },
                 new Admin
                 {
                     Id = 30009,
-                    Name = "David Person",
-                    Email = "Person@gmail2.com",
+                    Name = "Lorraine Stokes",
+                    Email = "Stokes@gmail2.com",
                     PhoneNumber = "0491570110",
-                    Password = "321",
-                    Address = "21 Test Test Drive Sydney NSW"
+                    Password = "StokesExists",
+                    Address = "30 Test Test Drive Sydney NSW"
                 }
             );
 
@@ -313,17 +316,66 @@ namespace ApplicationDotnetAssignment1.Contexts
                 new Appointment
                 {
                     Id = 10001,
-                    PatientId = 20002,
-                    DoctorId = 10002,
-                    Description = "Covid-19"
+                    PatientId = 20000,
+                    DoctorId = 10000,
+                    Description = "Something I swear"
                 },
                 new Appointment
                 {
                     Id = 10002,
                     PatientId = 20002,
                     DoctorId = 10002,
+                    Description = "Covid-19"
+                },
+                new Appointment
+                {
+                    Id = 10003,
+                    PatientId = 20002,
+                    DoctorId = 10002,
                     Description = "A cough"
-                }
+                },
+                new Appointment
+                {
+                    Id = 10004,
+                    PatientId = 20004,
+                    DoctorId = 10004,
+                    Description = "Just because"
+                },
+                new Appointment
+                {
+                    Id = 10005,
+                    PatientId = 20004,
+                    DoctorId = 10004,
+                    Description = "Wanted Email"
+                },
+                new Appointment
+                {
+                    Id = 10006,
+                    PatientId = 20006,
+                    DoctorId = 10006,
+                    Description = "I was lonely"
+                },
+                 new Appointment
+                 {
+                     Id = 10007,
+                     PatientId = 20006,
+                     DoctorId = 10006,
+                     Description = "Dying"
+                 },
+                 new Appointment
+                 {
+                     Id = 10008,
+                     PatientId = 20008,
+                     DoctorId = 10008,
+                     Description = "yearly checkup"
+                 },
+                 new Appointment
+                 {
+                     Id = 10009,
+                     PatientId = 20008,
+                     DoctorId = 10008,
+                     Description = "Because Why not"
+                 }
             );
         }
     }
