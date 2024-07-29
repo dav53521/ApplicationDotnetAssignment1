@@ -95,7 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
             Console.WriteLine("Saving Appointment");
-            _EmailService.SendAppointmentConfirmationEmail(newAppointment);
+            _EmailService.SendAppointmentConfirmationEmail(newAppointment.Id);
             Console.WriteLine("The appointment has been booked successfully");
         }
 

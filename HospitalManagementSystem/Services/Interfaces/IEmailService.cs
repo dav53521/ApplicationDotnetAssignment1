@@ -4,6 +4,6 @@ namespace ApplicationDotnetAssignment1.Services.Interfaces
 {
     public interface IEmailService
     {
-        public void SendAppointmentConfirmationEmail(Appointment bookedAppointment);
+        public void SendAppointmentConfirmationEmail(int bookedAppointmentId);
     }
 }

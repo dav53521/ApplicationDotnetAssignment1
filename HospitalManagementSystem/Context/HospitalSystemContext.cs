@@ -32,6 +32,86 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0491570156",
                     Email = "Test@email.com",
                     Address = "12 Ultimo Road Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10001,
+                    Name = "Mr Doctor",
+                    Password = "Password",
+                    PhoneNumber = "0491570158",
+                    Email = "Doctor@snaimail.com",
+                    Address = "10 Ultimo Road Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10002,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10003,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10004,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10005,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                }, new Doctor
+                {
+                    Id = 10006,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10007,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10008,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
+                },
+                new Doctor
+                {
+                    Id = 10009,
+                    Name = "Jack Doe",
+                    Password = "hello",
+                    PhoneNumber = "0491570151",
+                    Email = "Jack@PigeonMail.com",
+                    Address = "12 Place Street Sydney NSW"
                 }
             );
 
@@ -63,11 +143,64 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0491570158",
                     Email = "Test@email.com",
                     Address = "10 Nowhere Drive Sydney NSW",
-                    AssignedDoctorId = 10000
+                    AssignedDoctorId = 10002
                 },
                 new Patient
                 {
                     Id = 20003,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                },
+                new Patient
+                {
+                    Id = 20004,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                },
+                new Patient
+                {
+                    Id = 20005,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                }, new Patient
+                {
+                    Id = 20006,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                },
+                new Patient
+                {
+                    Id = 20007,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                },
+                new Patient
+                {
+                    Id = 20008,
+                    Name = "David Sorrell",
+                    Password = "123",
+                    PhoneNumber = "0491570159",
+                    Email = "david2017au@gmail.com",
+                    Address = "11 A real street ave Sydney NSW",
+                },
+                new Patient
+                {
+                    Id = 20009,
                     Name = "David Sorrell",
                     Password = "123",
                     PhoneNumber = "0491570159",
@@ -85,6 +218,87 @@ namespace ApplicationDotnetAssignment1.Contexts
                     PhoneNumber = "0491570110",
                     Password = "123",
                     Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30001,
+                    Name = "David Person",
+                    Email = "Test@Test.com",
+                    PhoneNumber = "0491570110",
+                    Password = "test",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30002,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30003,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30004,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30005,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30006,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30007,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30008,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
+                },
+                new Admin
+                {
+                    Id = 30009,
+                    Name = "David Person",
+                    Email = "Person@gmail2.com",
+                    PhoneNumber = "0491570110",
+                    Password = "321",
+                    Address = "21 Test Test Drive Sydney NSW"
                 }
             );
 
@@ -100,8 +314,15 @@ namespace ApplicationDotnetAssignment1.Contexts
                 {
                     Id = 10001,
                     PatientId = 20002,
-                    DoctorId = 10000,
+                    DoctorId = 10002,
                     Description = "Covid-19"
+                },
+                new Appointment
+                {
+                    Id = 10002,
+                    PatientId = 20002,
+                    DoctorId = 10002,
+                    Description = "A cough"
                 }
             );
         }

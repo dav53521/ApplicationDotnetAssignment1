@@ -15,18 +15,17 @@ namespace ApplicationDotnetAssignment1.Services
             _UnitOfWork = unitOfWork;
         }
 
-        public void SendAppointmentConfirmationEmail(Appointment bookedAppointment)
+        public void SendAppointmentConfirmationEmail(int bookedAppointmentId)
         {
+            Appointment? bookedAppointment = _UnitOfWork.AppointmentRepository.GetAppointmentById(bookedAppointmentId);
+
             Console.WriteLine("Sending Email");
             try
             {
                 string subject = $"Appointment confirmation for {bookedAppointment.Patient!.Name}";
-
                 string body = @$"Dear {bookedAppointment.Patient!.Name},
 You have sucessfully booked an appointment with Doctor {bookedAppointment.Doctor!.Name} for the reason {bookedAppointment.Description}";
-
                 string fromEmail = "davidhospitalmanagmentsystem@gmail.com";
-
                 string password = "bdse mlzl qxrq nyih";
 
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
@@ -34,7 +33,6 @@ You have sucessfully booked an appointment with Doctor {bookedAppointment.Doctor
                     Credentials = new NetworkCredential(fromEmail, password),
                     EnableSsl = true
                 };
-
                 MailMessage mailMessage = new MailMessage
                 {
                     From = new MailAddress(fromEmail),

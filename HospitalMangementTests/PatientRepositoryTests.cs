@@ -17,6 +17,7 @@ namespace HospitalMangementTests
         public void TestGetAllPatients()
         {
             List<Patient> actual = _PatientRepository.GetAllPatients();
+
             Assert.That(actual, Is.EquivalentTo(_PatientData)); //Asserting that both collections have the same data
         }
 
@@ -35,6 +36,7 @@ namespace HospitalMangementTests
             };
 
             List<Patient> actual = _PatientRepository.GetAllPatients();
+
             Assert.That(actual, Does.Not.Contain(nonDbPatient));
         }
 
@@ -49,6 +51,7 @@ namespace HospitalMangementTests
         public void TestThatPatientsCanBeGottenUsingId()
         {
             Patient? actual = _PatientRepository.GetPatientById(10000);
+
             AssertThatPatientDetailsAreCorrect(actual, 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890"); //Assert that the right patient has been selected
         }
 
@@ -56,6 +59,7 @@ namespace HospitalMangementTests
         public void TestThatNoPatientsAreGottenWithInvalidId()
         {
             Patient? actual = _PatientRepository.GetPatientById(10010);
+
             Assert.That(actual, Is.Null); //Invalid id has been given so no result should be returned
         }
 
@@ -63,6 +67,7 @@ namespace HospitalMangementTests
         public void TestThatPatientsCanBeFoundUsingDelegate()
         {
             List<Patient> actual = _PatientRepository.FindPatients(d => d.Address == "20 test sydney nsw 2000").OrderBy(d => d.Id).ToList(); //Ordering the data so that there's no randomness in how the data is selected
+
             Assert.That(actual.Count, Is.EqualTo(2));
             //Asserting that both patients with the address have been found
             AssertThatPatientDetailsAreCorrect(actual[0], 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890");
@@ -73,8 +78,10 @@ namespace HospitalMangementTests
         public void TestThatPatientsWillNotBeFoundIfTheyDoNotMeetRequirements()
         {
             List<Patient> actual = _PatientRepository.FindPatients(d => d.Address == "20 test sydney nsw 2000" && d.Id == 10000).OrderBy(d => d.Id).ToList(); //Ordering the data so that there's no randomness in how the data is selected
+
             Assert.That(actual.Count, Is.EqualTo(1));
             Assert.That(actual, Does.Not.Contain(_PatientData.Where(d => d.Id == 10002))); //Checking that the actual result does not contain the other user with the same address
+            AssertThatPatientDetailsAreCorrect(actual[0], 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890");
         }
 
         //The below method is a helper method for asserting whether a user has been gotten correctly as there's no point in repeating the same assertions multiple times
