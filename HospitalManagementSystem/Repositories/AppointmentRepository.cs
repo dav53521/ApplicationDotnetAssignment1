@@ -16,7 +16,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public Appointment? GetAppointmentById(int id)
         {
-            return base.GetById(id);
+            return base.GetAll().Where(a => a.Id == id).FirstOrDefault();
         }
 
         public List<Appointment> GetAllAppointments()

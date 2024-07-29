@@ -6,12 +6,12 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 {
     public class HospitalSystemUnitOfWork : IHospitalSystemUnitOfWork
     {
-        HospitalSystemContext _hospitalSystemContext;
+        HospitalSystemContext _HospitalSystemContext;
 
         public HospitalSystemUnitOfWork(HospitalSystemContext context)
         {
             //Getting the passed in context and storing it so that it can be passed into each repository so they can access the database
-            _hospitalSystemContext = context;
+            _HospitalSystemContext = context;
         }
 
         public AppointmentRepository AppointmentRepository
@@ -21,7 +21,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
                 //This getter will be used to either create or get the existing Appointment repository depending on whether it exists or not which means that the user repository is stored and created in the unit of work
                 if (appointmentRepository == null)
                 {
-                    appointmentRepository = new AppointmentRepository(_hospitalSystemContext);
+                    appointmentRepository = new AppointmentRepository(_HospitalSystemContext);
                 }
 
                 return appointmentRepository;
@@ -37,7 +37,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
             {
                 if (doctorRepository == null)
                 {
-                    doctorRepository = new DoctorRepository(_hospitalSystemContext);
+                    doctorRepository = new DoctorRepository(_HospitalSystemContext);
                 }
 
                 return doctorRepository;
@@ -53,7 +53,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
             {
                 if (patientRepository == null)
                 {
-                    patientRepository = new PatientRepository(_hospitalSystemContext);
+                    patientRepository = new PatientRepository(_HospitalSystemContext);
                 }
 
                 return patientRepository;
@@ -69,7 +69,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
             {
                 if (userRepository == null)
                 {
-                    userRepository = new UserRepository(_hospitalSystemContext);
+                    userRepository = new UserRepository(_HospitalSystemContext);
                 }
 
                 return userRepository;
@@ -81,7 +81,7 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
         //This is exposing a save function so it's possible to save the database without making any changes
         public void Save()
         {
-            _hospitalSystemContext.SaveChanges();
+            _HospitalSystemContext.SaveChanges();
         }
     }
 }

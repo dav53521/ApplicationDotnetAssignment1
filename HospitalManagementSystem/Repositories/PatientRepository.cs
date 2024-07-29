@@ -17,7 +17,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public Patient? GetPatientById(int id)
         {
-            return base.GetById(id);
+            return base.GetAll().Where(p => p.Id == id).FirstOrDefault();
         }
 
         public List<Patient> GetAllPatients()

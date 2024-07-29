@@ -36,11 +36,6 @@ namespace ApplicationDotnetAssignment1.Repositories
             return context.Set<T>().Where(predicate).ToList();
         }
 
-        protected T? GetById(int id)
-        {
-            return context.Set<T>().Find(id);
-        }
-
         protected void Add(T entityToAdd)
         {
             context.Set<T>().Add(entityToAdd);

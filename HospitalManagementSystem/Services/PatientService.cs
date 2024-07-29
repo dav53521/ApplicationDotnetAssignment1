@@ -8,11 +8,11 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class PatientService : UserService<Patient>
     {
-        IEmailService _emailService;
+        IEmailService _EmailService;
 
         public PatientService(Patient loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
-            _emailService = new EmailService(unitOfWork); //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
+            _EmailService = new EmailService(unitOfWork); //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
         }
 
         protected override void PrintMenuOptions() //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
@@ -95,7 +95,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             UnitOfWork.AppointmentRepository.AddAppointment(newAppointment);
             Console.WriteLine("Saving Appointment");
-            _emailService.SendAppointmentConfirmationEmail(newAppointment);
+            _EmailService.SendAppointmentConfirmationEmail(newAppointment);
             Console.WriteLine("The appointment has been booked successfully");
         }
 

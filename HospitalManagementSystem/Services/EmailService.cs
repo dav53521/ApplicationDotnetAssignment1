@@ -8,11 +8,11 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class EmailService : IEmailService
     {
-        IHospitalSystemUnitOfWork _unitOfWork;
+        IHospitalSystemUnitOfWork _UnitOfWork;
 
         public EmailService(IHospitalSystemUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            _UnitOfWork = unitOfWork;
         }
 
         public void SendAppointmentConfirmationEmail(Appointment bookedAppointment)

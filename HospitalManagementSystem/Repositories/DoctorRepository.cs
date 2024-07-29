@@ -18,7 +18,7 @@ namespace ApplicationDotnetAssignment1.Repositories
         //This is a wrapper function that just calls the base function
         public Doctor? GetDoctorById(int id)
         {
-            return base.GetById(id);
+            return base.GetAll().Where(d => d.Id == id).FirstOrDefault();
         }
 
         public List<Doctor> GetAllDoctors()

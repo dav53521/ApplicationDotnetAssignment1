@@ -6,14 +6,14 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class LoginService : ILoginService
     {
-        IHospitalSystemUnitOfWork _unitOfWork;
-        IConsoleService _consoleService;
+        IHospitalSystemUnitOfWork _UnitOfWork;
+        IConsoleService _ConsoleService;
 
         public LoginService(IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             //Dependency injecting both the unit of work and the console service into this class
-            _unitOfWork = unitOfWork;
-            _consoleService = consoleService;
+            _UnitOfWork = unitOfWork;
+            _ConsoleService = consoleService;
         }
 
         public void Login()
@@ -21,7 +21,7 @@ namespace ApplicationDotnetAssignment1.Services
             //This loop allows removes the need to call this function every time a user logs out as when the user logs out this function will iterate and then prompt the user to login again which removes uncessary insertions into the call stack
             while (true) 
             {
-                _consoleService.PrintInCenter("Login");
+                _ConsoleService.PrintInCenter("Login");
                 Console.WriteLine("Please Enter Your Login Details Below:");
 
                 User foundUser = GetLoggedInUser();
@@ -34,10 +34,10 @@ namespace ApplicationDotnetAssignment1.Services
             //This loop is used to keep the user in this function until a valid user has been gotten so that the user cannot enter the login screen until a valid login has been provided
             while (true)
             {
-                int userToFindId = _consoleService.GetIdFromUser("Id:");
-                string userToFindPassword = _consoleService.GetPasswordFromUser();
+                int userToFindId = _ConsoleService.GetIdFromUser("Id:");
+                string userToFindPassword = _ConsoleService.GetPasswordFromUser();
 
-                User? foundUser = _unitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
+                User? foundUser = _UnitOfWork.UserRepository.FindUsers(user => user.Id == userToFindId && user.Password == userToFindPassword).FirstOrDefault();
 
                 if(foundUser != null)
                 {
@@ -57,15 +57,15 @@ namespace ApplicationDotnetAssignment1.Services
             switch (loggedInUser)
             {
                 case Admin loggedInAdmin:
-                    var adminService = new AdminService(loggedInAdmin, _unitOfWork, _consoleService);
+                    var adminService = new AdminService(loggedInAdmin, _UnitOfWork, _ConsoleService);
                     adminService.OpenMainMenu();
                     break;
                 case Patient loggedInPatient:
-                    var paitentService = new PatientService(loggedInPatient, _unitOfWork, _consoleService);
+                    var paitentService = new PatientService(loggedInPatient, _UnitOfWork, _ConsoleService);
                     paitentService.OpenMainMenu();
                     break;
                 case Doctor loggedInDoctor:
-                    var doctorService = new DoctorService(loggedInDoctor, _unitOfWork, _consoleService);
+                    var doctorService = new DoctorService(loggedInDoctor, _UnitOfWork, _ConsoleService);
                     doctorService.OpenMainMenu();
                     break;
             }

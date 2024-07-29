@@ -11,13 +11,13 @@ namespace HospitalMangementTests
         [Test]
         public void TestUserRepositoryCanGetAllUsersInContext()
         {
-            List<User> result = _userRepository.GetAllUsers();
+            List<User> result = _UserRepository.GetAllUsers();
 
             Assert.That(result.Count(), Is.EqualTo(6));
             //The below lines are asserting that all doctors, admins and patients are able to be gotten from the user repository
-            Assert.That(result, Is.SupersetOf(_doctorData));
-            Assert.That(result, Is.SupersetOf(_adminData));
-            Assert.That(result, Is.SupersetOf(_patientData));
+            Assert.That(result, Is.SupersetOf(_DoctorData));
+            Assert.That(result, Is.SupersetOf(_AdminData));
+            Assert.That(result, Is.SupersetOf(_PatientData));
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace HospitalMangementTests
                 PhoneNumber = "1234567890",
             };
 
-            List<User> result = _userRepository.GetAllUsers();
+            List<User> result = _UserRepository.GetAllUsers();
 
             Assert.That(result, Does.Not.Contain(nonDbDoctor));
             Assert.That(result, Does.Not.Contain(nonDbPatient));
@@ -65,9 +65,9 @@ namespace HospitalMangementTests
         public void TestUserRepositoryCanGetUsersById()
         {
             //Getting three different types to ensure that all types of users can be gotten
-            User? foundDoctor = _userRepository.GetUserById(10000);
-            User? foundPatient = _userRepository.GetUserById(20000);
-            User? foundAdmin = _userRepository.GetUserById(30000);
+            User? foundDoctor = _UserRepository.GetUserById(10000);
+            User? foundPatient = _UserRepository.GetUserById(20000);
+            User? foundAdmin = _UserRepository.GetUserById(30000);
 
             AssertThatUserCredentalsAreCorrect(foundDoctor, 10000, "Test1", "1231", "10000@test.com", "20 test sydney nsw 2000", "1234567890");
             AssertThatUserCredentalsAreCorrect(foundPatient, 20000, "Test3", "1233", "20000@test.com", "20 test sydney nsw 2000", "1234567892");
@@ -78,9 +78,9 @@ namespace HospitalMangementTests
         public void TestUserRepositoryCannotGetUsersByInvalidId()
         {
             //Getting users that do not exist within the dbsets which mimic invalid Ids
-            User? invalidUser1 = _userRepository.GetUserById(10003);
-            User? invalidUser2 = _userRepository.GetUserById(20003);
-            User? invalidUser3 = _userRepository.GetUserById(30003);
+            User? invalidUser1 = _UserRepository.GetUserById(10003);
+            User? invalidUser2 = _UserRepository.GetUserById(20003);
+            User? invalidUser3 = _UserRepository.GetUserById(30003);
 
             Assert.That(invalidUser1, Is.Null);
             Assert.That(invalidUser2, Is.Null);
@@ -91,7 +91,7 @@ namespace HospitalMangementTests
         public void TestUserRepositoryCanFindUsersByPredicate()
         {
             //getting a collection of users that all meet a certain condition
-            List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000").OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
+            List<User> actual = _UserRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000").OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
 
             Assert.That(actual.Count, Is.EqualTo(3));
             AssertThatUserCredentalsAreCorrect(actual[0], 10001, "Test2", "1232", "10001@test.com", "21 test sydney nsw 2000", "1234567891");
@@ -103,8 +103,8 @@ namespace HospitalMangementTests
         public void TestUserRepositoryCannotFindUsersThatDoNotMeetThePredicate()
         {
             //getting a collection of users that all meet a certain condition and filtering out some of the users using a predicate with tighter conditions
-            List<User> actual = _userRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000" && (u.Id == 10001 || u.Id == 20001)).OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
-            User invalidUser = _adminData.Where(a => a.Id == 30001).First();
+            List<User> actual = _UserRepository.FindUsers(u => u.Address == "21 test sydney nsw 2000" && (u.Id == 10001 || u.Id == 20001)).OrderBy(u => u.Id).ToList(); //Sorting the list by Id so that there is no unpredictability in the data
+            User invalidUser = _AdminData.Where(a => a.Id == 30001).First();
 
             Assert.That(actual.Count, Is.EqualTo(2));
             AssertThatUserCredentalsAreCorrect(actual[0], 10001, "Test2", "1232", "10001@test.com", "21 test sydney nsw 2000", "1234567891");
@@ -128,7 +128,7 @@ namespace HospitalMangementTests
         [SetUp]
         public void Setup()
         {
-            _doctorData = new List<Doctor>
+            _DoctorData = new List<Doctor>
             {
                 new Doctor
                 {
@@ -150,7 +150,7 @@ namespace HospitalMangementTests
                 }
             }.AsQueryable();
 
-            _patientData = new List<Patient>
+            _PatientData = new List<Patient>
             {
                 new Patient
                 {
@@ -172,7 +172,7 @@ namespace HospitalMangementTests
                 }
             }.AsQueryable();
 
-            _adminData = new List<Admin>
+            _AdminData = new List<Admin>
             {
                 new Admin
                 {
@@ -196,35 +196,35 @@ namespace HospitalMangementTests
             }.AsQueryable();
 
             Mock<DbSet<Doctor>> mockDoctorSet = new Mock<DbSet<Doctor>>();
-            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Provider).Returns(_doctorData.Provider);
-            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Expression).Returns(_doctorData.Expression);
-            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.ElementType).Returns(_doctorData.ElementType);
-            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.GetEnumerator()).Returns(() => _doctorData.GetEnumerator());
+            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Provider).Returns(_DoctorData.Provider);
+            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.Expression).Returns(_DoctorData.Expression);
+            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.ElementType).Returns(_DoctorData.ElementType);
+            mockDoctorSet.As<IQueryable<Doctor>>().Setup(m => m.GetEnumerator()).Returns(() => _DoctorData.GetEnumerator());
 
             Mock<DbSet<Patient>> mockPatientSet = new Mock<DbSet<Patient>>();
-            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Provider).Returns(_patientData.Provider);
-            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Expression).Returns(_patientData.Expression);
-            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.ElementType).Returns(_patientData.ElementType);
-            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.GetEnumerator()).Returns(() => _patientData.GetEnumerator());
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Provider).Returns(_PatientData.Provider);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.Expression).Returns(_PatientData.Expression);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.ElementType).Returns(_PatientData.ElementType);
+            mockPatientSet.As<IQueryable<Patient>>().Setup(m => m.GetEnumerator()).Returns(() => _PatientData.GetEnumerator());
 
             Mock<DbSet<Admin>> mockAdminSet = new Mock<DbSet<Admin>>();
-            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.Provider).Returns(_adminData.Provider);
-            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.Expression).Returns(_adminData.Expression);
-            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.ElementType).Returns(_adminData.ElementType);
-            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.GetEnumerator()).Returns(() => _adminData.GetEnumerator());
+            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.Provider).Returns(_AdminData.Provider);
+            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.Expression).Returns(_AdminData.Expression);
+            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.ElementType).Returns(_AdminData.ElementType);
+            mockAdminSet.As<IQueryable<Admin>>().Setup(m => m.GetEnumerator()).Returns(() => _AdminData.GetEnumerator());
 
             Mock<HospitalSystemContext> mockContext = new Mock<HospitalSystemContext>();
             mockContext.SetupGet(m => m.Doctors).Returns(mockDoctorSet.Object);
             mockContext.SetupGet(m => m.Patients).Returns(mockPatientSet.Object);
             mockContext.SetupGet(m => m.Admins).Returns(mockAdminSet.Object);
 
-            _userRepository = new HospitalSystemUnitOfWork(mockContext.Object).UserRepository;
+            _UserRepository = new HospitalSystemUnitOfWork(mockContext.Object).UserRepository;
         }
 
-        IQueryable<Doctor> _doctorData;
-        IQueryable<Patient> _patientData;
-        IQueryable<Admin> _adminData;
+        IQueryable<Doctor> _DoctorData;
+        IQueryable<Patient> _PatientData;
+        IQueryable<Admin> _AdminData;
 
-        UserRepository _userRepository;
+        UserRepository _UserRepository;
     }
 }
