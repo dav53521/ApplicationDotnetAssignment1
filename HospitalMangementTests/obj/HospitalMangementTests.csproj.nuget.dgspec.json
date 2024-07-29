@@ -11,7 +11,7 @@
         "projectName": "ApplicationDotnetAssignment1",
         "projectPath": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalManagementSystem\\ApplicationDotnetAssignment1.csproj",
         "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David\\Source\\Repos\\ApplicationDotnetAssignment1\\HospitalManagementSystem\\obj\\",
+        "outputPath": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",

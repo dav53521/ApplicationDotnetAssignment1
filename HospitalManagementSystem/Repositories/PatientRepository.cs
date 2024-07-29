@@ -35,11 +35,6 @@ namespace ApplicationDotnetAssignment1.Repositories
             base.Add(patient);
         }
 
-        public void RemovePatient(Patient patient)
-        {
-            base.Remove(patient);
-        }
-
         public void UpdatePatient(Patient patient)
         {
             base.Update(patient); 

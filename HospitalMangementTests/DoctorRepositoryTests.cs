@@ -17,12 +17,13 @@ namespace HospitalMangementTests
         public void TestGetAllDoctors()
         {
             List<Doctor> actual = _doctorRepository.GetAllDoctors();
-            Assert.That(actual, Is.EquivalentTo(_doctorData));
+            Assert.That(actual, Is.EquivalentTo(_doctorData)); //Asserting that both containers have the same data
         }
 
         [Test]
-        public void TestDoesNotGetDoctorsThatAreNotInDbSet()
+        public void TestDoesNotGetDoctorsThatAreNotInDb()
         {
+            //Creating a doctor that is not in the set which should replicate having an entity that is not in the Db
             Doctor nonDbDoctor = new Doctor
             {
                 Id = 10005,
@@ -41,9 +42,10 @@ namespace HospitalMangementTests
         public void TestGetAllDoctorsDoesNotGetUsersThatAreNotDoctors()
         {
             List<Doctor> actual = _doctorRepository.GetAllDoctors();
-            Assert.That(actual, Does.Not.Contains(_patientData));
+            Assert.That(actual, Does.Not.Contains(_patientData)); //Asserting that the function for getting all doctors only gets doctors
         }
 
+        //This setup is being used to reduce the need for repeating code as almost all tests will be using the same data and will need the same mocks to occur
         [SetUp]
         public void Setup()
         {

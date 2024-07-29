@@ -15,6 +15,7 @@ namespace ApplicationDotnetAssignment1.Repositories
         {
         }
 
+        //This is a wrapper function that just calls the base function
         public Doctor? GetDoctorById(int id)
         {
             return base.GetById(id);
@@ -33,16 +34,6 @@ namespace ApplicationDotnetAssignment1.Repositories
         public void AddDoctor(Doctor doctorToAdd)
         {
             base.Add(doctorToAdd);
-        }
-
-        public void RemoveDoctor(Doctor doctorToRemove)
-        {
-            base.Remove(doctorToRemove);
-        }
-
-        public void UpdateDoctor(Doctor doctorToUpdate)
-        {
-            base.Update(doctorToUpdate);
         }
     }
 }

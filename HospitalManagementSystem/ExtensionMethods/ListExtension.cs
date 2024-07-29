@@ -6,14 +6,14 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 {
     public static class ListExtension
     {
-        public static void PrintPatientsAsTable(this List<Patient> patients, string noPatientsMessage)
+        public static void PrintTableOfEntities(this List<Patient> patients, string noPatientsMessage)
         {
             List<Patient>? validPatientsToPrint = patients?.Where(p => p != null).ToList();
 
             if (!validPatientsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-40} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-                PrintEntities(validPatientsToPrint!); //This cannot be null as we guard against nulls in the if statement 
+                PrintEntities(validPatientsToPrint!); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
             }
             else
             {
@@ -21,14 +21,14 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintDoctorsAsTable(this List<Doctor> doctors, string noDoctorsMessage)
+        public static void PrintTableOfEntities(this List<Doctor> doctors, string noDoctorsMessage)
         {
             List<Doctor>? validDoctorsToPrint = doctors?.Where(d => d != null).ToList();
 
             if (!validDoctorsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-30} | {2,-40} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-                PrintEntities(validDoctorsToPrint!); //This cannot be null as we guard against nulls in the if statement
+                PrintEntities(validDoctorsToPrint!); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
             }
             else
             {
@@ -36,14 +36,14 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        public static void PrintAppointmentsAsTable(this List<Appointment> appointments, string noAppointmentsMessage)
+        public static void PrintTableOfEntities(this List<Appointment> appointments, string noAppointmentsMessage)
         {
             List<Appointment> validAppointsToPrint = appointments.Where(a => a != null).ToList();
 
             if (!appointments.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-                PrintEntities(validAppointsToPrint); //This cannot be null as we guard against nulls in the if statement
+                PrintEntities(validAppointsToPrint); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
             }
             else
             {

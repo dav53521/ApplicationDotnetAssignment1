@@ -62,14 +62,14 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("Assigned Patients");
-            LoggedInUser.Patients.PrintPatientsAsTable("No patients assigned");
+            LoggedInUser.Patients.PrintTableOfEntities("No patients assigned");
         }
 
         void PrintAssignedAppointments()
         {
             Console.Clear();
             ConsoleService.PrintInCenter("All Appointments");
-            LoggedInUser.AssignedAppointments.PrintAppointmentsAsTable("No assigned appointments found");
+            LoggedInUser.AssignedAppointments.PrintTableOfEntities("No assigned appointments found");
         }
 
         void PrintParticularPatientDetails()
@@ -88,7 +88,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("Appointments With");
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
-            UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck).PrintAppointmentsAsTable("No appointments with choosen patient found");
+            UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck).PrintTableOfEntities("No appointments with choosen patient found");
         }
     }
 }

@@ -18,6 +18,7 @@ namespace ApplicationDotnetAssignment1.Repositories
     {
         protected readonly HospitalSystemContext context;
 
+        //This constructor is storing the context as it'll be used to access the database
         public Repository(HospitalSystemContext context)
         {
             this.context = context;
@@ -25,11 +26,13 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         protected List<T> GetAll()
         {
+            //The context is being set so that entity framework will query the table that corresponds with T and all the data will be gotten as no filtering occurs 
             return context.Set<T>().ToList();
         }
 
         protected List<T> Find(Func<T, bool> predicate)
         {
+            //
             return context.Set<T>().Where(predicate).ToList();
         }
 
@@ -41,21 +44,16 @@ namespace ApplicationDotnetAssignment1.Repositories
         protected void Add(T entityToAdd)
         {
             context.Set<T>().Add(entityToAdd);
-            context.SaveChanges();
-        }
-
-        protected void Remove(T entityToRemove)
-        {
-            context.Set<T>().Remove(entityToRemove);
-            context.SaveChanges();
+            context.SaveChanges(); //Saving the new entity so that an Id can be generated for the entity and also so that the added entity can be gotten immediately
         }
 
         protected void Update(T entityToUpdate)
         {
             context.Set<T>().Update(entityToUpdate);
-            context.SaveChanges();
+            context.SaveChanges(); //Saving the updated entity so that the changes are immediately reflected in the updated entity
         }
 
+        //This function is just so that it is possible to save without doing any updates so it's possible to do things such as saving before exiting
         protected void Save()
         {
             context.SaveChanges();

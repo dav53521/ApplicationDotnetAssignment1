@@ -34,11 +34,6 @@ namespace ApplicationDotnetAssignment1.Repositories
             base.Add(appointmentToAdd);
         }
 
-        public void RemoveAppointment(Appointment appointmentToRemove)
-        {
-            base.Remove(appointmentToRemove);
-        }
-
         public void UpdateAppointment(Appointment appointmentToUpdate)
         {
             base.Update(appointmentToUpdate);

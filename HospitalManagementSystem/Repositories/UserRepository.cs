@@ -26,11 +26,13 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public User? GetUserById(int id)
         {
+            //Sear
             return GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public List<User> FindUsers(Func<User, bool> predicate)
         {
+            //The users are being filtered by a passed in so that all the users that meet 
             return GetAllUsers().Where(predicate).ToList();
         }
     }
