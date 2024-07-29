@@ -11,12 +11,14 @@ namespace ApplicationDotnetAssignment1.Services
 
         public LoginService(IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
+            //Dependency injecting both the unit of work and the console service into this class
             _unitOfWork = unitOfWork;
             _consoleService = consoleService;
         }
 
         public void Login()
         {
+            //This loop allows removes the need to call this function every time a user logs out as when the user logs out this function will iterate and then prompt the user to login again which removes uncessary insertions into the call stack
             while (true) 
             {
                 _consoleService.PrintInCenter("Login");
