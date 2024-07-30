@@ -127,13 +127,16 @@ namespace ApplicationDotnetAssignment1.Services
 
         public string GetAddressFromUser()
         {
-            int streetNumber = GetNumberFromUser("Street Number: ", "Please Only Enter Numbers");
-            string? streetName = GetUserInput("Street: ");
-            string? city = GetUserInput("City: ");
-            string? state = GetUserInput("State: ");
+            while(true)
+            {
+                string? streetNumber = GetUserInput("Street Number: ");
+                string? streetName = GetUserInput("Street: ");
+                string? city = GetUserInput("City: ");
+                string? state = GetUserInput("State: ");
 
-            //Using string interpolation to format the address string so it can be stored in a single column in a table
-            return $"{streetNumber.ToString()} {streetName} {city} {state}";
+                //Using string interpolation to format the address string so it can be stored in a single column in a table
+                return $"{streetNumber} {streetName} {city} {state}";
+            }
         }
 
         public string GetUserInput(string userPrompt)

@@ -7,7 +7,7 @@ namespace ApplicationDotnetAssignment1.Models
     {
         public int Id { get; set; }
         public required string Password { get; set; }
-        [MaxLength(30)]
+        [MaxLength(20)]
         public required string Name { get; set; }
         [MaxLength(30)]
         public required string Email { get; set; }
