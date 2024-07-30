@@ -16,7 +16,7 @@ namespace ApplicationDotnetAssignment1.Contexts
             optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Server=DAVIDTHINKPAD; Database=HospitalManagementSystem; User Id=David; Password=test; TrustServerCertificate=True");
         }
 
-        //This function is used to setup the relationships along with creating the seed data
+        //This function is used to setup the relationships along with creating the seed data that will be inputted into the database upon the occurance of a migration
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctor>().HasMany(d => d.Patients).WithOne(p => p.AssignedDoctor).HasForeignKey(p => p.AssignedDoctorId).IsRequired(false);

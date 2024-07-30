@@ -12,6 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
         }
 
+        //Overriding the abstract method so that the proper choices can be displayed for the user's role
         protected override void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List all doctors
@@ -25,6 +26,7 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
+        //Overiding the abstract method so a role can actually select an option for the role with proper error handling
         protected override void GetUserOptionChoice()
         {
             int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
@@ -63,6 +65,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
+        //This method gets all the doctors that have been stored in the doctor table and then prints them out as a table
         void ListAllDoctors()
         {
             Console.Clear();
@@ -71,6 +74,7 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.DoctorRepository.GetAllDoctors().PrintEntitiesAsTable("No doctors registered");
         }
 
+        //This method finds a specific doctor that has been inputted by the user and then prints out the found user or prints out the passed in error message if a doctor doesn't exist with that Id
         void PrintSpecificDoctorDetails()
         {
             Console.Clear();
@@ -81,6 +85,7 @@ namespace ApplicationDotnetAssignment1.Services
             PrintEntityDetails(foundDoctor, $"Details for the doctor with Id {doctorToFindId}:", "No Doctor with that ID was found");
         }
 
+        //This method gets all the patients in the patient table and then print them out in a table format
         void PrintAllPatients()
         {
             Console.Clear();
@@ -88,6 +93,7 @@ namespace ApplicationDotnetAssignment1.Services
             UnitOfWork.PatientRepository.GetAllPatients().PrintEntitiesAsTable("No patients registered");
         }
 
+        //This method gets an Id from the user and then tries to find a patient with the matching id and then calls a function that will either print out the found patient or will print out an error message if no patient was found
         void PrintSpecificPatientDetails()
         {
             Console.Clear();

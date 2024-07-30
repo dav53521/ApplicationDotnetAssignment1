@@ -84,7 +84,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string? inputtedPhoneNumber = GetUserInput("Please enter your phone number: 04");
 
-                //This guard statement checks whether the user input  
+                //This guard statement checks whether the user input is a valid phone number as it makes sure that it is both of the right length and only consists of numbers
                 if (inputtedPhoneNumber != null && inputtedPhoneNumber.Length == 8 && int.TryParse(inputtedPhoneNumber, out _))
                 {
                     return "04" + inputtedPhoneNumber;
@@ -103,6 +103,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string inputtedEmail = GetUserInput("Email: ");
 
+                //Checking that the inputted email is not null as the attribute allows null inputs and also checking that the email address is valid via the email address attribute  
                 if (inputtedEmail != null && new EmailAddressAttribute().IsValid(inputtedEmail))
                 {
                     return inputtedEmail;
