@@ -4309,11 +4309,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\David\\Desktop\\David Sorrell Dotnet Assignment 1\\David Sorrell Dotnet Assignment 1\\ApplicationDotnetAssignment1 - David Sorrell\\HospitalMangementTests\\HospitalMangementTests.csproj",
+      "projectUniqueName": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalMangementTests\\HospitalMangementTests.csproj",
       "projectName": "HospitalMangementTests",
-      "projectPath": "C:\\Users\\David\\Desktop\\David Sorrell Dotnet Assignment 1\\David Sorrell Dotnet Assignment 1\\ApplicationDotnetAssignment1 - David Sorrell\\HospitalMangementTests\\HospitalMangementTests.csproj",
+      "projectPath": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalMangementTests\\HospitalMangementTests.csproj",
       "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\David\\Desktop\\David Sorrell Dotnet Assignment 1\\David Sorrell Dotnet Assignment 1\\ApplicationDotnetAssignment1 - David Sorrell\\HospitalMangementTests\\obj\\",
+      "outputPath": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalMangementTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4331,8 +4331,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\David\\Desktop\\David Sorrell Dotnet Assignment 1\\David Sorrell Dotnet Assignment 1\\ApplicationDotnetAssignment1 - David Sorrell\\HospitalManagementSystem\\ApplicationDotnetAssignment1.csproj": {
-              "projectPath": "C:\\Users\\David\\Desktop\\David Sorrell Dotnet Assignment 1\\David Sorrell Dotnet Assignment 1\\ApplicationDotnetAssignment1 - David Sorrell\\HospitalManagementSystem\\ApplicationDotnetAssignment1.csproj"
+            "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalManagementSystem\\ApplicationDotnetAssignment1.csproj": {
+              "projectPath": "C:\\Users\\David\\source\\repos\\ApplicationDotnetAssignment1\\HospitalManagementSystem\\ApplicationDotnetAssignment1.csproj"
             }
           }
         }

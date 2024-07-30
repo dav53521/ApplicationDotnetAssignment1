@@ -8,6 +8,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
     {
         public static void PrintEntitiesAsTable(this List<Patient> patients, string noPatientsMessage)
         {
+            Console.WriteLine(); //Adding a new line before anything is printed so the screen feels less cluttered
             List<Patient>? validPatientsToPrint = patients?.Where(p => p != null).ToList();
 
             Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
@@ -24,6 +25,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 
         public static void PrintEntitiesAsTable(this List<Doctor> doctors, string noDoctorsMessage)
         {
+            Console.WriteLine(); //Adding a new line before anything is printed so the screen feels less cluttered
             List<Doctor>? validDoctorsToPrint = doctors?.Where(d => d != null).ToList();
 
             Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
@@ -40,6 +42,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
 
         public static void PrintEntitiesAsTable(this List<Appointment> appointments, string noAppointmentsMessage)
         {
+            Console.WriteLine(); //Adding a new line before anything is printed so the screen feels less cluttered
             List<Appointment> validAppointsToPrint = appointments.Where(a => a != null).ToList();
 
             Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
