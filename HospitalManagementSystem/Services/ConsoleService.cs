@@ -84,6 +84,7 @@ namespace ApplicationDotnetAssignment1.Services
             {
                 string? inputtedPhoneNumber = GetUserInput("Please enter your phone number: 04");
 
+                //This guard statement checks whether the user input  
                 if (inputtedPhoneNumber != null && inputtedPhoneNumber.Length == 8 && int.TryParse(inputtedPhoneNumber, out _))
                 {
                     return "04" + inputtedPhoneNumber;
@@ -119,6 +120,7 @@ namespace ApplicationDotnetAssignment1.Services
             string firstName = GetUserInput("First Name: ");
             string lastName = GetUserInput("Last Name: ");
 
+            //Using string interpolation to format the name so it can be stored in a single column in a table
             return $"{firstName} {lastName}";
         }
 
@@ -129,6 +131,7 @@ namespace ApplicationDotnetAssignment1.Services
             string? city = GetUserInput("City: ");
             string? state = GetUserInput("State: ");
 
+            //Using string interpolation to format the address string so it can be stored in a single column in a table
             return $"{streetNumber.ToString()} {streetName} {city} {state}";
         }
 
@@ -139,7 +142,7 @@ namespace ApplicationDotnetAssignment1.Services
                 Console.Write(userPrompt);
                 string? userInput = Console.ReadLine();
 
-                if (userInput != null && userInput != string.Empty) //This makes sure that the user actually inputs something and 
+                if (userInput != null && userInput != string.Empty) //This makes sure that the user actually inputs something and also makes sure that an exception won't be thrown if the console doesn't recieve an input
                 {
                     return userInput;
                 }

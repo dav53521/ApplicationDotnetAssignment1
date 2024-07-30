@@ -13,6 +13,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 {
     public class UserRepository : Repository<User>
     {
+        //Passing the context to the repository so that it can access the database via the context 
         public UserRepository(HospitalSystemContext context) : base(context)
         {
         }
@@ -26,7 +27,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public User? GetUserById(int id)
         {
-            //Sear
+            //The FirstOrDefault is being used to get the first element as each user should have unique Ids so multiple users shouldn't be returned. Also as it returns null it provides a elegant way to say no user has been found
             return GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
         }
 
