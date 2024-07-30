@@ -18,7 +18,6 @@ namespace ApplicationDotnetAssignment1.Repositories
     {
         protected readonly HospitalSystemContext context;
 
-        //This constructor is storing the context as it'll be used to access the database
         public Repository(HospitalSystemContext context)
         {
             this.context = context;
