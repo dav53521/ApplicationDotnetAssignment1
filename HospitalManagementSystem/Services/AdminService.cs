@@ -69,7 +69,6 @@ namespace ApplicationDotnetAssignment1.Services
         {
             Console.Clear();
             ConsoleService.PrintInCenter("All Doctors");
-            Console.WriteLine();
             UnitOfWork.DoctorRepository.GetAllDoctors().PrintEntitiesAsTable("No doctors registered");
         }
 

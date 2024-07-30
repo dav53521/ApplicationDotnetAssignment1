@@ -94,6 +94,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("Appointments With");
             int idOfUserToCheck = ConsoleService.GetIdFromUser("Enter the ID of the patient to check: ");
+            Console.WriteLine("Found appointments:");
             UnitOfWork.AppointmentRepository.FindAppointments(a => a.PatientId == idOfUserToCheck).PrintEntitiesAsTable("No appointments with choosen patient found");
         }
     }

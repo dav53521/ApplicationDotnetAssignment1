@@ -10,6 +10,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
         {
             List<Patient>? validPatientsToPrint = patients?.Where(p => p != null).ToList();
 
+            Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
             if (!validPatientsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-40} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
@@ -25,6 +26,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
         {
             List<Doctor>? validDoctorsToPrint = doctors?.Where(d => d != null).ToList();
 
+            Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
             if (!validDoctorsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-30} | {2,-40} | {3,-10}", "Name", "Email Address", "Address", "Phone");
@@ -40,6 +42,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
         {
             List<Appointment> validAppointsToPrint = appointments.Where(a => a != null).ToList();
 
+            Console.WriteLine(); //adding a line so the screen doesn't feel too crowded
             if (!appointments.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
