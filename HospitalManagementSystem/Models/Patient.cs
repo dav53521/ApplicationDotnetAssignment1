@@ -11,17 +11,9 @@ namespace ApplicationDotnetAssignment1.Models
 
         public override string ToString()
         {
+            //This to string adds onto the base type as it adds the assigned doctor to the user as the patient's assigned doctor of a patient needs to be seen
             return base.ToString() + $@"
 Assigned Doctor's Name: {AssignedDoctor?.Name ?? string.Empty}";
-        }
-
-        [NotMapped]
-        public string TableHeader
-        {
-            get
-            {
-                return string.Format("{0,-20} | {1,-20} | {2,-30} | {3,-30} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-            }
         }
 
         [NotMapped]

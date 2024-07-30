@@ -18,7 +18,7 @@ namespace ApplicationDotnetAssignment1.Models
 
         public override string ToString()
         {
-            //The returned string is a formatted string which shows a single user 
+            //The returned string is a formatted string which shows a single user's detail in a formatted way
             return @$"{Name}'s user details:
 
 User Id: {Id}
