@@ -78,7 +78,8 @@ namespace ApplicationDotnetAssignment1.Services
             Console.Clear();
             ConsoleService.PrintInCenter("Book New Appointment");
 
-            if(LoggedInUser.AssignedDoctorId == null) //If the assigned doctor of the logged in user is null then it is known that the user does not have an allocated doctor so the user must be prompted to assign themselves a doctor
+            //If the assigned doctor of the logged in user is null then it is known that the user does not have an allocated doctor so the user must be prompted to assign themselves a doctor
+            if (LoggedInUser.AssignedDoctorId == null) 
             {
                 GetTheDesiredDoctorForPatient();
             }
@@ -99,6 +100,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine("The appointment has been booked successfully");
         }
 
+        //This functoin is used to prompt a user for their desired so that their desired doctor can be assigned to them if they don't have an assigned user
         void GetTheDesiredDoctorForPatient()
         {
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().Where(d => d != null).ToList();

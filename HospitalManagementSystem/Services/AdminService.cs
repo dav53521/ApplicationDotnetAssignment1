@@ -112,7 +112,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            //Creating a new patient based off of the recieved user inputs so that a new doctor can be inserted into the databasde
+            //Creating a new patient based off of the recieved user inputs so that a new doctor can be inserted into the database
             Patient patientToAdd = new Patient()
             {
                 Name = fullName,
@@ -135,7 +135,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            //Creating a new doctor based off of the recieved user inputs so that a new doctor can be inserted into the databasde
+            //Creating a new doctor based off of the recieved user inputs so that a new doctor can be inserted into the database
             Doctor doctorToAdd = new Doctor()
             {
                 Name = fullName,

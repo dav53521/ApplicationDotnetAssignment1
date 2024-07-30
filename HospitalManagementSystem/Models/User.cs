@@ -6,18 +6,19 @@ namespace ApplicationDotnetAssignment1.Models
     public class User
     {
         public int Id { get; set; }
-        public string Password { get; set; }
+        public required string Password { get; set; }
         [MaxLength(30)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         [MaxLength(30)]
-        public string Email { get; set; }
+        public required string Email { get; set; }
         [StringLength(10)]
-        public string PhoneNumber { get; set; }
+        public required string PhoneNumber { get; set; }
         [MaxLength(40)]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         public override string ToString()
         {
+            //The returned string is a formatted string which shows a single user 
             return @$"{Name}'s user details:
 
 User Id: {Id}
