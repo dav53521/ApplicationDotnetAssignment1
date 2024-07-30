@@ -8,6 +8,7 @@ class Program
     static void Main(string[] args)
     {
         HospitalSystemUnitOfWork unitOfWork = new HospitalSystemUnitOfWork(new HospitalSystemContext());
+        //Below we're beginning the login so the user can login into their desired account
         new LoginService(unitOfWork, new ConsoleService()).Login();
     }
 }
