@@ -18,6 +18,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         public void SendAppointmentConfirmationEmail(int bookedAppointmentId)
         {
+            //Getting the appointment from the database so that it can be used to fill in the email details such as the patient email and the doctor's name
             Appointment? bookedAppointment = _UnitOfWork.AppointmentRepository.GetAppointmentById(bookedAppointmentId);
 
             if(bookedAppointment != null)

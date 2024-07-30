@@ -32,7 +32,7 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         protected List<T> Find(Func<T, bool> predicate)
         {
-            //
+            //This returns all the entities in a table that meets the condition that has been defined in the passed in predicate
             return context.Set<T>().Where(predicate).ToList();
         }
 
@@ -45,7 +45,7 @@ namespace ApplicationDotnetAssignment1.Repositories
         protected void Update(T entityToUpdate)
         {
             context.Set<T>().Update(entityToUpdate);
-            context.SaveChanges(); //Saving the updated entity so that the changes are immediately reflected in the updated entity
+            context.SaveChanges(); //Saving the updated entity so that the changes are immediately reflected in the entity
         }
 
         //This function is just so that it is possible to save without doing any updates so it's possible to do things such as saving before exiting
