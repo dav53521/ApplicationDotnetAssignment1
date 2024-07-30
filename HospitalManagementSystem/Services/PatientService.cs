@@ -12,10 +12,12 @@ namespace ApplicationDotnetAssignment1.Services
 
         public PatientService(Patient loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
-            _EmailService = new EmailService(unitOfWork); //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
+            //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
+            _EmailService = new EmailService(unitOfWork);
         }
 
-        protected override void PrintMenuOptions() //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
+        //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
+        protected override void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List patient details
 2. List my doctor details
@@ -26,7 +28,8 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
-        protected override void GetUserOptionChoice() //This override is for the template method in the UserService as the Patient menu options are unique so the menu option selection logic must be defined here
+        //This override is for the template method in the UserService as the Patient menu options are unique so the menu option selection logic must be defined here
+        protected override void GetUserOptionChoice()
         {
             int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "Please input a number as your option");
             while (true)
@@ -100,7 +103,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine("The appointment has been booked successfully");
         }
 
-        //This functoin is used to prompt a user for their desired so that their desired doctor can be assigned to them if they don't have an assigned user
+        //This function is used to prompt a user for their desired so that their desired doctor can be assigned to them if they don't have an assigned user
         void GetTheDesiredDoctorForPatient()
         {
             List<Doctor> allDoctors = UnitOfWork.DoctorRepository.GetAllDoctors().Where(d => d != null).ToList();
