@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HospitalMangementTests
-build_property.ProjectDir = C:\Users\David\source\repos\ApplicationDotnetAssignment1\HospitalMangementTests\
+build_property.ProjectDir = C:\Users\David\Desktop\David Sorrell Dotnet Assignment 1\ApplicationDotnetAssignment1 - David Sorrell\HospitalMangementTests\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

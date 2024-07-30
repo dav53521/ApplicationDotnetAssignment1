@@ -10,7 +10,6 @@ namespace ApplicationDotnetAssignment1.UnitOfWork
 
         public HospitalSystemUnitOfWork(HospitalSystemContext context)
         {
-            //Getting the passed in context and storing it so that it can be passed into each repository so they can access the database
             _HospitalSystemContext = context;
         }
 

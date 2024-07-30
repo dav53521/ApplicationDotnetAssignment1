@@ -7,7 +7,6 @@ namespace ApplicationDotnetAssignment1.Services
 {
     public class AdminService : UserService<Admin>
     {
-        //This constructor is being used to pass up the logged in user and the necessary depndency inections into it's parent class which is the user service so they can be stored in the user service's fields
         public AdminService(Admin loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
         }

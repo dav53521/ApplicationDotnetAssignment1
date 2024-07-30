@@ -12,7 +12,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         public EmailService(IHospitalSystemUnitOfWork unitOfWork)
         {
-            //Dependency injecting the unit of work so that the email service is not coupled
             _UnitOfWork = unitOfWork;
         }
 

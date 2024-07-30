@@ -51,7 +51,8 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints) //This is where the table rows are printed out as this logic is shared amongst all of the methods so moving it here helps enforce DRY principles and makes the code cleaner
+        //This is where the table rows are printed out as this logic is shared amongst all of the methods so moving it here helps enforce DRY principles and makes the code cleaners
+        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints)
         {
             PrintSeperator();
             foreach (IPrintableAsTable entity in entityToPrints)
@@ -60,7 +61,8 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        static void PrintSeperator() //This is in its own method because it helps enforce single responsibility as the methods that print the entities shouldn't be concerned with printing a seperator as that's different logic in my opinion
+        //This is in its own method because it helps enforce single responsibility as the methods that print the entities shouldn't be concerned with printing a seperator as that's different logic in my opinion
+        static void PrintSeperator()
         {
             for(int i = 0; i < Console.WindowWidth; i++)
             {

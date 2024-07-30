@@ -12,7 +12,6 @@ namespace ApplicationDotnetAssignment1.Services
         protected bool IsLoggedIn = true;
         protected IConsoleService ConsoleService { get; }
 
-        //This constructor is being used for dependency injecting the unit of work and console service so coupling is reduced and also is used to store the logged in user so the program can keep track of who is logged in for the current session
         public UserService(T loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
             LoggedInUser = loggedInUser;

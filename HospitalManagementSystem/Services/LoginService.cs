@@ -11,7 +11,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         public LoginService(IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService)
         {
-            //Dependency injecting both the unit of work and the console service into this class
             _UnitOfWork = unitOfWork;
             _ConsoleService = consoleService;
         }

@@ -12,7 +12,6 @@ namespace ApplicationDotnetAssignment1.Services
 
         public PatientService(Patient loggedInUser, IHospitalSystemUnitOfWork unitOfWork, IConsoleService consoleService) : base(loggedInUser, unitOfWork, consoleService)
         {
-            //As the email service is currently not used anywhere else creating it here removes the need to uncessary pass things through parameters
             _EmailService = new EmailService(unitOfWork);
         }
 
