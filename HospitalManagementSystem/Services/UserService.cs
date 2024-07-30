@@ -44,7 +44,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-        //This method should be implemented by the inheriting classes as they all have different menu options 
+        //This method should be implemented by the inheriting classes as they all have different menu options
         protected abstract void PrintMenuOptions();
 
         //This method should be implemented by the inheriting class as they each have different number of options

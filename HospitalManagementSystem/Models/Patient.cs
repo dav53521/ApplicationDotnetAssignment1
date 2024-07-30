@@ -11,7 +11,7 @@ namespace ApplicationDotnetAssignment1.Models
 
         public override string ToString()
         {
-            //This to string adds onto the base type as it adds the assigned doctor to the user as the patient's assigned doctor of a patient needs to be seen
+            //This to string adds onto the base type as it adds the assigned doctor to the user details as the patient's assigned doctor needs to be seen when showing hte details of a patient
             return base.ToString() + $@"
 Assigned Doctor's Name: {AssignedDoctor?.Name ?? string.Empty}";
         }

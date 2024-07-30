@@ -13,7 +13,6 @@ namespace ApplicationDotnetAssignment1.Repositories
 {
     public class UserRepository : Repository<User>
     {
-        //Passing the context to the repository so that it can access the database via the context 
         public UserRepository(HospitalSystemContext context) : base(context)
         {
         }
@@ -27,13 +26,13 @@ namespace ApplicationDotnetAssignment1.Repositories
 
         public User? GetUserById(int id)
         {
-            //The FirstOrDefault is being used to get the first element as each user should have unique Ids so multiple users shouldn't be returned. Also as it returns null it provides a elegant way to say no user has been found
+            //The FirstOrDefault is being used to get the first element as each user should have unique Ids so multiple users shouldn't be returned. Also as it returns null it provides a elegant way to say that no user has been found
             return GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public List<User> FindUsers(Func<User, bool> predicate)
         {
-            //The users are being filtered by a passed in so that all the users that meet 
+            //The users are being filtered by a passed in so that all the users that meet the passed in predicate are returned
             return GetAllUsers().Where(predicate).ToList();
         }
     }

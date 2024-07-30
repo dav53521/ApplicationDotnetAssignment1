@@ -53,7 +53,7 @@ namespace ApplicationDotnetAssignment1.Services
 
         void OpenCorrectUserMenu(User loggedInUser)
         {
-            //This switch works because the pattern matching is done on the compile time type of the loggedInUser which means that the cast has no affect as the cast only changes the type during run time
+            //This switch works because the switch pattern matching is done on the compile time type of the loggedInUser, which means that the cast has no affect as the cast only changes the type during run time
             switch (loggedInUser)
             {
                 case Admin loggedInAdmin:

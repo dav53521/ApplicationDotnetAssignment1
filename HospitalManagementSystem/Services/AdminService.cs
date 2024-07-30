@@ -12,7 +12,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
         }
 
-        //Overriding the abstract method so that the proper choices can be displayed for the user's role
+        //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
         protected override void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List all doctors
@@ -26,7 +26,7 @@ namespace ApplicationDotnetAssignment1.Services
 ");
         }
 
-        //Overiding the abstract method so a role can actually select an option for the role with proper error handling
+        //This override is for the template method in the UserService as the Patient menu options are unique so the menu option selection logic must be defined here
         protected override void GetUserOptionChoice()
         {
             int userChoice = ConsoleService.GetNumberFromUser("Please select an option: ", "To select an option please input a number");
@@ -112,7 +112,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            //Creating a new patient based off of the recieved user inputs so that a new doctor can be inserted into the database
+            //Creating a new patient based off of the recieved user inputs so that a new patient with the same details can be inserted into the database
             Patient patientToAdd = new Patient()
             {
                 Name = fullName,
@@ -135,7 +135,7 @@ namespace ApplicationDotnetAssignment1.Services
 
             (string fullName, string email, string phoneNumber, string address, string password) = GetNewUserDetails();
 
-            //Creating a new doctor based off of the recieved user inputs so that a new doctor can be inserted into the database
+            //Creating a new doctor based off of the recieved user inputs so that a new doctor with the same details can be inserted into the database
             Doctor doctorToAdd = new Doctor()
             {
                 Name = fullName,
@@ -150,7 +150,7 @@ namespace ApplicationDotnetAssignment1.Services
             Console.WriteLine($"A new Doctor with the name: {doctorToAdd.Name} has been created with the Id: {doctorToAdd.Id}");
         }
 
-        //This function is being used to just get a new user's details so they can be used to create a new user
+        //This function is being used to just get a new user's details so they can be used to create a new user as this function prevents code repetition between the logic for creating a patient or a doctor 
         (string, string, string, string, string) GetNewUserDetails()
         {
             string fullName = ConsoleService.GetFullNameFromUser();

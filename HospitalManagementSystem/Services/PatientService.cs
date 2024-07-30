@@ -61,7 +61,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
-
+        //This function is being used to print out the details of the doctor assigned to the logged in patient and if the patient doesn't have an assigned doctor it will print out a message saying that the user doesn't have an assigned doctor
         void PrintAssignedDoctorDetails()
         {
             Console.Clear();
@@ -69,6 +69,7 @@ namespace ApplicationDotnetAssignment1.Services
             PrintEntityDetails(LoggedInUser.AssignedDoctor, $"{LoggedInUser.Name}'s assigned doctor", "You do not have an assigned doctor.");
         }
 
+        //This function is being used to print out all of the appointments that have been booked by the patient and it will print out an error message if the patient hasn't booked any appointments
         void PrintAllAppointments()
         {
             Console.Clear();

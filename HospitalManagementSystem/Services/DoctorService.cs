@@ -11,6 +11,7 @@ namespace ApplicationDotnetAssignment1.Services
         {
         }
 
+        //This override is for the template method in the UserService as the Patient menu options are unique so the printing of the menu must be defined here
         protected override void PrintMenuOptions()
         {
             Console.WriteLine(@"1. List Doctor Details
@@ -58,6 +59,7 @@ namespace ApplicationDotnetAssignment1.Services
             }
         }
 
+        //This function is used to find all of the patients assigned to the current doctor in the database and then printing all of them out. Also if the doctor doesn't have any assigned patient a message telling the doctor that they have no assigned patients will be printed out
         void PrintAssignedPatients()
         {
             Console.Clear();
@@ -65,6 +67,7 @@ namespace ApplicationDotnetAssignment1.Services
             LoggedInUser.Patients.PrintEntitiesAsTable("No patients assigned");
         }
 
+        //This function is used to find all of the appointments assigned to the current doctor in the database and will print all of them out in a table format. Also if the doctor doesn't have any assigned appointments then a message telling the doctor that they have no appointments will be printed out
         void PrintAssignedAppointments()
         {
             Console.Clear();
@@ -72,6 +75,7 @@ namespace ApplicationDotnetAssignment1.Services
             LoggedInUser.AssignedAppointments.PrintEntitiesAsTable("No assigned appointments found");
         }
 
+        //This function prompts the doctor for a patient id and then tries to find a patient that meets the inputted id in the database. it will then print out the found patient if one is found or it will print out a message saying that no patient was found
         void PrintParticularPatientDetails()
         {
             Console.Clear();
@@ -83,6 +87,7 @@ namespace ApplicationDotnetAssignment1.Services
             PrintEntityDetails(foundPatient, $"Found patient with the Id of {idOfUserToCheck}:", "No Patient was found");
         }
 
+        //This function is used to prompt the doctor for a patient id and then it tries to find all the apointments that the doctor have with the patient in the database. If appointments were found it will then print all of them out in a table otherwise it will print out a message telling the doctor that they have no assigned appointments with that patient
         void PrintAppointmentsWithPatient()
         {
             Console.Clear();

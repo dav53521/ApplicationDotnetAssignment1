@@ -13,7 +13,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!validPatientsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2,-30} | {3,-40} | {4,-10}", "Name", "Doctor", "Email Address", "Address", "Phone");
-                PrintEntities(validPatientsToPrint!); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
+                PrintEntities(validPatientsToPrint!); //The list cannot be null as we guard against nulls in the if statement so the null forgiving operator is used to stop the warning
             }
             else
             {
@@ -28,7 +28,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!validDoctorsToPrint.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-30} | {2,-40} | {3,-10}", "Name", "Email Address", "Address", "Phone");
-                PrintEntities(validDoctorsToPrint!); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
+                PrintEntities(validDoctorsToPrint!); //The list cannot be null as we guard against nulls in the if statement so the null forgiving operator is used to stop the warning
             }
             else
             {
@@ -43,7 +43,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             if (!appointments.IsNullOrEmpty())
             {
                 Console.WriteLine("{0,-20} | {1,-20} | {2}", "Doctor", "Patient", "Description");
-                PrintEntities(validAppointsToPrint); //The list cannot be null or empty as we guard against nulls in the if statement so the null forgiving operator is used
+                PrintEntities(validAppointsToPrint); //The list cannot be null as we guard against nulls in the if statement so the null forgiving operator is used to stop the warning
             }
             else
             {
@@ -51,7 +51,7 @@ namespace ApplicationDotnetAssignment1.ExtensionMethods
             }
         }
 
-        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints) //This is where the table rows are printed out as this is shared logic amongst all the methods so moving it here helps enforce DRY
+        static void PrintEntities(IEnumerable<IPrintableAsTable> entityToPrints) //This is where the table rows are printed out as this logic is shared amongst all of the methods so moving it here helps enforce DRY principles and makes the code cleaner
         {
             PrintSeperator();
             foreach (IPrintableAsTable entity in entityToPrints)
