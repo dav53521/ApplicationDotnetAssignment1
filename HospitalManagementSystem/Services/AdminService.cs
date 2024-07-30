@@ -154,13 +154,9 @@ namespace ApplicationDotnetAssignment1.Services
         (string, string, string, string, string) GetNewUserDetails()
         {
             string fullName = ConsoleService.GetFullNameFromUser();
-
             string email = ConsoleService.GetEmailFromUser();
-
             string phoneNumber = ConsoleService.GetPhoneNumberFromUser();
-
             string address = ConsoleService.GetAddressFromUser();
-
             string password = ConsoleService.GetPasswordFromUser();
 
             return (fullName, email, phoneNumber, address, password);
